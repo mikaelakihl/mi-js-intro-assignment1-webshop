@@ -9,10 +9,11 @@ body {
 ._header{
     top: 0;
     position: fixed;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.379);
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2,1fr);
+    left: 0;
 }
 
 .header_h1  :nth-child(1){
@@ -29,4 +30,24 @@ body {
     justify-content: right;
     margin-right: 2rem;
     align-items: center;
+    margin-left: 1rem;
+}
+
+.header_menuBtn{
+
+    background: transparent;
+    border: 0;
+
+    span{
+        display: block;
+        width: 40px;
+        height: 7px;
+        margin-bottom: 4px;
+        background-color: $secondary-color;
+
+    }
+}
+
+main{
+    margin-top: 100px;
 }
