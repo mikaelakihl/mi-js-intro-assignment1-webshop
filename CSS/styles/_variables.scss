@@ -7,3 +7,7 @@ $primary-font-size: 1rem;
 // @mixin productStyling{
     
 // }
+
+@mixin borderSolidTemparary{      /*Temparary*/
+    border: solid black;
+}
