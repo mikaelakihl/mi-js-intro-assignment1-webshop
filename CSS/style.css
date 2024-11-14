@@ -6,4 +6,28 @@
 
 body {
   background-color: #92A5F7;
+}
+
+._header {
+  top: 0;
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.header_h1 :nth-child(1) {
+  grid-column: 1/2;
+}
+
+.header_nav :nth-child(2) {
+  grid-column: 2/2;
+}
+
+.header_nav {
+  display: flex;
+  justify-content: right;
+  margin-right: 2rem;
+  align-items: center;
 }/*# sourceMappingURL=style.css.map */
