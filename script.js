@@ -2,10 +2,10 @@ const products = [
 
     {
         id: 0,
-        name: 'Product 0',
+        name: 'Caravan Dolphin',
         price: 1000,
-        rating: 4,
-        category: 'Disney',
+        rating: 5,
+        category: 'Fuzzy',
         img: { 
             url: 'assets/caravan_dolphin.png',
             width: 750, 
@@ -17,9 +17,9 @@ const products = [
 
     {
         id: 1,
-        name: 'Product 1',
-        price: 1000,
-        rating: 4,
+        name: 'Captain',
+        price: 1500,
+        rating: 5,
         category: 'Fuzzy',
         img: {
             url: 'assets/no_one_is_captain_but_you.png',
@@ -32,9 +32,9 @@ const products = [
 
     {
         id: 2,
-        name: 'Product 2',
-        price: 1000,
-        rating: 4,
+        name: 'In the Jungle',
+        price: 800,
+        rating: 3.5,
         category: 'Normal',
         img: {
             url: 'assets/djungle_2.png',
@@ -47,10 +47,10 @@ const products = [
 
     {
         id: 3,
-        name: 'Product 3',
-        price: 1000,
-        rating: 4,
-        category: 'Disney',
+        name: 'FlyIsland',
+        price: 1700,
+        rating: 4.5,
+        category: 'Normal',
         img: {
             url: 'assets/flysland.png',
             width: 950,
@@ -62,10 +62,10 @@ const products = [
 
     {
         id: 4,
-        name: 'Product 4',
-        price: 1000,
-        rating: 4,
-        category: 'Normal',
+        name: 'My greek mytology',
+        price: 1200,
+        rating: 5,
+        category: 'Poetiskt',
         img: {
             url: 'assets/greek_mytology.png',
             width: 891,
@@ -77,7 +77,7 @@ const products = [
 
     {
         id: 5,
-        name: 'Product 5',
+        name: 'Hundred Acre Woods',
         price: 1000,
         rating: 4,
         category: 'Disney',
@@ -92,12 +92,12 @@ const products = [
 
     {
         id: 6,
-        name: 'Product 6',
-        price: 1000,
-        rating: 4,
-        category: 'Disney',
+        name: 'Colored toughts',
+        price: 2000,
+        rating: 4.5,
+        category: 'Fuzzy',
         img: {
-            url: 'lighthead.png',
+            url: 'assets/lighthead.png',
             width: 1060,
             height: 1500,
             alt: 'kommer sen',
@@ -107,9 +107,9 @@ const products = [
 
     {
         id: 7,
-        name: 'Product 7',
-        price: 1000,
-        rating: 4,
+        name: 'Invisible mermaid',
+        price: 900,
+        rating: 2.5,
         category: 'Disney',
         img: {
             url: 'assets/little_mermaid.png',
@@ -122,9 +122,9 @@ const products = [
 
     {
         id: 8,
-        name: 'Product 8',
-        price: 1000,
-        rating: 4,
+        name: 'Milo and Titch',
+        price: 1500,
+        rating: 3,
         category: 'Disney',
         img: {
             url: 'assets/milo_and_titch.png', 
@@ -137,10 +137,10 @@ const products = [
 
     {
         id: 0,
-        name: 'Product 0',
-        price: 1000,
+        name: 'Ted in Africa',
+        price: 1200,
         rating: 4,
-        category: 'Disney',
+        category: 'Fuzzy',
         img: {
             url: 'assets/ted.png',
             width: 800,
