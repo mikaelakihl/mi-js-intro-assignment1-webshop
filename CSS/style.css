@@ -53,4 +53,9 @@ main {
 
 section img {
   width: 180px;
+  border: solid rgb(255, 255, 255) 3px;
+  filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
+}
+section .product {
+  text-align: center;
 }/*# sourceMappingURL=style.css.map */
