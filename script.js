@@ -153,4 +153,19 @@ const products = [
 
 ];
 
-console.log (products);
+
+// Skriver ut produkterna i html dokumentet
+const productListSection = document.querySelector('#productList');
+
+products.forEach(product => {
+    productListSection.innerHTML+= `
+    <figure class="product">
+        <img src="${product.img.url}">
+        <figcaption>${product.name}</figcaption>
+    </figure>
+    <div class="product">
+    <div>${product.price} kr</div>
+    <div>${product.rating}</div>
+    `;
+});
+
