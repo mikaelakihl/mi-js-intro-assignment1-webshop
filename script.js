@@ -1,3 +1,7 @@
+'use strict';
+
+const canvasListSection = document.querySelector("#canvasList");
+
 const canvas = [
   {
     id: 0,
@@ -150,8 +154,6 @@ const canvas = [
   },
 ];
 
-const canvasListSection = document.querySelector("#productList");
-
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   canvas[index].amount -= 1;
@@ -164,47 +166,35 @@ function increaseAmount(e) {
   printCanvas();
 }
 
-// Skriver ut produkterna i html dokumentet
 
 function printCanvas() {
-  printCanvas.innerHTML = "";
-
+  canvasListSection.innerHTML = '';
 
   canvas.forEach((canvas, index) => {
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
-          <figcaption>${canvas.name}</figcaption>
+          <figcaption>${canvas.name} ${index}</figcaption>
           <div>${canvas.price} kr</div>
           <div>${canvas.rating}</div>
-          <button class="minus" data-id="${index}">-</button>
           <div>${canvas.amount}</div>
+          <button class="minus" data-id="${index}">-</button>
           <button class="plus" data-id="${index}">+</button>
        </figure>
       `;
   });
-  
-  // Lägger till clikevent för minus och plus knappen
-  
-  const minusBtn = document.querySelectorAll('button.minus');
-  const plusBtn = document.querySelectorAll('button.plus');
 
-  minusBtn.forEach((btn) => {
-    btn.addEventListener("click", decreaseAmount);
-  
-  });
-  
-  plusBtn.forEach((btn) => {
-    btn.addEventListener("click", increaseAmount);
-  });
+  const minusBtns = document.querySelectorAll('button.minus');
+  const plusBtns = document.querySelectorAll('button.plus');
 
+ minusBtns.forEach(btn => {
+  btn.addEventListener('click', decreaseAmount);
+ });
 
+ plusBtns.forEach(btn => {
+  btn.addEventListener('click', increaseAmount);
+ });
 
-  
 }
 
 printCanvas();
-
-
-
-//07.11 video  04.54
