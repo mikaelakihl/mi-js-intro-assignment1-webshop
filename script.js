@@ -158,6 +158,7 @@ const canvas = [
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
+  //Lägger till så att det inte går att minska antalet lägre än 0
   if (canvas[index].amount >= 0) {
     canvas[index].amount = 0;
   } else { canvas[index].amount -= 1;
@@ -183,9 +184,11 @@ function printCanvas() {
           <figcaption>${canvas.name} ${index}</figcaption>
           <div>${canvas.price} kr</div>
           <div>${canvas.rating}</div>
+          <div class="pmBtnsContainer">
           <button class="minus" data-id="${index}">-</button>
           <div>${canvas.amount}</div>
           <button class="plus" data-id="${index}">+</button>
+          </div>
        </figure>
       `;
   });

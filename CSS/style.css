@@ -56,6 +56,10 @@ section img {
   border: solid rgb(255, 255, 255) 3px;
   filter: drop-shadow(1px 1px 1px rgb(0, 0, 0));
 }
-section .product {
+section .canvas-class {
   text-align: center;
+}
+section .pmBtnsContainer {
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=style.css.map */
