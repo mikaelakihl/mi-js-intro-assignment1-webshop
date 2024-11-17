@@ -151,7 +151,8 @@ products.forEach((product) => {
         <figcaption>${product.name}</figcaption>
         <div>${product.price} kr</div>
         <div>${product.rating}</div>
-        
+        <button>-</button>
+        <button>+</button>
      </figure>
     `;
 });
