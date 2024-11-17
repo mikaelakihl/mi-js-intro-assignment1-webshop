@@ -154,9 +154,14 @@ const canvas = [
   },
 ];
 
+//Lägger till funktionen som gör att man kan höja/sänka antalet via minus och plus knapparna
+
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  canvas[index].amount -= 1;
+  if (canvas[index].amount >= 0) {
+    canvas[index].amount = 0;
+  } else { canvas[index].amount -= 1;
+  }
   printCanvas();
 }
 
@@ -166,6 +171,7 @@ function increaseAmount(e) {
   printCanvas();
 }
 
+//Skriver ut arrayen till HTML som är lagrad i const Canvas
 
 function printCanvas() {
   canvasListSection.innerHTML = '';
@@ -186,6 +192,8 @@ function printCanvas() {
 
   const minusBtns = document.querySelectorAll('button.minus');
   const plusBtns = document.querySelectorAll('button.plus');
+
+ //Lägger till clickevent för plus och minus knappar
 
  minusBtns.forEach(btn => {
   btn.addEventListener('click', decreaseAmount);
