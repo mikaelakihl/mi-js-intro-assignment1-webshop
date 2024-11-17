@@ -150,6 +150,14 @@ const products = [
   },
 ];
 
+function decreaseAmount(){
+
+}
+
+function increaseAmount(){
+  
+}
+
 // Skriver ut produkterna i html dokumentet
 const productListSection = document.querySelector("#productList");
 
@@ -167,5 +175,15 @@ products.forEach((product, index) => {
     `;
 });
 
+// Lägger till clikevent för minus och plus knappen 
+
 const minusBtn = document.querySelectorAll('.minusBtn');
 const plusBtn = document.querySelectorAll('plusBtn');
+
+  minusBtn.forEach(btn => {
+  btn.addEventListener ('click', decreaseAmount);
+});
+
+plusBtn.forEach(btn => {
+  btn.addEventListener ('click', increaseAmount);
+});
