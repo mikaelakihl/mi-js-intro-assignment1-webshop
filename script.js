@@ -150,12 +150,14 @@ const products = [
   },
 ];
 
-function decreaseAmount(){
-
+function decreaseAmount(e) {
+const index = e.currentTarget.dataset.id;
+products[index].amount -= 1;
 }
 
-function increaseAmount(){
-  
+function increaseAmount(e) {
+  const index = e.currentTarget.dataset.id;
+products[index].amount += 1;
 }
 
 // Skriver ut produkterna i html dokumentet
@@ -165,12 +167,12 @@ products.forEach((product, index) => {
   productListSection.innerHTML += `
     <figure class="product">
         <img src="${product.img.url}">
-        <figcaption>${product.name} ${index}</figcaption>
+        <figcaption>${product.name}</figcaption>
         <div>${product.price} kr</div>
         <div>${product.rating}</div>
-        <button class="minusBtn" data-id="$(index)">-</button>
+        <button class="minusBtn" data-id="${index}">-</button>
         <div>${product.amount}</div>
-        <button class="plusBtn" data-id="$(index)">+</button>
+        <button class="plusBtn" data-id="${index}">+</button>
      </figure>
     `;
 });
@@ -178,12 +180,14 @@ products.forEach((product, index) => {
 // Lägger till clikevent för minus och plus knappen 
 
 const minusBtn = document.querySelectorAll('.minusBtn');
-const plusBtn = document.querySelectorAll('plusBtn');
+const plusBtn = document.querySelectorAll('.plusBtn');
 
   minusBtn.forEach(btn => {
   btn.addEventListener ('click', decreaseAmount);
+  console.log('funkar');
 });
 
 plusBtn.forEach(btn => {
   btn.addEventListener ('click', increaseAmount);
 });
+
