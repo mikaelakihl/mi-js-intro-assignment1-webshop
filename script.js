@@ -3,6 +3,7 @@ const products = [
     id: 0,
     name: "Caravan Dolphin",
     price: 1000,
+    amount: 0,
     rating: 5,
     category: "Fuzzy",
     img: {
@@ -17,6 +18,7 @@ const products = [
     id: 1,
     name: "Captain",
     price: 1500,
+    amount: 0,
     rating: 5,
     category: "Fuzzy",
     img: {
@@ -31,6 +33,7 @@ const products = [
     id: 2,
     name: "In the Jungle",
     price: 800,
+    amount: 0,
     rating: 3.5,
     category: "Normal",
     img: {
@@ -45,6 +48,7 @@ const products = [
     id: 3,
     name: "FlyIsland",
     price: 1700,
+    amount: 0,
     rating: 4.5,
     category: "Normal",
     img: {
@@ -59,6 +63,7 @@ const products = [
     id: 4,
     name: "My greek mytology",
     price: 1200,
+    amount: 0,
     rating: 5,
     category: "Poetiskt",
     img: {
@@ -73,6 +78,7 @@ const products = [
     id: 5,
     name: "Hundred Acre Woods",
     price: 1000,
+    amount: 0,
     rating: 4,
     category: "Disney",
     img: {
@@ -87,6 +93,7 @@ const products = [
     id: 6,
     name: "Colored toughts",
     price: 2000,
+    amount: 0,
     rating: 4.5,
     category: "Fuzzy",
     img: {
@@ -101,6 +108,7 @@ const products = [
     id: 7,
     name: "Invisible mermaid",
     price: 900,
+    amount: 0,
     rating: 2.5,
     category: "Disney",
     img: {
@@ -115,6 +123,7 @@ const products = [
     id: 8,
     name: "Milo and Titch",
     price: 1500,
+    amount: 0,
     rating: 3,
     category: "Disney",
     img: {
@@ -129,6 +138,7 @@ const products = [
     id: 0,
     name: "Ted in Africa",
     price: 1200,
+    amount: 0,
     rating: 4,
     category: "Fuzzy",
     img: {
@@ -143,16 +153,19 @@ const products = [
 // Skriver ut produkterna i html dokumentet
 const productListSection = document.querySelector("#productList");
 
-products.forEach((product) => {
+products.forEach((product, index) => {
   productListSection.innerHTML += `
     <figure class="product">
         <img src="${product.img.url}">
-        
-        <figcaption>${product.name}</figcaption>
+        <figcaption>${product.name} ${index}</figcaption>
         <div>${product.price} kr</div>
         <div>${product.rating}</div>
-        <button>-</button>
-        <button>+</button>
+        <button class="minusBtn" data-id="$(index)">-</button>
+        <div>${product.amount}</div>
+        <button class="plusBtn" data-id="$(index)">+</button>
      </figure>
     `;
 });
+
+const minusBtn = document.querySelectorAll('.minusBtn');
+const plusBtn = document.querySelectorAll('plusBtn');
