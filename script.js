@@ -150,18 +150,25 @@ const products = [
   },
 ];
 
+const productListSection = document.querySelector("#productList");
+
 function decreaseAmount(e) {
-const index = e.currentTarget.dataset.id;
-products[index].amount -= 1;
+  const index = e.currentTarget.dataset.id;
+  products[index].amount -= 1;
+  printProducts();
 }
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-products[index].amount += 1;
+  products[index].amount += 1;
+  printProducts();
 }
 
 // Skriver ut produkterna i html dokumentet
-const productListSection = document.querySelector("#productList");
+
+function printProducts() {
+  printProducts.innerHTML = "";
+}
 
 products.forEach((product, index) => {
   productListSection.innerHTML += `
@@ -177,17 +184,18 @@ products.forEach((product, index) => {
     `;
 });
 
-// Lägger till clikevent för minus och plus knappen 
+// Lägger till clikevent för minus och plus knappen
 
-const minusBtn = document.querySelectorAll('.minusBtn');
-const plusBtn = document.querySelectorAll('.plusBtn');
+const minusBtn = document.querySelectorAll(".minusBtn");
+const plusBtn = document.querySelectorAll(".plusBtn");
 
-  minusBtn.forEach(btn => {
-  btn.addEventListener ('click', decreaseAmount);
-  console.log('funkar');
+minusBtn.forEach((btn) => {
+  btn.addEventListener("click", decreaseAmount);
+  console.log("funkar");
 });
 
-plusBtn.forEach(btn => {
-  btn.addEventListener ('click', increaseAmount);
+plusBtn.forEach((btn) => {
+  btn.addEventListener("click", increaseAmount);
 });
 
+//07.11 video  04.54
