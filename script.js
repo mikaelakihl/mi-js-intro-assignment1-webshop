@@ -1,4 +1,4 @@
-const products = [
+const canvas = [
   {
     id: 0,
     name: "Caravan Dolphin",
@@ -150,52 +150,61 @@ const products = [
   },
 ];
 
-const productListSection = document.querySelector("#productList");
+const canvasListSection = document.querySelector("#productList");
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  products[index].amount -= 1;
-  printProducts();
+  canvas[index].amount -= 1;
+  printCanvas();
 }
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  products[index].amount += 1;
-  printProducts();
+  canvas[index].amount += 1;
+  printCanvas();
 }
 
 // Skriver ut produkterna i html dokumentet
 
-function printProducts() {
-  printProducts.innerHTML = "";
+function printCanvas() {
+  printCanvas.innerHTML = "";
+
+
+  canvas.forEach((canvas, index) => {
+    canvasListSection.innerHTML += `
+      <figure class="canvas-class">
+          <img src="${canvas.img.url}">
+          <figcaption>${canvas.name}</figcaption>
+          <div>${canvas.price} kr</div>
+          <div>${canvas.rating}</div>
+          <button class="minus" data-id="${index}">-</button>
+          <div>${canvas.amount}</div>
+          <button class="plus" data-id="${index}">+</button>
+       </figure>
+      `;
+  });
+  
+  // Lägger till clikevent för minus och plus knappen
+  
+  const minusBtn = document.querySelectorAll('button.minus');
+  const plusBtn = document.querySelectorAll('button.plus');
+
+  minusBtn.forEach((btn) => {
+    btn.addEventListener("click", decreaseAmount);
+  
+  });
+  
+  plusBtn.forEach((btn) => {
+    btn.addEventListener("click", increaseAmount);
+  });
+
+
+
+  
 }
 
-products.forEach((product, index) => {
-  productListSection.innerHTML += `
-    <figure class="product">
-        <img src="${product.img.url}">
-        <figcaption>${product.name}</figcaption>
-        <div>${product.price} kr</div>
-        <div>${product.rating}</div>
-        <button class="minusBtn" data-id="${index}">-</button>
-        <div>${product.amount}</div>
-        <button class="plusBtn" data-id="${index}">+</button>
-     </figure>
-    `;
-});
+printCanvas();
 
-// Lägger till clikevent för minus och plus knappen
 
-const minusBtn = document.querySelectorAll(".minusBtn");
-const plusBtn = document.querySelectorAll(".plusBtn");
-
-minusBtn.forEach((btn) => {
-  btn.addEventListener("click", decreaseAmount);
-  console.log("funkar");
-});
-
-plusBtn.forEach((btn) => {
-  btn.addEventListener("click", increaseAmount);
-});
 
 //07.11 video  04.54
