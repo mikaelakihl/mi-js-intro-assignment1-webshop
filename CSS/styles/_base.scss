@@ -73,6 +73,7 @@ body {
 
 main{
     margin-top: 150px;
+    margin-bottom: 200px;
 }
 
 section{
@@ -187,6 +188,30 @@ section{
     }
 
 
+}
+
+footer{
+    padding-top: 1px;
+    padding-left: 1rem;
+    background-color: $secondary-color;
+    color: $white-color;
+    border-radius: 10px 10px 0px 0px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    a{
+        text-decoration: none;
+        color: $white-color;
+    }
+    
 }
 
 
