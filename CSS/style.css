@@ -132,6 +132,10 @@ section .plus {
 }
 .form_section form .form-button .form-button-single {
   width: 70px;
+  background-color: #92A5F7;
+  border: none;
+  color: white;
+  border-radius: 1rem;
 }
 .form_section form .form-checkbox {
   display: flex;
