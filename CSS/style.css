@@ -36,6 +36,14 @@ body {
   margin-left: 1rem;
   gap: 10px;
 }
+.header_nav .cart_button {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+}
+.header_nav .cart_button:hover {
+  background-color: #92A5F7;
+}
 
 .header_menuBtn {
   background: transparent;

@@ -35,6 +35,18 @@ body {
     align-items: center;
     margin-left: 1rem;
     gap: 10px;
+
+    .cart_button{
+        background-color: transparent;
+        border: none;
+        border-radius: 0.5rem;
+        
+        
+    }
+
+    .cart_button:hover{
+        background-color: $primary-color;
+    }
 }
 
 .header_menuBtn{
