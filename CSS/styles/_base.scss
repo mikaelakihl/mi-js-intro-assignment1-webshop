@@ -91,9 +91,29 @@ section{
     .pmBtnsContainer{
         display: flex;
         justify-content: center;
+
+        button{
+            width: 30px;
+            text-decoration: none;
+            background-color: $secondary-color;
+            border: none;
+            color: $white-color;
+        }
+
+        div{
+            background-color: white;
+            width: 90px;
+            border: 2px solid $secondary-color;
+        }
     }
 
-    
+    .minus{
+        border-radius: 3px 0px 0px 3px;
+    }
+
+    .plus{
+        border-radius: 0px 3px 3px 0px;
+    }
 
     }
 
