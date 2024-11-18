@@ -100,7 +100,16 @@ section .plus {
 }
 
 .form_section {
+  padding-left: 1rem;
+  width: 100%;
   background-color: white;
+}
+.form_section h2 {
+  text-align: center;
+}
+.form_section .form-text {
+  display: inline-block;
+  font-size: 1rem;
 }
 .form_section form {
   display: flex;
@@ -117,4 +126,13 @@ section .plus {
 .form_section form span {
   display: inline-block;
   width: 150px;
+}
+.form_section form .form-button {
+  width: 181px;
+}
+.form_section form .form-button .form-button-single {
+  width: 70px;
+}
+.form_section form .form-checkbox {
+  display: flex;
 }/*# sourceMappingURL=style.css.map */

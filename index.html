@@ -252,43 +252,52 @@
             <input class="form_input" type="text" placeholder="Efternamn" />
           </label>
           <label>
-            <span> Adress: *</span>
+            <span>Adress: *</span>
             <input class="form_input" type="text" placeholder="Adress" />
           </label>
           <label>
-            <span> Postnummer: *</span>
+            <span>Postnummer: *</span>
             <input class="form_input" type="text" placeholder="Postnummer" />
           </label>
           <label>
-            <span> Ort: *</span>
+            <span>Ort: *</span>
             <input class="form_input" type="text" placeholder="Ort" />
           </label>
           <label>
-            <span> Ev. portkod:</span>
+            <span>Ev. portkod:</span>
             <input class="form_input" type="text" placeholder="Förnamn" />
           </label>
           <label>
-            <span> Telefonnummer: *</span>
+            <span>Telefonnummer: *</span>
             <input class="form_input" type="text" placeholder="Telefonnummer" />
           </label>
           <label>
-            <span> E-postadress: *</span>
+            <span>E-postadress: *</span>
             <input class="form_input" type="text" placeholder="Förnamn" />
           </label>
-          <label>
-            Jag betalar med: *
-            <button>Kort</button>
-            <button>Faktura</button>
+          <!-- <div class="form_payment"> -->
+            <label>
+            <span class="form-payment">Jag betalar med: *</span>
+            <span class="form-button">
+            <button class="form-button-single">Kort</button>
+            <button class="form-button-single">Faktura</button>
+            </span>
           </label>
+          <!-- </div> -->
           <div>
-            <input type="checkbox" />
-            <p>Klicka här för att godkänna behandling av personuppgifter</p>
-            <input type="checkbox" checked />
-            <p>Klicka här om du vill ta del av våra nyhetsbrev</p>
+            <div class="form-checkbox">
+             <input type="checkbox" />
+            <p>Klicka här för att godkänna behandling av personuppgifter</p>   
+            </div>
+            <div class="form-checkbox">
+              <input type="checkbox" checked />
+            <p>Klicka här om du vill ta del av våra nyhetsbrev</p>   
+            </div>
           </div>
-
-          <input type="reset" />
-          <input type="submit" />
+           <div class="form-button">
+           <input class="form-button-single" type="reset" value="Rensa" />
+          <input class="form-button-single" type="submit" value="Skicka" /> 
+           </div>
         </form>
       </section>
     </main>

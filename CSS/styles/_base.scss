@@ -119,7 +119,20 @@ section{
 
 .form_section{
 
+    padding-left: 1rem;
+
+    width: 100%;
+
     background-color: white;
+
+    h2{
+        text-align: center;
+    }
+
+    .form-text{
+        display: inline-block;
+        font-size: $primary-font-size;
+    }
 
 
     form{
@@ -142,6 +155,24 @@ section{
         span{
             display: inline-block;
             width: 150px;
+        }
+
+
+        .form-button{
+            width: 181px;
+            
+
+            .form-button-single{
+                width: 70px;
+                
+            
+            }
+        }
+
+    
+        .form-checkbox{
+            display: flex;
+
         }
 
 
