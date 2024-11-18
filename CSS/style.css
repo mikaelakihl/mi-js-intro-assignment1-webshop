@@ -97,4 +97,17 @@ section .minus {
 }
 section .plus {
   border-radius: 0px 3px 3px 0px;
+}
+
+.form_section {
+  background-color: white;
+}
+.form_section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form_section form span {
+  display: inline-block;
+  width: 150px;
 }/*# sourceMappingURL=style.css.map */

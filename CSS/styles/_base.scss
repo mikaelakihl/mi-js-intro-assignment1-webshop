@@ -117,3 +117,28 @@ section{
 
     }
 
+.form_section{
+
+    background-color: white;
+
+
+    form{
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        span{
+            display: inline-block;
+            width: 150px;
+        }
+
+
+
+
+    }
+
+
+}
+
+
