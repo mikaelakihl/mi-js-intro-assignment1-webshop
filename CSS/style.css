@@ -47,6 +47,22 @@ body {
   background-color: #41496E;
 }
 
+.cart_section {
+  display: none;
+}
+
+.cartSectionOpen {
+  display: block;
+  background-color: rgb(255, 255, 255);
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  z-index: 3;
+  top: 5rem;
+}
+
+/* --------Header slutar------- */
 main {
   margin-top: 100px;
 }

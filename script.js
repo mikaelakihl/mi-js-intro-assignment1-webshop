@@ -1,5 +1,9 @@
 'use strict';
 
+const cartBtn = document.querySelector('#cartBtn');
+
+const cartSection = document.querySelector('#cartSection');
+
 const canvasListSection = document.querySelector("#canvasList");
 
 const canvas = [
@@ -209,3 +213,15 @@ function printCanvas() {
 }
 
 printCanvas();
+
+//Lägger till clickevent på varukorgens knapp
+
+cartBtn.addEventListener('click', handleClick);
+
+function handleClick(e){
+  cartSection.classList.toggle('cartSectionOpen');
+  
+}
+  
+
+
