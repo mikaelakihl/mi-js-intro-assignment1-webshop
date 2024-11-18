@@ -16,6 +16,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2,1fr);
     left: 0;
+    z-index:3;
 }
 
 .header_h1  :nth-child(1){
@@ -51,6 +52,8 @@ body {
 
 }
 
+/* --------Header slutar------- */
+
 .cart_section{
     display: none;
 
@@ -59,19 +62,17 @@ body {
 .cartSectionOpen{
     display:block;
     background-color: rgb(255, 255, 255);
-    width: 300px;
+    width: 100%;
     height: 100%;
     position: fixed;
     right: 0;
-    z-index: 3;
-    top:5rem;
+    z-index: 2;
+    top:7.5rem;
 }
-
-/* --------Header slutar------- */
 
 
 main{
-    margin-top: 100px;
+    margin-top: 150px;
 }
 
 section{
