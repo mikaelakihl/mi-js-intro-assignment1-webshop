@@ -122,6 +122,13 @@ section .plus {
 .cartsum {
   margin-bottom: 1rem;
 }
+.cartsum .form_button_single {
+  width: 70px;
+  background-color: #92A5F7;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+}
 
 .form_section h2 {
   text-align: center;

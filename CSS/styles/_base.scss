@@ -134,6 +134,14 @@ section {
 
 .cartsum{
     margin-bottom: 1rem;
+
+    .form_button_single{
+        width: 70px;
+        background-color: $primary-color;
+        border: none;
+        color: $white-color;
+        border-radius: 1rem;
+    }
 }
 
 
