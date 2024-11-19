@@ -190,4 +190,15 @@ footer div {
 footer a {
   text-decoration: none;
   color: white;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    background-color: red;
+  }
+}
+@media screen and (min-width: 1000px) {
+  body {
+    background-color: greenyellow;
+  }
 }/*# sourceMappingURL=style.css.map */
