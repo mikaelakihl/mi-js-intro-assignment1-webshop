@@ -36,12 +36,12 @@ body {
   margin-left: 1rem;
   gap: 10px;
 }
-.header_nav .cart_button {
+.header_nav .header_cart_button {
   background-color: transparent;
   border: none;
   border-radius: 0.5rem;
 }
-.header_nav .cart_button:hover {
+.header_nav .header_cart_button:hover {
   background-color: #92A5F7;
 }
 
@@ -141,17 +141,17 @@ section .plus {
   display: inline-block;
   width: 150px;
 }
-.form_section form .form-button {
+.form_section form .form_button {
   width: 181px;
 }
-.form_section form .form-button .form-button-single {
+.form_section form .form_button .form_button_single {
   width: 70px;
   background-color: #92A5F7;
   border: none;
   color: white;
   border-radius: 1rem;
 }
-.form_section form .form-checkbox {
+.form_section form .form_checkbox {
   display: flex;
 }
 

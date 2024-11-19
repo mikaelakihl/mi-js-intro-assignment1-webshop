@@ -36,7 +36,7 @@ body {
     margin-left: 1rem;
     gap: 10px;
 
-    .cart_button{
+    .header_cart_button{
         background-color: transparent;
         border: none;
         border-radius: 0.5rem;
@@ -44,7 +44,7 @@ body {
         
     }
 
-    .cart_button:hover{
+    .header_cart_button:hover{
         background-color: $primary-color;
     }
 }
@@ -175,11 +175,11 @@ section{
         }
 
 
-        .form-button{
+        .form_button{
             width: 181px;
             
 
-            .form-button-single{
+            .form_button_single{
                 width: 70px;
                 background-color: $primary-color;
                 border: none;
@@ -191,7 +191,7 @@ section{
         }
 
     
-        .form-checkbox{
+        .form_checkbox{
             display: flex;
 
         }
