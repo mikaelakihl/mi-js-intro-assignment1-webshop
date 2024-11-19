@@ -79,6 +79,15 @@ main {
   margin-bottom: 200px;
 }
 
+.page_design {
+  border-radius: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  background-color: white;
+}
+
 section img {
   width: 180px;
   border: solid rgb(255, 255, 255) 3px;
@@ -110,14 +119,10 @@ section .plus {
   border-radius: 0px 3px 3px 0px;
 }
 
-.form_section {
-  border-radius: 1rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  width: 100%;
-  background-color: white;
+.cartsum {
+  margin-bottom: 1rem;
 }
+
 .form_section h2 {
   text-align: center;
 }

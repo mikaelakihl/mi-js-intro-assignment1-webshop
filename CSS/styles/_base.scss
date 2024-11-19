@@ -82,6 +82,17 @@ main {
   margin-bottom: 200px;
 }
 
+.page_design{
+  border-radius: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+
+  width: 100%;
+
+  background-color: white;
+}
+
 section {
   img {
     width: 180px;
@@ -121,17 +132,13 @@ section {
   }
 }
 
+.cartsum{
+    margin-bottom: 1rem;
+}
 
 
 .form_section {
-  border-radius: 1rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-
-  width: 100%;
-
-  background-color: white;
+  
 
   h2 {
     text-align: center;
