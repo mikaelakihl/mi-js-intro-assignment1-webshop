@@ -9,8 +9,12 @@
 
 
     .canvas-class{
-        display: flex;
-        flex-direction: column;
+        position: relative;
+        // display: grid
+        // flex-direction: column;
+        // justify-content: center;
+
+        
 
         
 
@@ -19,7 +23,12 @@
 }
 
 
+// .pm_btns_container{
+//     position: absolute; 
+//     background-color: red;
+//     bottom: 0;
 
+// }
 
 
 }

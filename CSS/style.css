@@ -200,8 +200,7 @@ footer a {
     align-items: center;
   }
   .canvas_section .canvas-class {
-    display: flex;
-    flex-direction: column;
+    position: relative;
   }
 }
 @media screen and (min-width: 1250px) {

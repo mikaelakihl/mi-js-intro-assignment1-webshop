@@ -188,7 +188,7 @@ function printCanvas() {
           <figcaption>${canvas.name} ${index}</figcaption>
           <div>${canvas.price} kr</div>
           <div>${canvas.rating}</div>
-          <div class="pmBtnsContainer">
+          <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
             <div>${canvas.amount}</div>
             <button class="plus" data-id="${index}">+</button>
