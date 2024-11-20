@@ -185,6 +185,7 @@ function printCanvas() {
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
+          <div class="canvas-wrapper">
           <figcaption>${canvas.name} ${index}</figcaption>
           <div>${canvas.price} kr</div>
           <div>${canvas.rating}</div>
@@ -192,6 +193,7 @@ function printCanvas() {
             <button class="minus" data-id="${index}">-</button>
             <div>${canvas.amount}</div>
             <button class="plus" data-id="${index}">+</button>
+          </div>
           </div>
        </figure>
       `;

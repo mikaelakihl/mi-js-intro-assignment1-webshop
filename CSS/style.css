@@ -200,7 +200,20 @@ footer a {
     align-items: center;
   }
   .canvas_section .canvas-class {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+  .canvas-wrapper {
+    display: grid;
+    gap: 1rem;
+  }
+  img {
+    margin-bottom: auto;
   }
 }
 @media screen and (min-width: 1250px) {
