@@ -187,10 +187,10 @@ function printTotalCartOrderSum(){
       sum += canvas.amount * canvas.price;
       totalCartOrderSum.innerHTML += `
       <article>
+      <img src="${canvas.img.url}">
         <span>${canvas.name}</span> 
         <span>${canvas.amount} st </span> 
         <span>${canvas.price} kr </span> 
-        <span>${canvas.img.url}</span>
       </article>
       
       `;
