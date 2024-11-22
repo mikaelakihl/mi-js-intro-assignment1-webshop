@@ -66,6 +66,10 @@ body {
   display: none;
 }
 
+.my_cart_h2{
+  margin-left: 1rem;
+}
+
 .cartSectionOpen {
   display: block;
   background-color: $white-color;
@@ -82,6 +86,7 @@ body {
   grid-template-columns: repeat(2,1fr);
   margin-left: 1rem;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
 .cartOrderSumWrapper{
@@ -95,6 +100,18 @@ body {
 
 .cartOrderSumImg{
   grid-column: 1/2;
+}
+
+.cartOrderSumTotalPrice{
+  display: flex;
+  justify-content: right;
+  margin-right: 2rem;
+;
+}
+
+.cartOrderSumLine{
+  color: rgba(133, 133, 133, 0.313);
+  margin-top: 1.5rem;
 }
 
 main {

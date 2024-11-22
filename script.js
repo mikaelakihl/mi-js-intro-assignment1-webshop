@@ -218,8 +218,9 @@ function printTotalCartOrderSum(){
       <div class="cartOrderSumWrapper">
         <span>${canvas.name}</span> 
         <span>${canvas.amount} st </span> 
-        <span>${canvas.price} kr </span> 
+        <span>${canvas.price} kr </span>
         </div>
+        <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
 
       
@@ -231,7 +232,7 @@ function printTotalCartOrderSum(){
 
   console.log(printTotalCartOrderSum);
   
-  totalCartOrderSum.innerHTML += `<span>${sum} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${sum} kr</span>`; //Skriver ut totalsumman av antalet
 
    
 
@@ -257,6 +258,7 @@ function additionalPrintTotalCartOrderSum(){
         <span>${canvas.amount} st </span> 
         <span>${canvas.price} kr </span> 
         </div>
+        <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
 
       
@@ -268,7 +270,7 @@ function additionalPrintTotalCartOrderSum(){
 
   console.log(additionalPrintTotalCartOrderSum);
 
-  additionalTotalCartOrderSum.innerHTML += `<span>${sum} kr</span>`;
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
 
 }
 
