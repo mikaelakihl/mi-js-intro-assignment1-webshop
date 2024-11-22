@@ -158,7 +158,7 @@ const canvas = [
   },
 ];
 
-const totalCartOrderSum = document.querySelectorAll('.cartContainer');
+const totalCartOrderSum = document.querySelector('#cartContainer');
 console.log('totalCartOrderSum');
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
@@ -187,7 +187,10 @@ function printTotalCartOrderSum(){
       sum += canvas.amount * canvas.price;
       totalCartOrderSum.innerHTML += `
       <article>
-        <span>${canvas.name}</span><span>${canvas.amount}</span><span>${canvas.price}</span><span>${canvas.img}</span>
+        <span>${canvas.name}</span> 
+        <span>${canvas.amount} st </span> 
+        <span>${canvas.price} kr </span> 
+        <span>${canvas.img.url}</span>
       </article>
       
       `;
@@ -196,7 +199,7 @@ function printTotalCartOrderSum(){
     }
   });
 
-  // totalCartOrderSum.innerHTML +=
+  console.log(printTotalCartOrderSum);
 
 }
 
@@ -209,7 +212,7 @@ printTotalCartOrderSum();
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   //Lägger till så att det inte går att minska antalet lägre än 0
-  if (canvas[index].amount >= 0) {
+  if (canvas[index].amount <= 0) {
     canvas[index].amount = 0;
   } else { canvas[index].amount -= 1;
   }
