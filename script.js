@@ -161,6 +161,8 @@ const canvas = [
 const totalCartOrderSum = document.querySelector('#cartContainer');
 console.log('totalCartOrderSum');
 
+const additionalTotalCartOrderSum = document.querySelector('#additionolCartContainer');
+
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
@@ -192,9 +194,10 @@ function printTotalCartOrderSum(){
         <span>${canvas.amount} st </span> 
         <span>${canvas.price} kr </span> 
       </article>
+
+      
       
       `;
-
 
     }
   });
@@ -204,6 +207,35 @@ function printTotalCartOrderSum(){
 }
 
 printTotalCartOrderSum();
+
+function additionalPrintTotalCartOrderSum(){
+  additionalTotalCartOrderSum.innerHTML = '';
+
+  let sum = 0;
+
+  canvas.forEach(canvas => {
+    if (canvas.amount > 0) {
+      sum += canvas.amount * canvas.price;
+      additionalTotalCartOrderSum.innerHTML += `
+      <article>
+      <img src="${canvas.img.url}">
+        <span>${canvas.name}</span> 
+        <span>${canvas.amount} st </span> 
+        <span>${canvas.price} kr </span> 
+      </article>
+
+      
+      
+      `;
+
+    }
+  });
+
+  console.log(additionalPrintTotalCartOrderSum);
+
+}
+
+additionalPrintTotalCartOrderSum();
 
 ///////////////////////////////////Main/////////////////////////////////////////////////////
 
@@ -262,6 +294,7 @@ function printCanvas() {
  });
 
  printTotalCartOrderSum();
+ additionalPrintTotalCartOrderSum();
 
 }
 
