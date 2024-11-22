@@ -174,10 +174,16 @@ function handleClick(e){
   
 }
 
-// Loopa igenom produkt-arrayen
-// Kolla om vi beställt minst 1 antal av produkten
-// Multiplicera produktens pris med antal beställda och addera till förgående summa
+//------------------------------------------------------------------------------------------------
+//-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
+//------------------------------------------------------------------------------------------------
+
+// x Loopa igenom produkt-arrayen
+// x Kolla om vi beställt minst 1 antal av produkten
+// x Multiplicera produktens pris med antal beställda och addera till förgående summa
 // Om vi inte har beställt några av den här produkten, returnera förgående summa
+
+//---------- Varukorgen -------------------------
 
 function printTotalCartOrderSum(){
   totalCartOrderSum.innerHTML = '';
@@ -203,10 +209,14 @@ function printTotalCartOrderSum(){
   });
 
   console.log(printTotalCartOrderSum);
+  
+  totalCartOrderSum.innerHTML += `<span>${sum} kr</span>`; //Skriver ut totalsumman av antalet
 
 }
 
 printTotalCartOrderSum();
+
+// -----------------Varukorgsammanställningen----------------------------
 
 function additionalPrintTotalCartOrderSum(){
   additionalTotalCartOrderSum.innerHTML = '';
@@ -232,6 +242,8 @@ function additionalPrintTotalCartOrderSum(){
   });
 
   console.log(additionalPrintTotalCartOrderSum);
+
+  additionalTotalCartOrderSum.innerHTML += `<span>${sum} kr</span>`;
 
 }
 
