@@ -158,7 +158,7 @@ const canvas = [
   },
 ];
 
-const totalCartOrderSum = document.querySelector('#cartContainer');
+const totalCartOrderSum = document.querySelectorAll('.cartContainer');
 console.log('totalCartOrderSum');
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
@@ -196,7 +196,7 @@ function printTotalCartOrderSum(){
     }
   });
 
-  console.log(printTotalCartOrderSum);
+  // totalCartOrderSum.innerHTML +=
 
 }
 
