@@ -80,6 +80,8 @@ body {
 .cartOrderSumContainer{
   display: grid;
   grid-template-columns: repeat(2,1fr);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cartOrderSumWrapper{

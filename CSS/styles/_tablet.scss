@@ -1,6 +1,14 @@
 @media screen and (min-width: 750px){
 
 
+    .cartSectionOpen{
+        top: 5rem;
+        width: 400px;
+        
+        
+    }
+
+
 .canvas_section{
     display: grid;
     grid-template-columns: repeat(4,1fr);
