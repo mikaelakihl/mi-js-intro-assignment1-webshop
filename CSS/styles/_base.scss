@@ -17,7 +17,15 @@ body {
   grid-template-columns: repeat(2, 1fr);
   left: 0;
   z-index: 3;
+
+ 
+
 }
+
+h1{
+  font-size: 1.5rem;
+}
+
 
 .header_h1 :nth-child(1) {
   grid-column: 1/2;
@@ -78,7 +86,7 @@ body {
   position: fixed;
   right: 0;
   z-index: 2;
-  top: 7.5rem;
+  top: 3.8rem;
 }
 
 .cartOrderSumContainer{
