@@ -176,6 +176,23 @@ function handleClick(e){
   
 }
 
+
+function canvasRating(rating) {
+  const halfRating = String(rating).indexOf('.');
+  let html = '';
+  for (let i = 0; i < rating; i ++) {
+    html += `<span>star</span>`;
+  }
+  if (halfRating !== -1) {
+    html += `<span>halfstar</span>`;
+  }
+return html;
+
+
+
+
+}
+
 //------------------------------------------------------------------------------------------------
 //-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
 //------------------------------------------------------------------------------------------------
@@ -285,7 +302,7 @@ function printCanvas() {
           <div class="canvas-wrapper">
           <figcaption>${canvas.name} ${index}</figcaption>
           <div>${canvas.price} kr</div>
-          <div>${canvas.rating}</div>
+          <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
             <div>${canvas.amount}</div>
