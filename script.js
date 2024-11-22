@@ -213,11 +213,13 @@ function printTotalCartOrderSum(){
     if (canvas.amount > 0) {
       sum += canvas.amount * canvas.price;
       totalCartOrderSum.innerHTML += `
-      <article>
-      <img src="${canvas.img.url}">
+      <article class="cartOrderSumContainer">
+      <img class="cartOrderSumImg" src="${canvas.img.url}">
+      <div class="cartOrderSumWrapper">
         <span>${canvas.name}</span> 
         <span>${canvas.amount} st </span> 
         <span>${canvas.price} kr </span> 
+        </div>
       </article>
 
       
@@ -248,11 +250,13 @@ function additionalPrintTotalCartOrderSum(){
     if (canvas.amount > 0) {
       sum += canvas.amount * canvas.price;
       additionalTotalCartOrderSum.innerHTML += `
-      <article>
-      <img src="${canvas.img.url}">
+     <article class="cartOrderSumContainer">
+      <img class="cartOrderSumImg" src="${canvas.img.url}">
+      <div class="cartOrderSumWrapper">
         <span>${canvas.name}</span> 
         <span>${canvas.amount} st </span> 
         <span>${canvas.price} kr </span> 
+        </div>
       </article>
 
       
