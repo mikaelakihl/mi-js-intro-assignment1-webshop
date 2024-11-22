@@ -163,6 +163,8 @@ console.log('totalCartOrderSum');
 
 const additionalTotalCartOrderSum = document.querySelector('#additionolCartContainer');
 
+const liveUpdatedPrice = document.querySelector ('#liveUpdatedPrice')
+
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
@@ -211,6 +213,8 @@ function printTotalCartOrderSum(){
   console.log(printTotalCartOrderSum);
   
   totalCartOrderSum.innerHTML += `<span>${sum} kr</span>`; //Skriver ut totalsumman av antalet
+
+   
 
 }
 
