@@ -158,6 +158,52 @@ const canvas = [
   },
 ];
 
+const totalCartOrderSum = document.querySelector('#cartContainer');
+console.log('totalCartOrderSum');
+
+//////////////////////////////////////////////Header//////////////////////////////////////////
+
+//Lägger till clickevent på varukorgens knapp
+
+cartBtn.addEventListener('click', handleClick);
+
+function handleClick(e){
+  cartSection.classList.toggle('cartSectionOpen');
+  
+}
+
+// Loopa igenom produkt-arrayen
+// Kolla om vi beställt minst 1 antal av produkten
+// Multiplicera produktens pris med antal beställda och addera till förgående summa
+// Om vi inte har beställt några av den här produkten, returnera förgående summa
+
+function printTotalCartOrderSum(){
+  totalCartOrderSum.innerHTML = '';
+
+  let sum = 0;
+
+  canvas.forEach(canvas => {
+    if (canvas.amount > 0) {
+      sum += canvas.amount * canvas.price;
+      totalCartOrderSum.innerHTML += `
+      <article>
+        <span>${canvas.name}</span><span>${canvas.amount}</span><span>${canvas.price}</span><span>${canvas.img}</span>
+      </article>
+      
+      `;
+
+
+    }
+  });
+
+  console.log(printTotalCartOrderSum);
+
+}
+
+printTotalCartOrderSum();
+
+///////////////////////////////////Main/////////////////////////////////////////////////////
+
 //Lägger till funktionen som gör att man kan höja/sänka antalet via minus och plus knapparna
 
 function decreaseAmount(e) {
@@ -212,18 +258,13 @@ function printCanvas() {
   btn.addEventListener('click', increaseAmount);
  });
 
+ printTotalCartOrderSum();
+
 }
 
 printCanvas();
 
-//Lägger till clickevent på varukorgens knapp
 
-cartBtn.addEventListener('click', handleClick);
-
-function handleClick(e){
-  cartSection.classList.toggle('cartSectionOpen');
-  
-}
   
 
 
