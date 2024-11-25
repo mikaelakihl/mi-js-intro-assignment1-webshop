@@ -396,6 +396,57 @@ printCanvas(filteredDisneyCanvas);
   
 }
 
+sortByCategorySelectNormal.addEventListener('click', handleSortByCategorySelectNormal);
+
+function handleSortByCategorySelectNormal (e){
+
+  
+
+
+
+   const filteredNormalCanvas = canvas.filter(canvas => canvas.category === 'Normal');
+
+
+printCanvas(filteredNormalCanvas);
+
+  
+}
+
+
+sortByCategorySelectPoetic.addEventListener('click', handleSortByCategorySelectPoetic);
+
+function handleSortByCategorySelectPoetic (e){
+
+  
+
+
+
+   const filteredPoeticCanvas = canvas.filter(canvas => canvas.category === 'Poetiskt');
+
+
+printCanvas(filteredPoeticCanvas);
+
+  
+}
+
+sortByCategorySelectFuzzy.addEventListener('click', handleSortByCategorySelectFuzzy);
+
+function handleSortByCategorySelectFuzzy (e){
+
+  
+
+
+
+   const filteredFuzzyCanvas = canvas.filter(canvas => canvas.category === 'Fuzzy');
+
+
+printCanvas(filteredFuzzyCanvas);
+
+  
+}
+
+
+
 
 canvas.sort((canvas1, canvas2) => {
   return canvas1.price - canvas2.price;
