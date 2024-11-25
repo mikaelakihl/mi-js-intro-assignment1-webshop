@@ -193,6 +193,9 @@ section .plus {
   box-shadow: 1px 1px 1px 1px #41496E;
   height: 20px;
 }
+.sort_section .sort_rating_special {
+  margin-left: 0.5rem;
+}
 .sort_section .sort_category_style {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -202,8 +205,8 @@ section .plus {
   border-radius: 0.5rem;
   text-align: center;
   box-shadow: 1px 1px 1px 1px #41496E;
-  margin-left: 0.5rem;
   height: 20px;
+  margin-left: 0.5rem;
 }
 .sort_section .sort_category_style:hover {
   background-color: #92A5F7;
