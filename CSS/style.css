@@ -169,6 +169,8 @@ section .plus {
 
 .sort_section {
   background-color: rgba(255, 255, 255, 0.379);
+  display: flex;
+  align-items: center;
 }
 .sort_section .sort_price_range {
   background-color: #41496E;
@@ -180,10 +182,31 @@ section .plus {
   height: 7px;
   border-radius: 1rem;
 }
+.sort_section .sort_price_range_container {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
 .sort_section .sort_button_style {
   background-color: transparent;
   border: none;
   border-radius: 0.5rem;
+  box-shadow: 1px 1px 1px 1px #41496E;
+  height: 20px;
+}
+.sort_section .sort_category_style {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px #41496E;
+  margin-left: 0.5rem;
+  height: 20px;
+}
+.sort_section .sort_category_style:hover {
+  background-color: #92A5F7;
 }
 .sort_section .sort_button_style:hover {
   background-color: #92A5F7;

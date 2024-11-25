@@ -191,6 +191,8 @@ section {
 
 .sort_section{
     background-color: rgba(255, 255, 255, 0.379);
+    display: flex;
+    align-items: center;
 
     .sort_price_range{
       background-color: $secondary-color;
@@ -200,6 +202,12 @@ section {
       width: 8rem;
       height: 7px;
       border-radius: 1rem;
+    
+    }
+
+    .sort_price_range_container{
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
     }
 
     .sort_button_style{
@@ -207,10 +215,28 @@ section {
       background-color: transparent;
       border: none;
       border-radius: 0.5rem;
+      box-shadow: 1px 1px 1px 1px $secondary-color;
+      height: 20px;
   
     }
 
-    
+    .sort_category_style{
+      appearance: none;
+      background-color: transparent;
+      border: none;
+      border-radius: 0.5rem;
+      text-align: center;
+      box-shadow: 1px 1px 1px 1px $secondary-color;
+      margin-left: 0.5rem;
+      height: 20px;
+      
+
+    }
+
+
+    .sort_category_style:hover{
+      background-color: $primary-color;
+    }
 
     .sort_button_style:hover{
       background-color: $primary-color;
