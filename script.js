@@ -299,7 +299,7 @@ function printCanvas(filteredPrintCanvas) {
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
           <div class="canvas-wrapper">
-          <figcaption>${canvas.name} ${index}</figcaption>
+          <figcaption>${canvas.name}</figcaption>
           <div>${canvas.price} kr</div>
           <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
@@ -429,6 +429,24 @@ function handleSortbyRatingClick (e) {
   printCanvas();
 }
 
+//---------- Sorterar produkter via pris -------------------------
+
+const priceRangeSlider = document.querySelector('#priceRange');
+const currentRangeValue = document.querySelector('#currentRangeValue');
+
+priceRangeSlider.addEventListener('input', changePriceRange);
+
+function changePriceRange(){
+  const currentPrice = priceRangeSlider.value;
+  currentRangeValue.innerHTML = currentPrice;
+
+  const filteredCanvasByPrice = canvas.filter( canvas => canvas.price <= currentPrice);
+
+  console.log(currentPrice);
+
+  printCanvas(filteredCanvasByPrice);
+
+}
 
 canvas.sort((canvas1, canvas2) => {
   return canvas1.price - canvas2.price;
