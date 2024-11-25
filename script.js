@@ -328,3 +328,29 @@ function printCanvas() {
 }
 
 printCanvas();
+
+//------------------------------------------------------------------------------------------------
+//-------------------------Sorterar produkter i array -------------
+//------------------------------------------------------------------------------------------------
+
+
+
+canvas.sort((canvas1, canvas2) => {
+  return canvas1.name > canvas2.name;
+});
+
+console.table(canvas);
+
+canvas.sort((canvas1, canvas2) => {
+  return canvas1.price - canvas2.price;
+});
+
+console.table(canvas);
+
+// canvas.sort((canvas1, canvas2) => canvas1.category < canvas2.category);
+
+// console.table(canvas);
+
+const canvasDisney = canvas.filter(canvas => canvas.category === 'Disney');
+
+console.table(canvasDisney)
