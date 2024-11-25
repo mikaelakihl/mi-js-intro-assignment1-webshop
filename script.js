@@ -333,7 +333,35 @@ printCanvas();
 //-------------------------Sorterar produkter i array -------------
 //------------------------------------------------------------------------------------------------
 
+const sortByNameBtn = document.querySelector('#sortByNameBtn');
 
+
+sortByNameBtn.addEventListener('click', handleSortbyNameClick);
+
+
+
+function handleSortbyNameClick (e) {
+
+  
+
+
+  canvas.sort((canvas1, canvas2) => {
+    return canvas1.name > canvas2.name;
+  });
+
+  
+
+  
+  printCanvas();
+}
+
+
+
+canvas.sort((canvas1, canvas2) => {
+  return canvas1.price - canvas2.price;
+});
+
+console.log(sortByNameBtn);
 
 canvas.sort((canvas1, canvas2) => {
   return canvas1.name > canvas2.name;
