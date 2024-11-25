@@ -442,8 +442,6 @@ function changePriceRange(){
 
   const filteredCanvasByPrice = canvas.filter( canvas => canvas.price <= currentPrice);
 
-  console.log(currentPrice);
-
   printCanvas(filteredCanvasByPrice);
 
 }

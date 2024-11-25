@@ -191,7 +191,36 @@ section {
 
 .sort_section{
     background-color: rgba(255, 255, 255, 0.379);
-}
+
+    .sort_price_range{
+      background-color: $secondary-color;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      width: 8rem;
+      height: 7px;
+      border-radius: 1rem;
+    }
+
+    .sort_button_style{
+
+      background-color: transparent;
+      border: none;
+      border-radius: 0.5rem;
+  
+    }
+
+    
+
+    .sort_button_style:hover{
+      background-color: $primary-color;
+    }
+
+    
+    }
+
+
+    
 
 
 .form_section {

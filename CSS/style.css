@@ -170,6 +170,24 @@ section .plus {
 .sort_section {
   background-color: rgba(255, 255, 255, 0.379);
 }
+.sort_section .sort_price_range {
+  background-color: #41496E;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  cursor: pointer;
+  width: 8rem;
+  height: 7px;
+  border-radius: 1rem;
+}
+.sort_section .sort_button_style {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+}
+.sort_section .sort_button_style:hover {
+  background-color: #92A5F7;
+}
 
 .form_section h2 {
   text-align: center;
