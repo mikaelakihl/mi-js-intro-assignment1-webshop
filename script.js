@@ -355,6 +355,18 @@ function handleSortbyNameClick (e) {
   printCanvas();
 }
 
+const sortByCategorySelectAll = document.querySelector('#sortByCategorySelectAll');
+
+const sortByCategorySelectDisney = document.querySelector('#sortByCategorySelectDisney');
+
+const sortByCategorySelectNormal = document.querySelector('#sortByCategorySelectNormal');
+
+const sortByCategorySelectPoetic = document.querySelector('#sortByCategorySelectPoetic');
+
+const sortByCategorySelectFuzzy = document.querySelector('#sortByCategorySelectFuzzy');
+
+
+
 
 
 canvas.sort((canvas1, canvas2) => {
