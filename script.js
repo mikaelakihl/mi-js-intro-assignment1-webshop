@@ -289,10 +289,12 @@ function increaseAmount(e) {
 
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
-function printCanvas() {
+function printCanvas(filteredPrintCanvas) {
   canvasListSection.innerHTML = "";
 
-  canvas.forEach((canvas, index) => {
+  const canvasToPrint = filteredPrintCanvas || canvas;
+
+  canvasToPrint.forEach((canvas, index) => {
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
@@ -384,12 +386,14 @@ function handleSortByCategorySelectDisney (e){
 
   console.log('du har klickat på disney');
 
-  canvas.forEach(product => {})
 
-  canvas.filter(canvas => canvas.category === 'Disney');
 
-  printCanvas();
+   const filteredDisneyCanvas = canvas.filter(canvas => canvas.category === 'Disney');
 
+
+printCanvas(filteredDisneyCanvas);
+
+  
 }
 
 
