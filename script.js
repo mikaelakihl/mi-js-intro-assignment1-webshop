@@ -366,7 +366,31 @@ const sortByCategorySelectPoetic = document.querySelector('#sortByCategorySelect
 const sortByCategorySelectFuzzy = document.querySelector('#sortByCategorySelectFuzzy');
 
 
+sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll);
 
+function handleSortByCategorySelectAll (e){
+
+  canvas.sort((canvas1, canvas2) => {
+    return canvas1.category > canvas2.category;
+  });
+
+  printCanvas();
+
+}
+
+sortByCategorySelectDisney.addEventListener('click', handleSortByCategorySelectDisney);
+
+function handleSortByCategorySelectDisney (e){
+
+  console.log('du har klickat på disney');
+
+  canvas.forEach(product => {})
+
+  canvas.filter(canvas => canvas.category === 'Disney');
+
+  printCanvas();
+
+}
 
 
 canvas.sort((canvas1, canvas2) => {
