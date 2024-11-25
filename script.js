@@ -337,26 +337,6 @@ printCanvas();
 
 const sortByNameBtn = document.querySelector('#sortByNameBtn');
 
-
-sortByNameBtn.addEventListener('click', handleSortbyNameClick);
-
-
-
-function handleSortbyNameClick (e) {
-
-  
-
-
-  canvas.sort((canvas1, canvas2) => {
-    return canvas1.name > canvas2.name;
-  });
-
-  
-
-  
-  printCanvas();
-}
-
 const sortByCategorySelectAll = document.querySelector('#sortByCategorySelectAll');
 
 const sortByCategorySelectDisney = document.querySelector('#sortByCategorySelectDisney');
@@ -367,6 +347,20 @@ const sortByCategorySelectPoetic = document.querySelector('#sortByCategorySelect
 
 const sortByCategorySelectFuzzy = document.querySelector('#sortByCategorySelectFuzzy');
 
+//---------- Sorterar produkter via namn -------------------------
+
+sortByNameBtn.addEventListener('click', handleSortbyNameClick);
+
+function handleSortbyNameClick (e) {
+
+  canvas.sort((canvas1, canvas2) => {
+    return canvas1.name > canvas2.name;
+  });
+  
+  printCanvas();
+}
+
+//---------- Sorterar produkter via kategori -------------------------
 
 sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll);
 
@@ -384,15 +378,9 @@ sortByCategorySelectDisney.addEventListener('click', handleSortByCategorySelectD
 
 function handleSortByCategorySelectDisney (e){
 
-  console.log('du har klickat på disney');
-
-
-
    const filteredDisneyCanvas = canvas.filter(canvas => canvas.category === 'Disney');
 
-
 printCanvas(filteredDisneyCanvas);
-
   
 }
 
@@ -400,52 +388,46 @@ sortByCategorySelectNormal.addEventListener('click', handleSortByCategorySelectN
 
 function handleSortByCategorySelectNormal (e){
 
-  
-
-
-
    const filteredNormalCanvas = canvas.filter(canvas => canvas.category === 'Normal');
 
-
 printCanvas(filteredNormalCanvas);
-
   
 }
-
 
 sortByCategorySelectPoetic.addEventListener('click', handleSortByCategorySelectPoetic);
 
 function handleSortByCategorySelectPoetic (e){
 
-  
-
-
-
    const filteredPoeticCanvas = canvas.filter(canvas => canvas.category === 'Poetiskt');
-
 
 printCanvas(filteredPoeticCanvas);
 
-  
 }
 
 sortByCategorySelectFuzzy.addEventListener('click', handleSortByCategorySelectFuzzy);
 
 function handleSortByCategorySelectFuzzy (e){
 
-  
-
-
-
    const filteredFuzzyCanvas = canvas.filter(canvas => canvas.category === 'Fuzzy');
-
 
 printCanvas(filteredFuzzyCanvas);
 
-  
 }
 
+//---------- Sorterar produkter via betyg -------------------------
 
+const sortByRatingBtn = document.querySelector('#sortByRatingBtn');
+
+sortByRatingBtn.addEventListener('click', handleSortbyRatingClick);
+
+function handleSortbyRatingClick (e) {
+
+  canvas.sort((canvas1, canvas2) => {
+    return canvas2.rating > canvas1.rating;
+  });
+  
+  printCanvas();
+}
 
 
 canvas.sort((canvas1, canvas2) => {
