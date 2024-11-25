@@ -187,11 +187,11 @@ section .plus {
   margin-right: 0.5rem;
 }
 .sort_section .sort_button_style {
-  background-color: transparent;
+  background-color: #41496E;
   border: none;
   border-radius: 0.5rem;
-  box-shadow: 1px 1px 1px 1px #41496E;
   height: 20px;
+  color: white;
 }
 .sort_section .sort_rating_special {
   margin-left: 0.5rem;
@@ -200,13 +200,13 @@ section .plus {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: transparent;
+  background-color: #41496E;
   border: none;
   border-radius: 0.5rem;
   text-align: center;
-  box-shadow: 1px 1px 1px 1px #41496E;
   height: 20px;
   margin-left: 0.5rem;
+  color: white;
 }
 .sort_section .sort_category_style:hover {
   background-color: #92A5F7;

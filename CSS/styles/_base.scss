@@ -212,13 +212,12 @@ section {
 
     .sort_button_style{
 
-      background-color: transparent;
+      background-color: $secondary-color;
       border: none;
       border-radius: 0.5rem;
-      box-shadow: 1px 1px 1px 1px $secondary-color;
+      // box-shadow: 1px 1px 1px 1px $secondary-color;
       height: 20px;
-
-      
+      color: $white-color;
   
     }
 
@@ -229,13 +228,14 @@ section {
 
     .sort_category_style{
       appearance: none;
-      background-color: transparent;
+      background-color: $secondary-color;
       border: none;
       border-radius: 0.5rem;
       text-align: center;
-      box-shadow: 1px 1px 1px 1px $secondary-color;
+      // box-shadow: 0px 1px 1px 0px $secondary-color;
       height: 20px;
       margin-left: 0.5rem;
+      color: $white-color;
       
 
     }
