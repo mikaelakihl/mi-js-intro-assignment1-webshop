@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
-const cartBtn = document.querySelector('#cartBtn');
+const cartBtn = document.querySelector("#cartBtn");
 
-const cartSection = document.querySelector('#cartSection');
+const cartSection = document.querySelector("#cartSection");
 
 const canvasListSection = document.querySelector("#canvasList");
 
@@ -158,39 +158,35 @@ const canvas = [
   },
 ];
 
-const totalCartOrderSum = document.querySelector('#cartContainer');
-console.log('totalCartOrderSum');
+const totalCartOrderSum = document.querySelector("#cartContainer");
+console.log("totalCartOrderSum");
 
-const additionalTotalCartOrderSum = document.querySelector('#additionolCartContainer');
+const additionalTotalCartOrderSum = document.querySelector(
+  "#additionolCartContainer"
+);
 
-const liveUpdatedPrice = document.querySelector ('#liveUpdatedPrice')
+const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
 
-cartBtn.addEventListener('click', handleClick);
+cartBtn.addEventListener("click", handleClick);
 
-function handleClick(e){
-  cartSection.classList.toggle('cartSectionOpen');
-  
+function handleClick(e) {
+  cartSection.classList.toggle("cartSectionOpen");
 }
 
-
 function canvasRating(rating) {
-  const halfRating = !Number.isInteger(rating);  //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
-  let html = '';
-  for (let i = 0; i < Math.floor(rating); i ++) {  
+  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
+  let html = "";
+  for (let i = 0; i < Math.floor(rating); i++) {
     html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
   }
   if (halfRating) {
     html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
   }
-return html;
-
-
-
-
+  return html;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -204,12 +200,12 @@ return html;
 
 //---------- Varukorgen -------------------------
 
-function printTotalCartOrderSum(){
-  totalCartOrderSum.innerHTML = '';
+function printTotalCartOrderSum() {
+  totalCartOrderSum.innerHTML = "";
 
   let sum = 0;
 
-  canvas.forEach(canvas => {
+  canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
       sum += canvas.amount * canvas.price;
       totalCartOrderSum.innerHTML += `
@@ -226,28 +222,24 @@ function printTotalCartOrderSum(){
       
       
       `;
-
     }
   });
 
   console.log(printTotalCartOrderSum);
-  
+
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${sum} kr</span>`; //Skriver ut totalsumman av antalet
-
-   
-
 }
 
 printTotalCartOrderSum();
 
 // -----------------Varukorgsammanställningen----------------------------
 
-function additionalPrintTotalCartOrderSum(){
-  additionalTotalCartOrderSum.innerHTML = '';
+function additionalPrintTotalCartOrderSum() {
+  additionalTotalCartOrderSum.innerHTML = "";
 
   let sum = 0;
 
-  canvas.forEach(canvas => {
+  canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
       sum += canvas.amount * canvas.price;
       additionalTotalCartOrderSum.innerHTML += `
@@ -264,14 +256,12 @@ function additionalPrintTotalCartOrderSum(){
       
       
       `;
-
     }
   });
 
   console.log(additionalPrintTotalCartOrderSum);
 
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
-
 }
 
 additionalPrintTotalCartOrderSum();
@@ -285,7 +275,8 @@ function decreaseAmount(e) {
   //Lägger till så att det inte går att minska antalet lägre än 0
   if (canvas[index].amount <= 0) {
     canvas[index].amount = 0;
-  } else { canvas[index].amount -= 1;
+  } else {
+    canvas[index].amount -= 1;
   }
   printCanvas();
 }
@@ -299,7 +290,7 @@ function increaseAmount(e) {
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
 function printCanvas() {
-  canvasListSection.innerHTML = '';
+  canvasListSection.innerHTML = "";
 
   canvas.forEach((canvas, index) => {
     canvasListSection.innerHTML += `
@@ -319,27 +310,21 @@ function printCanvas() {
       `;
   });
 
-  const minusBtns = document.querySelectorAll('button.minus');
-  const plusBtns = document.querySelectorAll('button.plus');
+  const minusBtns = document.querySelectorAll("button.minus");
+  const plusBtns = document.querySelectorAll("button.plus");
 
- //Lägger till clickevent för plus och minus knappar
+  //Lägger till clickevent för plus och minus knappar
 
- minusBtns.forEach(btn => {
-  btn.addEventListener('click', decreaseAmount);
- });
+  minusBtns.forEach((btn) => {
+    btn.addEventListener("click", decreaseAmount);
+  });
 
- plusBtns.forEach(btn => {
-  btn.addEventListener('click', increaseAmount);
- });
+  plusBtns.forEach((btn) => {
+    btn.addEventListener("click", increaseAmount);
+  });
 
- printTotalCartOrderSum();
- additionalPrintTotalCartOrderSum();
-
+  printTotalCartOrderSum();
+  additionalPrintTotalCartOrderSum();
 }
 
 printCanvas();
-
-
-  
-
-
