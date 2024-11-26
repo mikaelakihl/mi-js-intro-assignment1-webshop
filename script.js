@@ -169,7 +169,6 @@ const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
 const today = new Date();
 
-
 const itsMonday = today.getDay() === 1;
 const itsFriday = today.getDay() === 5;
 const itsSaturday = today.getDay() === 6;
@@ -202,23 +201,22 @@ function canvasRating(rating) {
 //-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
 //------------------------------------------------------------------------------------------------
 
-
 //---------- Varukorgen -------------------------
 
 function printTotalCartOrderSum() {
   totalCartOrderSum.innerHTML = "";
 
   let sum = 0;
-  let message = '';
+  let message = "";
   let priceIncrease = getPriceMultiplier();
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
       let canvasPrice = canvas.price;
-      if (canvas.amount >= 10){
+      if (canvas.amount >= 10) {
         canvasPrice *= 0.9;
       }
-      const adjustedCanvasPrice = (Math.round(canvasPrice * priceIncrease));
+      const adjustedCanvasPrice = Math.round(canvasPrice * priceIncrease);
       sum += canvas.amount * adjustedCanvasPrice;
       totalCartOrderSum.innerHTML += `
       <article class="cartOrderSumContainer">
@@ -230,36 +228,30 @@ function printTotalCartOrderSum() {
         </div>
         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
-
-      
       
       `;
     }
   });
 
-  
-
-
-  if (sum <= 0){
+  if (sum <= 0) {
     return;
   }
 
-
-  if (today.getDay() === 1){
+  if (today.getDay() === 1) {
     sum *= 0.9;
-    message +='<p>Måndagsrabatt: 10% på hela beställningen</p>'
-    canvas.price * canvas.amount
+    message += "<p>Måndagsrabatt: 10% på hela beställningen</p>";
+    canvas.price * canvas.amount;
   }
-  
 
   //På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
   //På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
   //Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
-  
 
   console.log(printTotalCartOrderSum);
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(
+    sum
+  )} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 }
 
@@ -271,7 +263,7 @@ function additionalPrintTotalCartOrderSum() {
   additionalTotalCartOrderSum.innerHTML = "";
 
   let sum = 0;
-  let message ='';
+  let message = "";
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
@@ -287,13 +279,10 @@ function additionalPrintTotalCartOrderSum() {
         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
    
-      
-
       `;
     }
   });
 
-  
   console.log(additionalPrintTotalCartOrderSum);
 
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
@@ -322,14 +311,16 @@ function increaseAmount(e) {
   printCanvas();
 }
 
-
-
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
-function getPriceMultiplier(){
-  if ((itsFriday && currentHour >= 15) || (itsSaturday) || (itsSunday) || (itsMonday && currentHour <= 3)) {
+function getPriceMultiplier() {
+  if (
+    (itsFriday && currentHour >= 15) ||
+    itsSaturday ||
+    itsSunday ||
+    (itsMonday && currentHour <= 3)
+  ) {
     return 1.15;
-
   }
   return 1;
 }
@@ -340,7 +331,6 @@ function printCanvas() {
   canvasListSection.innerHTML = "";
 
   let priceIncrease = getPriceMultiplier();
-  
 
   filteredCanvas.forEach((canvas, index) => {
     const adjustedCanvasPrice = Math.round(canvas.price * priceIncrease);
@@ -384,40 +374,54 @@ printCanvas();
 //-------------------------Sorterar produkter i array -------------
 //------------------------------------------------------------------------------------------------
 
-const sortByNameBtn = document.querySelector('#sortByNameBtn');
+const sortByNameBtn = document.querySelector("#sortByNameBtn");
 
-const sortByCategorySelectAll = document.querySelector('#sortByCategorySelectAll');
+const sortByCategorySelectAll = document.querySelector(
+  "#sortByCategorySelectAll"
+);
 
-const sortByCategorySelectDisney = document.querySelector('#sortByCategorySelectDisney');
+const sortByCategorySelectDisney = document.querySelector(
+  "#sortByCategorySelectDisney"
+);
 
-const sortByCategorySelectNormal = document.querySelector('#sortByCategorySelectNormal');
+const sortByCategorySelectNormal = document.querySelector(
+  "#sortByCategorySelectNormal"
+);
 
-const sortByCategorySelectPoetic = document.querySelector('#sortByCategorySelectPoetic');
+const sortByCategorySelectPoetic = document.querySelector(
+  "#sortByCategorySelectPoetic"
+);
 
-const sortByCategorySelectFuzzy = document.querySelector('#sortByCategorySelectFuzzy');
+const sortByCategorySelectFuzzy = document.querySelector(
+  "#sortByCategorySelectFuzzy"
+);
 
 //---------- Sorterar produkter via namn -------------------------
 
-sortByNameBtn.addEventListener('click', handleSortbyNameClick);
+sortByNameBtn.addEventListener("click", handleSortbyNameClick);
 
-function handleSortbyNameClick (e) {
-
+function handleSortbyNameClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
     // return canvas1.name > canvas2.name;
 
-    return canvas1.name === canvas2.name ? 0 : canvas1.name < canvas2.name ? -1 : 1;
-
+    return canvas1.name === canvas2.name
+      ? 0
+      : canvas1.name < canvas2.name
+      ? -1
+      : 1;
   });
-  
+
   printCanvas();
 }
 
 //---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
 
-sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll);
+sortByCategorySelectAll.addEventListener(
+  "click",
+  handleSortByCategorySelectAll
+);
 
-function handleSortByCategorySelectAll (e){
-
+function handleSortByCategorySelectAll(e) {
   // filteredCanvas.sort((canvas1, canvas2) => {
   //   return canvas1.category > canvas2.category;
   // });
@@ -425,80 +429,80 @@ function handleSortByCategorySelectAll (e){
   filteredCanvas = [...canvas];
 
   printCanvas();
-
 }
 
-sortByCategorySelectDisney.addEventListener('click', handleSortByCategorySelectDisney);
+sortByCategorySelectDisney.addEventListener(
+  "click",
+  handleSortByCategorySelectDisney
+);
 
-function handleSortByCategorySelectDisney (e){
+function handleSortByCategorySelectDisney(e) {
+  filteredCanvas = canvas.filter((canvas) => canvas.category === "Disney");
 
-  filteredCanvas = canvas.filter(canvas => canvas.category === 'Disney');
-
-printCanvas();
-  
+  printCanvas();
 }
 
-sortByCategorySelectNormal.addEventListener('click', handleSortByCategorySelectNormal);
+sortByCategorySelectNormal.addEventListener(
+  "click",
+  handleSortByCategorySelectNormal
+);
 
-function handleSortByCategorySelectNormal (e){
+function handleSortByCategorySelectNormal(e) {
+  filteredCanvas = canvas.filter((canvas) => canvas.category === "Normal");
 
-  filteredCanvas = canvas.filter(canvas => canvas.category === 'Normal');
-
-printCanvas();
-  
+  printCanvas();
 }
 
-sortByCategorySelectPoetic.addEventListener('click', handleSortByCategorySelectPoetic);
+sortByCategorySelectPoetic.addEventListener(
+  "click",
+  handleSortByCategorySelectPoetic
+);
 
-function handleSortByCategorySelectPoetic (e){
+function handleSortByCategorySelectPoetic(e) {
+  filteredCanvas = canvas.filter((canvas) => canvas.category === "Poetiskt");
 
-  filteredCanvas = canvas.filter(canvas => canvas.category === 'Poetiskt');
-
-printCanvas();
-
+  printCanvas();
 }
 
-sortByCategorySelectFuzzy.addEventListener('click', handleSortByCategorySelectFuzzy);
+sortByCategorySelectFuzzy.addEventListener(
+  "click",
+  handleSortByCategorySelectFuzzy
+);
 
-function handleSortByCategorySelectFuzzy (e){
+function handleSortByCategorySelectFuzzy(e) {
+  filteredCanvas = canvas.filter((canvas) => canvas.category === "Fuzzy");
 
-  filteredCanvas = canvas.filter(canvas => canvas.category === 'Fuzzy');
-
-printCanvas();
-
+  printCanvas();
 }
 
 //---------- Sorterar produkter via betyg -------------------------
 
-const sortByRatingBtn = document.querySelector('#sortByRatingBtn');
+const sortByRatingBtn = document.querySelector("#sortByRatingBtn");
 
-sortByRatingBtn.addEventListener('click', handleSortbyRatingClick);
+sortByRatingBtn.addEventListener("click", handleSortbyRatingClick);
 
-function handleSortbyRatingClick (e) {
-
+function handleSortbyRatingClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
     return canvas2.rating - canvas1.rating;
 
     // return canvas1.rating === canvas2.rating ? 0 : canvas1.rating < canvas2.rating ? -1 : 1;
   });
-  
+
   printCanvas();
 }
 
 //---------- Sorterar produkter via pris -------------------------
 
-const priceRangeSlider = document.querySelector('#priceRange');
-const currentRangeValue = document.querySelector('#currentRangeValue');
+const priceRangeSlider = document.querySelector("#priceRange");
+const currentRangeValue = document.querySelector("#currentRangeValue");
 
-priceRangeSlider.addEventListener('input', changePriceRange);
+priceRangeSlider.addEventListener("input", changePriceRange);
 
-function changePriceRange(){
+function changePriceRange() {
   const currentPrice = priceRangeSlider.value;
   currentRangeValue.innerHTML = currentPrice;
 
- filteredCanvas = canvas.filter( canvas => canvas.price <= currentPrice);
+  filteredCanvas = canvas.filter((canvas) => canvas.price <= currentPrice);
 
   printCanvas();
-
 }
-
