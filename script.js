@@ -273,28 +273,28 @@ additionalPrintTotalCartOrderSum();
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   //Lägger till så att det inte går att minska antalet lägre än 0
-  if (canvas[index].amount <= 0) {
-    canvas[index].amount = 0;
+  if (filteredCanvas[index].amount <= 0) {
+    filteredCanvas[index].amount = 0;
   } else {
-    canvas[index].amount -= 1;
+    filteredCanvas[index].amount -= 1;
   }
   printCanvas();
 }
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  canvas[index].amount += 1;
+  filteredCanvas[index].amount += 1;
   printCanvas();
 }
 
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
-function printCanvas(filteredPrintCanvas) {
+let filteredCanvas = [...canvas]; // skapar kopia av originalarray
+
+function printCanvas() {
   canvasListSection.innerHTML = "";
 
-  const canvasToPrint = filteredPrintCanvas || canvas;
-
-  canvasToPrint.forEach((canvas, index) => {
+  filteredCanvas.forEach((canvas, index) => {
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
@@ -353,7 +353,7 @@ sortByNameBtn.addEventListener('click', handleSortbyNameClick);
 
 function handleSortbyNameClick (e) {
 
-  canvas.sort((canvas1, canvas2) => {
+  filteredCanvas.sort((canvas1, canvas2) => {
     return canvas1.name > canvas2.name;
   });
   
@@ -366,9 +366,11 @@ sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll)
 
 function handleSortByCategorySelectAll (e){
 
-  canvas.sort((canvas1, canvas2) => {
-    return canvas1.category > canvas2.category;
-  });
+  // filteredCanvas.sort((canvas1, canvas2) => {
+  //   return canvas1.category > canvas2.category;
+  // });
+
+  filteredCanvas = [...canvas];
 
   printCanvas();
 
@@ -378,9 +380,9 @@ sortByCategorySelectDisney.addEventListener('click', handleSortByCategorySelectD
 
 function handleSortByCategorySelectDisney (e){
 
-   const filteredDisneyCanvas = canvas.filter(canvas => canvas.category === 'Disney');
+  filteredCanvas = canvas.filter(canvas => canvas.category === 'Disney');
 
-printCanvas(filteredDisneyCanvas);
+printCanvas();
   
 }
 
@@ -388,9 +390,9 @@ sortByCategorySelectNormal.addEventListener('click', handleSortByCategorySelectN
 
 function handleSortByCategorySelectNormal (e){
 
-   const filteredNormalCanvas = canvas.filter(canvas => canvas.category === 'Normal');
+  filteredCanvas = canvas.filter(canvas => canvas.category === 'Normal');
 
-printCanvas(filteredNormalCanvas);
+printCanvas();
   
 }
 
@@ -398,9 +400,9 @@ sortByCategorySelectPoetic.addEventListener('click', handleSortByCategorySelectP
 
 function handleSortByCategorySelectPoetic (e){
 
-   const filteredPoeticCanvas = canvas.filter(canvas => canvas.category === 'Poetiskt');
+  filteredCanvas = canvas.filter(canvas => canvas.category === 'Poetiskt');
 
-printCanvas(filteredPoeticCanvas);
+printCanvas();
 
 }
 
@@ -408,9 +410,9 @@ sortByCategorySelectFuzzy.addEventListener('click', handleSortByCategorySelectFu
 
 function handleSortByCategorySelectFuzzy (e){
 
-   const filteredFuzzyCanvas = canvas.filter(canvas => canvas.category === 'Fuzzy');
+  filteredCanvas = canvas.filter(canvas => canvas.category === 'Fuzzy');
 
-printCanvas(filteredFuzzyCanvas);
+printCanvas();
 
 }
 
@@ -422,7 +424,7 @@ sortByRatingBtn.addEventListener('click', handleSortbyRatingClick);
 
 function handleSortbyRatingClick (e) {
 
-  canvas.sort((canvas1, canvas2) => {
+  filteredCanvas.sort((canvas1, canvas2) => {
     return canvas2.rating > canvas1.rating;
   });
   
@@ -440,9 +442,9 @@ function changePriceRange(){
   const currentPrice = priceRangeSlider.value;
   currentRangeValue.innerHTML = currentPrice;
 
-  const filteredCanvasByPrice = canvas.filter( canvas => canvas.price <= currentPrice);
+ filteredCanvas = canvas.filter( canvas => canvas.price <= currentPrice);
 
-  printCanvas(filteredCanvasByPrice);
+  printCanvas();
 
 }
 
