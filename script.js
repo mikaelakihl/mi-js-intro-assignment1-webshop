@@ -214,7 +214,11 @@ function printTotalCartOrderSum() {
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
-      const adjustedCanvasPrice = (Math.round(canvas.price * priceIncrease));
+      let canvasPrice = canvas.price;
+      if (canvas.amount >= 10){
+        canvasPrice *= 0.9;
+      }
+      const adjustedCanvasPrice = (Math.round(canvasPrice * priceIncrease));
       sum += canvas.amount * adjustedCanvasPrice;
       totalCartOrderSum.innerHTML += `
       <article class="cartOrderSumContainer">
