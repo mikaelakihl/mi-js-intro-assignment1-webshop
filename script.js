@@ -169,6 +169,10 @@ const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
 const today = new Date();
 
+const itsFriday = today.getDay() === 2;
+const itsMonday = today.getDay() === 1;
+const currentHour = today.getHours();
+
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
@@ -207,17 +211,19 @@ function printTotalCartOrderSum() {
 
   let sum = 0;
   let message = '';
+  let priceIncrease = getPriceMultiplier();
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
-      sum += canvas.amount * canvas.price;
+      const adjustedCanvasPrice = canvas.price * priceIncrease;
+      sum += canvas.amount * adjustedCanvasPrice;
       totalCartOrderSum.innerHTML += `
       <article class="cartOrderSumContainer">
       <img class="cartOrderSumImg" src="${canvas.img.url}">
       <div class="cartOrderSumWrapper">
         <span>${canvas.name}</span> 
         <span>${canvas.amount} st </span> 
-        <span>${canvas.price} kr </span>
+        <span>${canvas.amount * adjustedCanvasPrice} kr </span>
         </div>
         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
@@ -228,7 +234,15 @@ function printTotalCartOrderSum() {
     }
   });
 
-  if (today.getDay() === 2){
+  
+
+
+  if (sum <= 0){
+    return;
+  }
+
+
+  if (today.getDay() === 1){
     sum *= 0.9;
     message +='<p>Måndagsrabatt: 10% på hela beställningen</p>'
     canvas.price * canvas.amount
@@ -305,12 +319,25 @@ function increaseAmount(e) {
   printCanvas();
 }
 
+
+
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
+
+function getPriceMultiplier(){
+  if ((itsFriday && currentHour >= 11) || (itsMonday && currentHour <= 3)) {
+    return 1.15;
+
+  }
+  return 1;
+}
 
 let filteredCanvas = [...canvas]; // skapar kopia av originalarray
 
 function printCanvas() {
   canvasListSection.innerHTML = "";
+
+  let priceIncrease = getPriceMultiplier();
+  
 
   filteredCanvas.forEach((canvas, index) => {
     canvasListSection.innerHTML += `
@@ -318,7 +345,7 @@ function printCanvas() {
           <img src="${canvas.img.url}">
           <div class="canvas-wrapper">
           <figcaption>${canvas.name}</figcaption>
-          <div>${canvas.price} kr</div>
+          <div>${canvas.price * priceIncrease} kr</div>
           <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
