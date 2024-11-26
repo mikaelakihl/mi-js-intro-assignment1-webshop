@@ -204,6 +204,7 @@ function canvasRating(rating) {
 // x Multiplicera produktens pris med antal beställda och addera till förgående summa
 // Om vi inte har beställt några av den här produkten, returnera förgående summa
 
+
 //---------- Varukorgen -------------------------
 
 function printTotalCartOrderSum() {
@@ -399,13 +400,16 @@ sortByNameBtn.addEventListener('click', handleSortbyNameClick);
 function handleSortbyNameClick (e) {
 
   filteredCanvas.sort((canvas1, canvas2) => {
-    return canvas1.name > canvas2.name;
+    // return canvas1.name > canvas2.name;
+
+    return canvas1.name === canvas2.name ? 0 : canvas1.name < canvas2.name ? -1 : 1;
+
   });
   
   printCanvas();
 }
 
-//---------- Sorterar produkter via kategori -------------------------
+//---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
 
 sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll);
 
@@ -470,7 +474,9 @@ sortByRatingBtn.addEventListener('click', handleSortbyRatingClick);
 function handleSortbyRatingClick (e) {
 
   filteredCanvas.sort((canvas1, canvas2) => {
-    return canvas2.rating > canvas1.rating;
+    return canvas2.rating - canvas1.rating;
+
+    // return canvas1.rating === canvas2.rating ? 0 : canvas1.rating < canvas2.rating ? -1 : 1;
   });
   
   printCanvas();
