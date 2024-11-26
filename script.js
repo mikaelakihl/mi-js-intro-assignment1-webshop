@@ -169,8 +169,11 @@ const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
 const today = new Date();
 
-const itsFriday = today.getDay() === 2;
+
 const itsMonday = today.getDay() === 1;
+const itsFriday = today.getDay() === 5;
+const itsSaturday = today.getDay() === 6;
+const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
@@ -199,11 +202,6 @@ function canvasRating(rating) {
 //-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
 //------------------------------------------------------------------------------------------------
 
-// x Loopa igenom produkt-arrayen
-// x Kolla om vi beställt minst 1 antal av produkten
-// x Multiplicera produktens pris med antal beställda och addera till förgående summa
-// Om vi inte har beställt några av den här produkten, returnera förgående summa
-
 
 //---------- Varukorgen -------------------------
 
@@ -216,7 +214,7 @@ function printTotalCartOrderSum() {
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
-      const adjustedCanvasPrice = canvas.price * priceIncrease;
+      const adjustedCanvasPrice = (Math.round(canvas.price * priceIncrease));
       sum += canvas.amount * adjustedCanvasPrice;
       totalCartOrderSum.innerHTML += `
       <article class="cartOrderSumContainer">
@@ -257,7 +255,7 @@ function printTotalCartOrderSum() {
 
   console.log(printTotalCartOrderSum);
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${sum} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 }
 
@@ -325,7 +323,7 @@ function increaseAmount(e) {
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
 function getPriceMultiplier(){
-  if ((itsFriday && currentHour >= 15) || (itsMonday && currentHour <= 3)) {
+  if ((itsFriday && currentHour >= 15) || (itsSaturday) || (itsSunday) || (itsMonday && currentHour <= 3)) {
     return 1.15;
 
   }
@@ -341,12 +339,13 @@ function printCanvas() {
   
 
   filteredCanvas.forEach((canvas, index) => {
+    const adjustedCanvasPrice = Math.round(canvas.price * priceIncrease);
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
           <div class="canvas-wrapper">
           <figcaption>${canvas.name}</figcaption>
-          <div>${canvas.price * priceIncrease} kr</div>
+          <div>${adjustedCanvasPrice} kr</div>
           <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
