@@ -167,6 +167,8 @@ const additionalTotalCartOrderSum = document.querySelector(
 
 const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
+const today = new Date();
+
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
@@ -204,6 +206,7 @@ function printTotalCartOrderSum() {
   totalCartOrderSum.innerHTML = "";
 
   let sum = 0;
+  let message = '';
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
@@ -225,9 +228,22 @@ function printTotalCartOrderSum() {
     }
   });
 
+  if (today.getDay() === 2){
+    sum *= 0.9;
+    message +='<p>Måndagsrabatt: 10% på hela beställningen</p>'
+    canvas.price * canvas.amount
+  }
+  
+
+  //På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
+  //På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
+  //Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
+  
+
   console.log(printTotalCartOrderSum);
 
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${sum} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 }
 
 printTotalCartOrderSum();
@@ -238,6 +254,7 @@ function additionalPrintTotalCartOrderSum() {
   additionalTotalCartOrderSum.innerHTML = "";
 
   let sum = 0;
+  let message ='';
 
   canvas.forEach((canvas) => {
     if (canvas.amount > 0) {
@@ -252,13 +269,14 @@ function additionalPrintTotalCartOrderSum() {
         </div>
         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
       </article>
+   
+      
 
-      
-      
       `;
     }
   });
 
+  
   console.log(additionalPrintTotalCartOrderSum);
 
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
@@ -448,28 +466,3 @@ function changePriceRange(){
 
 }
 
-canvas.sort((canvas1, canvas2) => {
-  return canvas1.price - canvas2.price;
-});
-
-console.log(sortByNameBtn);
-
-canvas.sort((canvas1, canvas2) => {
-  return canvas1.name > canvas2.name;
-});
-
-console.table(canvas);
-
-canvas.sort((canvas1, canvas2) => {
-  return canvas1.price - canvas2.price;
-});
-
-console.table(canvas);
-
-// canvas.sort((canvas1, canvas2) => canvas1.category < canvas2.category);
-
-// console.table(canvas);
-
-const canvasDisney = canvas.filter(canvas => canvas.category === 'Disney');
-
-console.table(canvasDisney)
