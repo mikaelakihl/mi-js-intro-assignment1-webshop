@@ -262,7 +262,7 @@ function printTotalCartOrderSum() {
 
 printTotalCartOrderSum();
 
-// -----------------Varukorgsammanställningen----------------------------
+// -----------------Varukorgsammanställningen----------------------------   Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
 function additionalPrintTotalCartOrderSum() {
   additionalTotalCartOrderSum.innerHTML = "";
@@ -324,7 +324,7 @@ function increaseAmount(e) {
 //Skriver ut arrayen till HTML som är lagrad i const Canvas
 
 function getPriceMultiplier(){
-  if ((itsFriday && currentHour >= 11) || (itsMonday && currentHour <= 3)) {
+  if ((itsFriday && currentHour >= 15) || (itsMonday && currentHour <= 3)) {
     return 1.15;
 
   }
