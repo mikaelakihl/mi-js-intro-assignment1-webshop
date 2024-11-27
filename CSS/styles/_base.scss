@@ -309,16 +309,23 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1rem;
 
 
+}
+
+.form_payment_selector{
+  margin-bottom: 1rem;
 }
 
 .form_payment_card{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  
 
   .form_payment_card_date{
+    
     width: 70px;
   }
 }
