@@ -506,3 +506,32 @@ function changePriceRange() {
 
   printCanvas();
 }
+
+// // const cardInvoiceBtns = Array.from(document.querySelectorAll('button[name="payment-option"]'));
+
+// // cardInvoiceBtns.forEach(paymentOptionbtns => {
+// //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
+// // });
+
+// // function switchPaymentMethod(){
+// //   console.log('test');
+// }
+
+const invoiceBtn = document.querySelector('#invoiceBtn');
+const cardBtn = document.querySelector('#cardBtn');
+const formPaymentOptionsInvoice = document.querySelector('#formPaymentOptionsInvoice');
+const formPaymentOptionsCard = document.querySelector('#formPaymentOptionsCard');
+
+console.log(invoiceBtn, cardBtn, formPaymentOptionsCard, formPaymentOptionsInvoice);
+
+invoiceBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  formPaymentOptionsInvoice.classList.remove('invoice_hidden');
+  formPaymentOptionsCard.add('card_hidden');
+});
+
+cardBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  formPaymentOptionsCard.classList.remove('card_hidden');
+  formPaymentOptionsInvoice.classList.add('invoice_hidden');
+});

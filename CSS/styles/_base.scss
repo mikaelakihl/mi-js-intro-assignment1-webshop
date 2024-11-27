@@ -322,12 +322,22 @@ section {
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+ 
   
 
   .form_payment_card_date{
     
     width: 70px;
   }
+}
+
+.invoice_hidden{
+  display: none;
+}
+
+.card_hidden{
+  display: none;
 }
 
 footer {

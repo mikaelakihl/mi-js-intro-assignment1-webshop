@@ -272,6 +272,14 @@ section .plus {
   width: 70px;
 }
 
+.invoice_hidden {
+  display: none;
+}
+
+.card_hidden {
+  display: none;
+}
+
 footer {
   padding-top: 1px;
   padding-left: 1rem;

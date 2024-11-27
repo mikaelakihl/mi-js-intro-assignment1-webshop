@@ -121,19 +121,19 @@
              <div class="form_payment_selector">
               <span class="form_payment">Jag betalar med: *</span>
               <span class="form_button">
-              <button class="form_button_single">Faktura</button>
-              <button class="form_button_single">Kort</button>
+              <button id="invoiceBtn" name="payment-option" class="form_button_single">Faktura</button>
+              <button  id="cardBtn" name="payment-option" class="form_button_single">Kort</button>
               </span>
             </div> 
 
-            <div>
+            <div class="invoice_hidden" id="formPaymentOptionsInvoice">
               <label>
                 <span>Personnummer</span>
                 <input class="form_input" type="number" name="personalid">
               </label>
             </div>
 
-            <div class="form_payment_card">
+            <div class="form_payment_card card_hidden"  id="formPaymentOptionsCard">
               <label>
                 <span>Kortnummer</span>
                 <input class="form_input" type="number">
