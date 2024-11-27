@@ -257,7 +257,7 @@ function printTotalCartOrderSum() {
 
 printTotalCartOrderSum();
 
-// -----------------Varukorgsammanställningen----------------------------   Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
+// -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
 function additionalPrintTotalCartOrderSum() {
   additionalTotalCartOrderSum.innerHTML = "";
@@ -416,9 +416,7 @@ function handleSortbyNameClick(e) {
 
 //---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
 
-sortByCategorySelectAll.addEventListener(
-  "click",
-  handleSortByCategorySelectAll
+sortByCategorySelectAll.addEventListener("click",handleSortByCategorySelectAll
 );
 
 function handleSortByCategorySelectAll(e) {
@@ -436,7 +434,7 @@ sortByCategorySelectDisney.addEventListener(
   handleSortByCategorySelectDisney
 );
 
-function handleSortByCategorySelectDisney(e) {
+function handleSortByCategorySelectDisney() {
   filteredCanvas = canvas.filter((canvas) => canvas.category === "Disney");
 
   printCanvas();
@@ -507,6 +505,10 @@ function changePriceRange() {
   printCanvas();
 }
 
+//------------------------------------------------------------------------------------------------
+//-------------------------Kort och faktura betalning -------------
+//------------------------------------------------------------------------------------------------
+
 // // const cardInvoiceBtns = Array.from(document.querySelectorAll('button[name="payment-option"]'));
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
@@ -527,7 +529,7 @@ console.log(invoiceBtn, cardBtn, formPaymentOptionsCard, formPaymentOptionsInvoi
 invoiceBtn.addEventListener('click', (e) => {
   e.preventDefault();
   formPaymentOptionsInvoice.classList.remove('invoice_hidden');
-  formPaymentOptionsCard.add('card_hidden');
+  formPaymentOptionsCard.classList.add('card_hidden');
 });
 
 cardBtn.addEventListener('click', (e) => {
@@ -535,3 +537,10 @@ cardBtn.addEventListener('click', (e) => {
   formPaymentOptionsCard.classList.remove('card_hidden');
   formPaymentOptionsInvoice.classList.add('invoice_hidden');
 });
+
+const personalId = document.querySelector('#personalId');
+personalId.addEventListener('change',checkPersonalIdNumber);
+
+function checkPersonalIdNumber(){
+  console.log(personalId.value);
+}
