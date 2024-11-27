@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #92A5F7;
+  background-color: #92a5f7;
 }
 
 /*--------Header----------*/
@@ -46,7 +46,7 @@ h1 {
   border-radius: 0.5rem;
 }
 .header_nav .header_cart_button:hover {
-  background-color: #92A5F7;
+  background-color: #92a5f7;
 }
 
 .header_menuBtn {
@@ -58,7 +58,7 @@ h1 {
   width: 40px;
   height: 7px;
   margin-bottom: 4px;
-  background-color: #41496E;
+  background-color: #41496e;
   border-radius: 1rem;
 }
 
@@ -140,14 +140,14 @@ section .pmBtnsContainer {
 section .pmBtnsContainer button {
   width: 30px;
   text-decoration: none;
-  background-color: #41496E;
+  background-color: #41496e;
   border: none;
   color: white;
 }
 section .pmBtnsContainer div {
   background-color: white;
   width: 90px;
-  border: 2px solid #41496E;
+  border: 2px solid #41496e;
 }
 section .minus {
   border-radius: 3px 0px 0px 3px;
@@ -161,7 +161,7 @@ section .plus {
 }
 .cartsum .form_button_single {
   width: 70px;
-  background-color: #92A5F7;
+  background-color: #92a5f7;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -173,7 +173,7 @@ section .plus {
   align-items: center;
 }
 .sort_section .sort_price_range {
-  background-color: #41496E;
+  background-color: #41496e;
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
@@ -187,7 +187,7 @@ section .plus {
   margin-right: 0.5rem;
 }
 .sort_section .sort_button_style {
-  background-color: #41496E;
+  background-color: #41496e;
   border: none;
   border-radius: 0.5rem;
   height: 20px;
@@ -200,7 +200,7 @@ section .plus {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  background-color: #41496E;
+  background-color: #41496e;
   border: none;
   border-radius: 0.5rem;
   text-align: center;
@@ -209,10 +209,10 @@ section .plus {
   color: white;
 }
 .sort_section .sort_category_style:hover {
-  background-color: #92A5F7;
+  background-color: #92a5f7;
 }
 .sort_section .sort_button_style:hover {
-  background-color: #92A5F7;
+  background-color: #92a5f7;
 }
 
 .form_section h2 {
@@ -231,7 +231,7 @@ section .plus {
   margin-top: 0.5rem;
 }
 .form_section form .form_input {
-  border: 1px solid #92A5F7;
+  border: 1px solid #92a5f7;
   border-radius: 1rem;
 }
 .form_section form span {
@@ -243,7 +243,7 @@ section .plus {
 }
 .form_section form .form_button .form_button_single {
   width: 70px;
-  background-color: #92A5F7;
+  background-color: #92a5f7;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -283,7 +283,7 @@ section .plus {
 footer {
   padding-top: 1px;
   padding-left: 1rem;
-  background-color: #41496E;
+  background-color: #41496e;
   color: white;
   border-radius: 10px 10px 0px 0px;
   position: fixed;

@@ -17,15 +17,11 @@ body {
   grid-template-columns: repeat(2, 1fr);
   left: 0;
   z-index: 3;
-
- 
-
 }
 
-h1{
+h1 {
   font-size: 1.5rem;
 }
-
 
 .header_h1 :nth-child(1) {
   grid-column: 1/2;
@@ -74,7 +70,7 @@ h1{
   display: none;
 }
 
-.my_cart_h2{
+.my_cart_h2 {
   margin-left: 1rem;
 }
 
@@ -89,35 +85,31 @@ h1{
   top: 3.8rem;
 }
 
-.cartOrderSumContainer{
+.cartOrderSumContainer {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin-left: 1rem;
   margin-bottom: 1rem;
   align-items: center;
 }
 
-.cartOrderSumWrapper{
+.cartOrderSumWrapper {
   grid-column: 2/2;
   display: flex;
   flex-direction: column;
-      
-
-
 }
 
-.cartOrderSumImg{
+.cartOrderSumImg {
   grid-column: 1/2;
 }
 
-.cartOrderSumTotalPrice{
+.cartOrderSumTotalPrice {
   display: flex;
   justify-content: right;
   margin-right: 2rem;
-;
 }
 
-.cartOrderSumLine{
+.cartOrderSumLine {
   color: rgba(173, 173, 173, 0.223);
   margin-top: 1.5rem;
 }
@@ -127,7 +119,7 @@ main {
   margin-bottom: 200px;
 }
 
-.page_design{
+.page_design {
   border-radius: 1rem;
   padding-top: 1rem;
   padding-left: 1rem;
@@ -177,88 +169,73 @@ section {
   }
 }
 
-.cartsum{
-    margin-bottom: 1rem;
+.cartsum {
+  margin-bottom: 1rem;
 
-    .form_button_single{
-        width: 70px;
-        background-color: $primary-color;
-        border: none;
-        color: $white-color;
-        border-radius: 1rem;
-    }
+  .form_button_single {
+    width: 70px;
+    background-color: $primary-color;
+    border: none;
+    color: $white-color;
+    border-radius: 1rem;
+  }
 }
 
-.sort_section{
-    background-color: rgba(255, 255, 255, 0.379);
-    display: flex;
-    align-items: center;
+.sort_section {
+  background-color: rgba(255, 255, 255, 0.379);
+  display: flex;
+  align-items: center;
 
-    .sort_price_range{
-      background-color: $secondary-color;
-      -webkit-appearance: none;
-      appearance: none;
-      cursor: pointer;
-      width: 8rem;
-      height: 7px;
-      border-radius: 1rem;
-    
-    }
+  .sort_price_range {
+    background-color: $secondary-color;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    width: 8rem;
+    height: 7px;
+    border-radius: 1rem;
+  }
 
-    .sort_price_range_container{
-      margin-left: 0.5rem;
-      margin-right: 0.5rem;
-    }
+  .sort_price_range_container {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
 
-    .sort_button_style{
+  .sort_button_style {
+    background-color: $secondary-color;
+    border: none;
+    border-radius: 0.5rem;
+    // box-shadow: 1px 1px 1px 1px $secondary-color;
+    height: 20px;
+    color: $white-color;
+  }
 
-      background-color: $secondary-color;
-      border: none;
-      border-radius: 0.5rem;
-      // box-shadow: 1px 1px 1px 1px $secondary-color;
-      height: 20px;
-      color: $white-color;
-  
-    }
+  .sort_rating_special {
+    margin-left: 0.5rem;
+  }
 
-    .sort_rating_special{
-      margin-left: 0.5rem;
+  .sort_category_style {
+    appearance: none;
+    background-color: $secondary-color;
+    border: none;
+    border-radius: 0.5rem;
+    text-align: center;
+    // box-shadow: 0px 1px 1px 0px $secondary-color;
+    height: 20px;
+    margin-left: 0.5rem;
+    color: $white-color;
+  }
 
-    }
+  .sort_category_style:hover {
+    background-color: $primary-color;
+  }
 
-    .sort_category_style{
-      appearance: none;
-      background-color: $secondary-color;
-      border: none;
-      border-radius: 0.5rem;
-      text-align: center;
-      // box-shadow: 0px 1px 1px 0px $secondary-color;
-      height: 20px;
-      margin-left: 0.5rem;
-      color: $white-color;
-      
-
-    }
-
-
-    .sort_category_style:hover{
-      background-color: $primary-color;
-    }
-
-    .sort_button_style:hover{
-      background-color: $primary-color;
-    }
-
-    
-    }
-
-
-    
-
+  .sort_button_style:hover {
+    background-color: $primary-color;
+  }
+}
 
 .form_section {
-  
-
   h2 {
     text-align: center;
   }
@@ -305,38 +282,32 @@ section {
   }
 }
 
-.form_payment_options{
+.form_payment_options {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1rem;
-
-
 }
 
-.form_payment_selector{
+.form_payment_selector {
   margin-bottom: 1rem;
 }
 
-.form_payment_card{
+.form_payment_card {
   display: flex;
   justify-content: center;
   flex-direction: column;
 
- 
-  
-
-  .form_payment_card_date{
-    
+  .form_payment_card_date {
     width: 70px;
   }
 }
 
-.invoice_hidden{
+.invoice_hidden {
   display: none;
 }
 
-.card_hidden{
+.card_hidden {
   display: none;
 }
 
