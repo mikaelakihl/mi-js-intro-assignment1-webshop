@@ -416,7 +416,9 @@ function handleSortbyNameClick(e) {
 
 //---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
 
-sortByCategorySelectAll.addEventListener("click",handleSortByCategorySelectAll
+sortByCategorySelectAll.addEventListener(
+  "click",
+  handleSortByCategorySelectAll
 );
 
 function handleSortByCategorySelectAll(e) {
@@ -519,34 +521,46 @@ function changePriceRange() {
 // //   console.log('test');
 // }
 
-const invoiceBtn = document.querySelector('#invoiceBtn');
-const cardBtn = document.querySelector('#cardBtn');
-const formPaymentOptionsInvoice = document.querySelector('#formPaymentOptionsInvoice');
-const formPaymentOptionsCard = document.querySelector('#formPaymentOptionsCard');
+const invoiceBtn = document.querySelector("#invoiceBtn");
+const cardBtn = document.querySelector("#cardBtn");
+const formPaymentOptionsInvoice = document.querySelector(
+  "#formPaymentOptionsInvoice"
+);
+const formPaymentOptionsCard = document.querySelector(
+  "#formPaymentOptionsCard"
+);
 
-console.log(invoiceBtn, cardBtn, formPaymentOptionsCard, formPaymentOptionsInvoice);
+console.log(
+  invoiceBtn,
+  cardBtn,
+  formPaymentOptionsCard,
+  formPaymentOptionsInvoice
+);
 
-invoiceBtn.addEventListener('click', (e) => {
+invoiceBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  formPaymentOptionsInvoice.classList.remove('invoice_hidden');
-  formPaymentOptionsCard.classList.add('card_hidden');
+  formPaymentOptionsInvoice.classList.remove("invoice_hidden");
+  formPaymentOptionsCard.classList.add("card_hidden");
 });
 
-cardBtn.addEventListener('click', (e) => {
+cardBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  formPaymentOptionsCard.classList.remove('card_hidden');
-  formPaymentOptionsInvoice.classList.add('invoice_hidden');
+  formPaymentOptionsCard.classList.remove("card_hidden");
+  formPaymentOptionsInvoice.classList.add("invoice_hidden");
 });
 
-const personalId = document.querySelector('#personalId');
-personalId.addEventListener('change',checkPersonalIdNumber);
+const personalId = document.querySelector("#personalId");
+personalId.addEventListener("change", checkPersonalIdNumber);
 
-const personalIdRegex = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+const personalIdRegex = new RegExp(
+  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+);
 
-function checkPersonalIdNumber(){
+function checkPersonalIdNumber() {
   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
   if (checkPersonalIdNumberResult === null) {
     return;
   }
-  
+
+  console.log(checkPersonalIdNumberResult);
 }
