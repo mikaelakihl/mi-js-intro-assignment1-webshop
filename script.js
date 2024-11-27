@@ -541,6 +541,12 @@ cardBtn.addEventListener('click', (e) => {
 const personalId = document.querySelector('#personalId');
 personalId.addEventListener('change',checkPersonalIdNumber);
 
+const personalIdRegex = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+
 function checkPersonalIdNumber(){
-  console.log(personalId.value);
+  const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
+  if (checkPersonalIdNumberResult === null) {
+    return;
+  }
+  
 }
