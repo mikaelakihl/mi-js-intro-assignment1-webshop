@@ -305,6 +305,24 @@ section {
   }
 }
 
+.form_payment_options{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+}
+
+.form_payment_card{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .form_payment_card_date{
+    width: 70px;
+  }
+}
+
 footer {
   padding-top: 1px;
   padding-left: 1rem;
