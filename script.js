@@ -511,21 +511,36 @@ function changePriceRange() {
 //-------------------------Kort och faktura betalning -------------
 //------------------------------------------------------------------------------------------------
 
-const invoiceRadio = document.querySelector("#invoice");
-const cardRadio = document.querySelector("#card");
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment_option"]'));
 console.log(cardInvoiceRadios);
 
-const personalId = document.querySelector("#personalId");
-personalId.addEventListener("focusout", activateFormOrderBtn);
-personalId.addEventListener("change", activateFormOrderBtn);
-const personalIdRegex = new RegExp(
-  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
-);
+const inputs =[
+  document.querySelector('#creditCardNumber'),
+  document.querySelector('#creditCardYear'),
+  document.querySelector('#creditCardMonth'),
+  document.querySelector('#creditCardCvc'),
+  document.querySelector("#personalId")
+];
 
+const invoiceRadio = document.querySelector("#invoice");
+const cardRadio = document.querySelector("#card");
 const formSubmitBtn = document.querySelector('#formSubmitBtn');
 
 let selectedPaymentOption = 'invoice';
+
+//---------- Regex -------------------------
+
+const personalIdRegex = new RegExp(
+  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+);
+const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
+
+// -----------------------------------------
+
+inputs.forEach(input=> {
+  input.addEventListener('focusout', activateFormOrderBtn);
+  input.addEventListener('change', activateFormOrderBtn);
+})
 
 //---------- Togglar mellan kort och faktura -------------------------
 
@@ -543,8 +558,6 @@ function switchPaymentMethod(e) {
 function checkIfPersonalIdNumberIsValid(){
   return personalIdRegex.exec(personalId.value);
 }
-
-const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
 
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp -------------------------
@@ -585,18 +598,8 @@ formSubmitBtn.removeAttribute('disabled');
 }
 
 
-const inputs =[
-  document.querySelector('#creditCardNumber'),
-  document.querySelector('#creditCardYear'),
-  document.querySelector('#creditCardMonth'),
-  document.querySelector('#creditCardCvc'),
-  document.querySelector("#personalId")
-];
 
-inputs.forEach(input=> {
-  inputs.addEventListener('focusout', activateFormOrderBtn);
-  inputs.addEventListener('change', activateFormOrderBtn);
-})
+
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
