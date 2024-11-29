@@ -530,6 +530,7 @@ const formPaymentOptionsCard = document.querySelector(
   "#formPaymentOptionsCard"
 );
 
+
 console.log(
   invoiceBtn,
   cardBtn,
@@ -541,6 +542,7 @@ invoiceBtn.addEventListener("click", (e) => {
   e.preventDefault();
   formPaymentOptionsInvoice.classList.remove("invoice_hidden");
   formPaymentOptionsCard.classList.add("card_hidden");
+  console.log(e);
 });
 
 cardBtn.addEventListener("click", (e) => {
@@ -559,6 +561,7 @@ const personalIdRegex = new RegExp(
 function checkPersonalIdNumber() {
   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
   if (checkPersonalIdNumberResult === null) {
+    console.log('personal Id is not valid');
     return;
   }
 

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gottfrid</title>
     <link rel="stylesheet" href="CSS/style.css" type="text/css">
   </head>
   <body>
     <header class="_header">
-      <h1 class="header_h1:">Gottfrids Tavelbutik</h1>
+      <h1 class="header_h1">Gottfrids Tavelbutik</h1>
       <nav class="header_nav">
-        <button id="cartBtn" class="header_cart_button">
+        <button id="cartBtn" class="header_cart_button" aria-label="Open shopping cart">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -24,9 +24,9 @@
           </svg>
         </button>
         <!--Här ska det vara en svg fil-->
-        <div class="#liveUpdatedPrice"></div>
+        <div class="liveUpdatedPrice"></div>
         <!--Här ska det vara en live uppdaterad summa av varukorgens innehåll-->
-        <button class="header_menuBtn">
+        <button class="header_menuBtn" aria-label="Open menu">
           <!--Meny knappen-->
           <span></span>
           <span></span>
@@ -41,7 +41,7 @@
         <div id="cartContainer"></div>
       </section>
       <div class="sort_section page_design">
-        <button class="sort_button_style" id="sortByNameBtn"><svg
+        <button class="sort_button_style" id="sortByNameBtn" aria-label="Sort canvas from a-z"><svg
             xmlns="http://www.w3.org/2000/svg"
             height="20px"
             viewBox="0 -960 960 960"
@@ -55,7 +55,7 @@
             <option id="sortByCategorySelectPoetic" value="poetiskt">Poetiskt</option>
             <option id="sortByCategorySelectFuzzy" value="fuzzy">Fuzzy</option>
           </select></span>
-        <Button class="sort_button_style sort_rating_special" id="sortByRatingBtn">Populäritet</Button>
+        <Button class="sort_button_style sort_rating_special" id="sortByRatingBtn" aria-label="Sort canvas by popularity">Populäritet</Button>
         <span class="sort_price_range_container">
           <span>0 kr</span>
           <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000">
@@ -74,7 +74,7 @@
         <div></div>
         <h3>Dina artiklar</h3>
         <div id="additionolCartContainer"></div>
-        <button class="form_button_single">Köp</button>
+        <button class="form_button_single" aria-label="Open shopping cart" aria-label="Buy">Köp</button>
       </section>
 
       <section class="form_section page_design">
@@ -121,8 +121,8 @@
              <div class="form_payment_selector">
               <span class="form_payment">Jag betalar med: *</span>
               <span class="form_button">
-              <button id="invoiceBtn" name="payment-option" class="form_button_single">Faktura</button>
-              <button  id="cardBtn" name="payment-option" class="form_button_single">Kort</button>
+              <input type="radio" id="invoiceBtn" name="payment-option" class="form_button_single">Faktura</input>
+              <input type="radio" id="cardBtn" name="payment-option" class="form_button_single">Kort</input>
               </span>
             </div> 
 

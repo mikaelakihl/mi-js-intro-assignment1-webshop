@@ -24,11 +24,11 @@ h1 {
   font-size: 1.5rem;
 }
 
-.header_h1 :nth-child(1) {
+.header_h1:nth-child(1) {
   grid-column: 1/2;
 }
 
-.header_nav :nth-child(2) {
+.header_nav:nth-child(2) {
   grid-column: 2/2;
 }
 
@@ -240,13 +240,6 @@ section .plus {
 }
 .form_section form .form_button {
   width: 181px;
-}
-.form_section form .form_button .form_button_single {
-  width: 70px;
-  background-color: #92a5f7;
-  border: none;
-  color: white;
-  border-radius: 1rem;
 }
 .form_section form .form_checkbox {
   display: flex;
