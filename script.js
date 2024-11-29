@@ -535,18 +535,18 @@ const personalIdRegex = new RegExp(
 );
 const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
 
-// -----------------------------------------
+// ------------------Event lyssnare-----------------------
 
 inputs.forEach(input=> {
   input.addEventListener('focusout', activateFormOrderBtn);
   input.addEventListener('change', activateFormOrderBtn);
 })
 
-//---------- Togglar mellan kort och faktura -------------------------
-
 cardInvoiceRadios.forEach(radioBtn => {
   radioBtn.addEventListener('change', switchPaymentMethod);
 })
+
+//---------- Togglar mellan kort och faktura -------------------------
 
 function switchPaymentMethod(e) {
   invoiceRadio.classList.toggle('hidden');
@@ -559,22 +559,22 @@ function checkIfPersonalIdNumberIsValid(){
   return personalIdRegex.exec(personalId.value);
 }
 
-
-//---------- Aktiverar/inaktiverar disabled på Submit knapp -------------------------
+//---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
 
 function activateFormOrderBtn(){
   formSubmitBtn.setAttribute('disabled', '');
 
-if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
-  formSubmitBtn.removeAttribute('disabled');
-} else if (selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
-  return;
-} else if (selectedPaymentOption === 'card'){
+  if(selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
+    return;
+  }
 
+  if (selectedPaymentOption === 'card'){
+  // -------- Kollar kortnummer--------
   if (creditCardNumberRegEx.exec(creditCardNumber.value) === null){
     console.warn('kreditkortet är inte validerat');
     return;
   }
+  //--------- Kollar kort årtal-----
   let year = Number(creditCardYear.value);
   const today = new Date();
   const shortYear = Number(String(today.getFullYear()).substring(2));
@@ -582,13 +582,15 @@ if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
     console.warn('Månad är inte validerad');
     return;
   }
+
+  // TODO: Lägga till månad, obs "padStart" med 0
+
+  //----- Kollar CVC kod--------
  
   if (creditCardCvc.value.length !== 3){
     console.warn('CVC är inta validerad');
     return; 
   }
-
-
 
 
 }
