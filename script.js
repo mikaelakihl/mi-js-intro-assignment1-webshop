@@ -517,6 +517,7 @@ const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="paym
 console.log(cardInvoiceRadios);
 
 const personalId = document.querySelector("#personalId");
+personalId.addEventListener("focusout", activateFormOrderBtn);
 personalId.addEventListener("change", activateFormOrderBtn);
 const personalIdRegex = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
@@ -568,6 +569,15 @@ if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
     console.warn('Månad är inte validerad');
     return;
   }
+ 
+  if (creditCardCvc.value.length !== 3){
+    console.warn('CVC är inta validerad');
+    return; 
+  }
+
+
+
+
 }
 
 formSubmitBtn.removeAttribute('disabled');
@@ -575,16 +585,18 @@ formSubmitBtn.removeAttribute('disabled');
 }
 
 
+const inputs =[
+  document.querySelector('#creditCardNumber'),
+  document.querySelector('#creditCardYear'),
+  document.querySelector('#creditCardMonth'),
+  document.querySelector('#creditCardCvc'),
+  document.querySelector("#personalId")
+];
 
-const creditCardNumber = document.querySelector('#creditCardNumber');
-const creditCardYear = document.querySelector('#creditCardYear');
-const creditCardMonth = document.querySelector('#creditCardMonth');
-const creditCardCvc = document.querySelector('#creditCardCvc');
-
-creditCardNumber.addEventListener('change', activateFormOrderBtn);
-creditCardYear.addEventListener('change', activateFormOrderBtn);
-creditCardMonth.addEventListener('change', activateFormOrderBtn);
-creditCardCvc.addEventListener('change', activateFormOrderBtn);
+inputs.forEach(input=> {
+  inputs.addEventListener('focusout', activateFormOrderBtn);
+  inputs.addEventListener('change', activateFormOrderBtn);
+})
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
