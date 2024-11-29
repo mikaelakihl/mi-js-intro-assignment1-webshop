@@ -543,26 +543,41 @@ function checkIfPersonalIdNumberIsValid(){
   return personalIdRegex.exec(personalId.value);
 }
 
+const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
 
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp -------------------------
 
 function activateFormOrderBtn(){
+  formSubmitBtn.setAttribute('disabled', '');
+
 if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
   formSubmitBtn.removeAttribute('disabled');
 } else if (selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
-  formSubmitBtn.setAttributeAttribute('disabled', '');
+  return;
+} else if (selectedPaymentOption === 'card'){
+
+  if (creditCardNumberRegEx.exec(creditCardNumber.value) === null){
+    console.warn('kreditkortet är inte validerat');
+    return;
+  }
 }
 
+formSubmitBtn.removeAttribute('disabled');
+
 }
 
 
 
-const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
 const creditCardNumber = document.querySelector('#creditCardNumber');
 const creditCardYear = document.querySelector('#creditCardYear');
 const creditCardMonth = document.querySelector('#creditCardMonth');
 const creditCardCvc = document.querySelector('#creditCardCvc');
+
+creditCardNumber.addEventListener('change', activateFormOrderBtn);
+creditCardYear.addEventListener('change', activateFormOrderBtn);
+creditCardMonth.addEventListener('change', activateFormOrderBtn);
+creditCardCvc.addEventListener('change', activateFormOrderBtn);
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
