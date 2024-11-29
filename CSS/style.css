@@ -265,11 +265,7 @@ section .plus {
   width: 70px;
 }
 
-.invoice_hidden {
-  display: none;
-}
-
-.card_hidden {
+.hidden {
   display: none;
 }
 

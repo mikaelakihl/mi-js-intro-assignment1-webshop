@@ -511,7 +511,28 @@ function changePriceRange() {
 //-------------------------Kort och faktura betalning -------------
 //------------------------------------------------------------------------------------------------
 
-// // const cardInvoiceBtns = Array.from(document.querySelectorAll('button[name="payment-option"]'));
+const invoiceRadio = document.querySelector("#invoice");
+const cardRadio = document.querySelector("#card");
+const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment_option"]'));
+console.log(cardInvoiceRadios);
+
+cardInvoiceRadios.forEach(radioBtn => {
+  radioBtn.addEventListener('change', switchPaymentMethod);
+})
+
+function switchPaymentMethod(e) {
+  invoiceRadio.classList.toggle('hidden');
+  cardRadio.classList.toggle('hidden');
+  switch(e.target.value) {
+    case 'invoice':
+      
+      break;
+      case 'card':
+  
+        break;
+        default: console.error('Unknown option for payment type');
+  }
+}
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
@@ -521,49 +542,48 @@ function changePriceRange() {
 // //   console.log('test');
 // }
 
-const invoiceBtn = document.querySelector("#invoiceBtn");
-const cardBtn = document.querySelector("#cardBtn");
-const formPaymentOptionsInvoice = document.querySelector(
-  "#formPaymentOptionsInvoice"
-);
-const formPaymentOptionsCard = document.querySelector(
-  "#formPaymentOptionsCard"
-);
 
+// const formPaymentOptionsInvoice = document.querySelector(
+//   "#formPaymentOptionsInvoice"
+// );
+// const formPaymentOptionsCard = document.querySelector(
+//   "#formPaymentOptionsCard"
+// );
 
-console.log(
-  invoiceBtn,
-  cardBtn,
-  formPaymentOptionsCard,
-  formPaymentOptionsInvoice
-);
+// console.log(
+//   invoiceRadio,
+//   cardRadio,
+//   formPaymentOptionsCard,
+//   formPaymentOptionsInvoice
+// );
 
-invoiceBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formPaymentOptionsInvoice.classList.remove("invoice_hidden");
-  formPaymentOptionsCard.classList.add("card_hidden");
-  console.log(e);
-});
+// invoiceBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   formPaymentOptionsInvoice.classList.remove("invoice_hidden");
+//   formPaymentOptionsCard.classList.add("card_hidden");
+//   console.log(e);
+// });
 
-cardBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formPaymentOptionsCard.classList.remove("card_hidden");
-  formPaymentOptionsInvoice.classList.add("invoice_hidden");
-});
+// cardBtn.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   formPaymentOptionsCard.classList.remove("card_hidden");
+//   formPaymentOptionsInvoice.classList.add("invoice_hidden");
+// });
 
-const personalId = document.querySelector("#personalId");
-personalId.addEventListener("change", checkPersonalIdNumber);
+// const personalId = document.querySelector("#personalId");
+// personalId.addEventListener("change", checkPersonalIdNumber);
 
-const personalIdRegex = new RegExp(
-  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
-);
+// const personalIdRegex = new RegExp(
+//   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+// );
 
-function checkPersonalIdNumber() {
-  const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
-  if (checkPersonalIdNumberResult === null) {
-    console.log('personal Id is not valid');
-    return;
-  }
+// function checkPersonalIdNumber() {
+//   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
+//   if (checkPersonalIdNumberResult === null) {
+//     console.log("personal Id is not valid");
+//     return;
+//   }
 
-  console.log(checkPersonalIdNumberResult);
-}
+//   console.log(checkPersonalIdNumberResult);
+// }
+
