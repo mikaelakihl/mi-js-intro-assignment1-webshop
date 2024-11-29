@@ -545,9 +545,6 @@ function checkIfPersonalIdNumberIsValid(){
 
 
 
-
-
-
 //---------- Aktiverar/inaktiverar disabled på Submit knapp -------------------------
 
 function activateFormOrderBtn(){
@@ -560,6 +557,12 @@ if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
 }
 
 
+
+const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
+const creditCardNumber = document.querySelector('#creditCardNumber');
+const creditCardYear = document.querySelector('#creditCardYear');
+const creditCardMonth = document.querySelector('#creditCardMonth');
+const creditCardCvc = document.querySelector('#creditCardCvc');
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
