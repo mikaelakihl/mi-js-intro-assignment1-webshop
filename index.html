@@ -55,7 +55,7 @@
             <option id="sortByCategorySelectPoetic" value="poetiskt">Poetiskt</option>
             <option id="sortByCategorySelectFuzzy" value="fuzzy">Fuzzy</option>
           </select></span>
-        <Button class="sort_button_style sort_rating_special" id="sortByRatingBtn" aria-label="Sort canvas by popularity">Populäritet</Button>
+        <button class="sort_button_style sort_rating_special" id="sortByRatingBtn" aria-label="Sort canvas by popularity">Populäritet</button>
         <span class="sort_price_range_container">
           <span>0 kr</span>
           <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000">
@@ -71,7 +71,6 @@
       <section class="cartsum page_design">
         <h2>Varukorgsammanställning</h2>
         <p>Tack för att du handlar hos oss!</p>
-        <div></div>
         <h3>Dina artiklar</h3>
         <div id="additionolCartContainer"></div>
         <button class="form_button_single" aria-label="Open shopping cart" aria-label="Buy">Köp</button>
@@ -97,7 +96,7 @@
           </label>
           <label>
             <span>Postnummer: *</span>
-            <input class="form_input" type="text" placeholder="Postnummer">
+            <input class="form_input" type="number" placeholder="Postnummer">
           </label>
           <label>
             <span>Ort: *</span>
@@ -109,11 +108,11 @@
           </label>
           <label>
             <span>Telefonnummer: *</span>
-            <input class="form_input" type="text" placeholder="Telefonnummer">
+            <input class="form_input" type="tel" placeholder="Telefonnummer">
           </label>
           <label>
             <span>E-postadress: *</span>
-            <input class="form_input" type="text" placeholder="Förnamn">
+            <input class="form_input" type="email" placeholder="Förnamn">
           </label>
           
             <div class="form_payment_options">
