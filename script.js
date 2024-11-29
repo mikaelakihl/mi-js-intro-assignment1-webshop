@@ -516,6 +516,18 @@ const cardRadio = document.querySelector("#card");
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment_option"]'));
 console.log(cardInvoiceRadios);
 
+const personalId = document.querySelector("#personalId");
+personalId.addEventListener("change", activateFormOrderBtn);
+const personalIdRegex = new RegExp(
+  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
+);
+
+const formSubmitBtn = document.querySelector('#formSubmitBtn');
+
+let selectedPaymentOption = 'invoice';
+
+//---------- Togglar mellan kort och faktura -------------------------
+
 cardInvoiceRadios.forEach(radioBtn => {
   radioBtn.addEventListener('change', switchPaymentMethod);
 })
@@ -523,16 +535,31 @@ cardInvoiceRadios.forEach(radioBtn => {
 function switchPaymentMethod(e) {
   invoiceRadio.classList.toggle('hidden');
   cardRadio.classList.toggle('hidden');
-  switch(e.target.value) {
-    case 'invoice':
-      
-      break;
-      case 'card':
-  
-        break;
-        default: console.error('Unknown option for payment type');
-  }
+  selectedPaymentOption = e.target.value;
+  console.log(selectedPaymentOption);
 }
+
+function checkIfPersonalIdNumberIsValid(){
+  return personalIdRegex.exec(personalId.value);
+}
+
+
+
+
+
+
+//---------- Aktiverar/inaktiverar disabled på Submit knapp -------------------------
+
+function activateFormOrderBtn(){
+if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
+  formSubmitBtn.removeAttribute('disabled');
+} else if (selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
+  formSubmitBtn.setAttributeAttribute('disabled', '');
+}
+
+}
+
+
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
@@ -570,12 +597,9 @@ function switchPaymentMethod(e) {
 //   formPaymentOptionsInvoice.classList.add("invoice_hidden");
 // });
 
-// const personalId = document.querySelector("#personalId");
-// personalId.addEventListener("change", checkPersonalIdNumber);
 
-// const personalIdRegex = new RegExp(
-//   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
-// );
+
+
 
 // function checkPersonalIdNumber() {
 //   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
