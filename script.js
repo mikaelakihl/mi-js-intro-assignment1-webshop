@@ -561,6 +561,13 @@ if (selectedPaymentOption === 'invoice' && checkIfPersonalIdNumberIsValid()) {
     console.warn('kreditkortet är inte validerat');
     return;
   }
+  let year = Number(creditCardYear.value);
+  const today = new Date();
+  const shortYear = Number(String(today.getFullYear()).substring(2));
+  if (year > shortYear + 2 || year < shortYear){
+    console.warn('Månad är inte validerad');
+    return;
+  }
 }
 
 formSubmitBtn.removeAttribute('disabled');
