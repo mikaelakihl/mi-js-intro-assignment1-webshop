@@ -175,7 +175,10 @@ const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
+const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
+
 let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
+
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
@@ -266,8 +269,22 @@ function printTotalCartOrderSum() {
   }
 
 
+  // Om totalsumman överstiger 800 kr kommer alternativet för faktura att försvinna 
+
+  if (sum > 800){
+    invoiceRadio.classList.add('hidden');
+    invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
+    
+  } else {
+    invoiceRadio.classList.remove('hidden');
+  }
+
+
 
 }
+
+
+
 
 printTotalCartOrderSum();
 
