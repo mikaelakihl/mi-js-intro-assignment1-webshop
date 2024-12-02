@@ -175,7 +175,7 @@ const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
-let slownessTimeout = setTimeout(cleanFormTimeOutMessage, 1000 * 60 * 15);
+let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
 
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
@@ -271,8 +271,16 @@ function printTotalCartOrderSum() {
 
 printTotalCartOrderSum();
 
-function cleanFormTimeOutMessage(){
-  alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+
+
+function cleanFormAndTimeOutMessage(){
+  const orderForm = document.querySelector('#orderForm')
+  if (slownessTimeout){
+    orderForm.reset();
+    alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+  }
+  
+  
 }
 
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
