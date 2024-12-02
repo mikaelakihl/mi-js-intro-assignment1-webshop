@@ -18,7 +18,7 @@ const canvas = [
       url: "assets/caravan_dolphin.png",
       width: 750,
       height: 918,
-      alt: "kommer sen",
+      alt: "Porträtt av en delfin i solnedgången som drar en van under vattnet vars tak består av en mini ö.",
     },
   },
 
@@ -33,7 +33,7 @@ const canvas = [
       url: "assets/no_one_is_captain_but_you.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av två sträckgubbar vars huvud består av ett hjärta och en hjärna. De vandrar på en väg hand i hand som sedan går skilda riktningar. ",
     },
   },
 
@@ -48,7 +48,7 @@ const canvas = [
       url: "assets/djungle_2.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av olika djungeldjur i en djungel",
     },
   },
 
@@ -63,7 +63,7 @@ const canvas = [
       url: "assets/flysland.png",
       width: 950,
       height: 1284,
-      alt: "kommersen",
+      alt: "Porträtt av en svävande ö med en blå molnig himmel. På ön finns ett träd, en parkbänk och ett vattenfall",
     },
   },
 
@@ -78,7 +78,7 @@ const canvas = [
       url: "assets/greek_mytology.png",
       width: 891,
       height: 1260,
-      alt: "kommer sen",
+      alt: "Porträtt av en staty i form av en ung kvinnas kropp. Från halsen växer det ut 5 olika slags blommor.",
     },
   },
 
@@ -93,7 +93,7 @@ const canvas = [
       url: "assets/hundred_acre_woods.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av Nalle Puh och hans vänner på ett rave i Sjumilaskogen. ",
     },
   },
 
@@ -108,7 +108,7 @@ const canvas = [
       url: "assets/lighthead.png",
       width: 1060,
       height: 1500,
-      alt: "kommer sen",
+      alt: "Porträtt av en halvkroppskvinna med rosa t-shirt vars huvud är ersatt med en stor glödlampa. Inuti glödlampan finns en färgexplosion i form av en hjärna",
     },
   },
 
@@ -123,7 +123,7 @@ const canvas = [
       url: "assets/little_mermaid.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av ett badrum vars utsikt från fönstrerna är under vattenytan och på botten finns lilla sjöjunfrun. ",
     },
   },
 
@@ -138,7 +138,7 @@ const canvas = [
       url: "assets/milo_and_titch.png",
       width: 1000,
       height: 707,
-      alt: "kommer senare",
+      alt: "Landskapsbild av Lilo och Stitch som firar Stich födelsedag på semester med deras van vid havet",
     },
   },
 
@@ -153,7 +153,7 @@ const canvas = [
       url: "assets/ted.png",
       width: 800,
       height: 1000,
-      alt: "kommer senare",
+      alt: "Porträtt av en Nallebjörn som sitter på en sten efter att han har hittat magiska svampar i skogen.",
     },
   },
 ];
@@ -271,7 +271,7 @@ function printTotalCartOrderSum() {
 
 printTotalCartOrderSum();
 
-
+//----------------------Återställer formuläret efter 15 min ----------------------
 
 function cleanFormAndTimeOutMessage(){
   const orderForm = document.querySelector('#orderForm')
@@ -534,6 +534,34 @@ function changePriceRange() {
 }
 
 //------------------------------------------------------------------------------------------------
+//-------------------------Validera formulärfält -------------
+//------------------------------------------------------------------------------------------------
+
+let inputAdressError = document.querySelector('#inputAdressError');
+
+let inputAdress = document.querySelector('#inputAdress').value;
+let inputZipCode = document.querySelector('#inputZipCode').value;
+let inputCity = document.querySelector('#inputCity').value;
+let inputPhonenumber = document.querySelector('#inputPhonenumber').value;
+let inputEmail = document.querySelector('#inputEmail').value;
+
+
+function validateAdress (){
+  if(inputAdress.length === 0) {
+    inputAdressError.innerHTML = '*';
+    console.warn('Adressfältet är tomt');
+    return false;
+  }
+  AdressError.innerHTML = '<i>*</i>';
+  console.warn('Adress är validerad och godkänd');
+  return true;
+}
+
+function validateEmail(){
+
+}
+
+//------------------------------------------------------------------------------------------------
 //-------------------------Kort och faktura betalning -------------
 //------------------------------------------------------------------------------------------------
 
@@ -541,6 +569,7 @@ const cardInvoiceRadios = Array.from(
   document.querySelectorAll('input[name="payment_option"]')
 );
 console.log(cardInvoiceRadios);
+
 
 const inputs = [
   document.querySelector("#creditCardNumber"),
@@ -557,6 +586,8 @@ const formSubmitBtn = document.querySelector("#formSubmitBtn");
 let selectedPaymentOption = "invoice";
 
 //---------- Regex -------------------------
+
+const emailRegEx = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
 const personalIdRegex = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
@@ -628,6 +659,8 @@ function activateFormOrderBtn() {
 
   formSubmitBtn.removeAttribute("disabled");
 }
+
+
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
