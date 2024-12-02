@@ -257,19 +257,25 @@ function printTotalCartOrderSum() {
   // X Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
   console.log(printTotalCartOrderSum);
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
-  totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+  
 
   if (orderedCanvasAmount > 15) {  // Om kunden beställer totalt mer än 15
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${0} kr</span>`;  //så blir frakten gratis
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;  //så blir frakten gratis
 
   } else {
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${Math.round(25 + (0.1 * sum))} kr</span>`; //I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${Math.round(25 + (0.1 * sum))} kr</span>`; //I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
 
   }
 
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+
+  // live uppdaterar priset av totalsumman uppe i headern
+
+  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
 
   // Om totalsumman överstiger 800 kr kommer alternativet för faktura att försvinna 
+
 
   if (sum > 800){
     invoiceRadio.classList.add('hidden');
@@ -278,7 +284,6 @@ function printTotalCartOrderSum() {
   } else {
     invoiceRadio.classList.remove('hidden');
   }
-
 
 
 }
@@ -679,47 +684,3 @@ function activateFormOrderBtn() {
 
 
 
-// // cardInvoiceBtns.forEach(paymentOptionbtns => {
-// //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
-// // });
-
-// // function switchPaymentMethod(){
-// //   console.log('test');
-// }
-
-// const formPaymentOptionsInvoice = document.querySelector(
-//   "#formPaymentOptionsInvoice"
-// );
-// const formPaymentOptionsCard = document.querySelector(
-//   "#formPaymentOptionsCard"
-// );
-
-// console.log(
-//   invoiceRadio,
-//   cardRadio,
-//   formPaymentOptionsCard,
-//   formPaymentOptionsInvoice
-// );
-
-// invoiceBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   formPaymentOptionsInvoice.classList.remove("invoice_hidden");
-//   formPaymentOptionsCard.classList.add("card_hidden");
-//   console.log(e);
-// });
-
-// cardBtn.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   formPaymentOptionsCard.classList.remove("card_hidden");
-//   formPaymentOptionsInvoice.classList.add("invoice_hidden");
-// });
-
-// function checkPersonalIdNumber() {
-//   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
-//   if (checkPersonalIdNumberResult === null) {
-//     console.log("personal Id is not valid");
-//     return;
-//   }
-
-//   console.log(checkPersonalIdNumberResult);
-// }
