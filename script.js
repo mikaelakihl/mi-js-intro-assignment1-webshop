@@ -179,10 +179,7 @@ const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreTh
 
 let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
 
-
-//////////////////////////////////////////////Header//////////////////////////////////////////
-
-//Lägger till clickevent på varukorgens knapp
+//----------Lägger till clickevent på varukorgens knapp----------------
 
 cartBtn.addEventListener("click", handleClick);
 
@@ -190,17 +187,6 @@ function handleClick(e) {
   cartSection.classList.toggle("cartSectionOpen");
 }
 
-function canvasRating(rating) {
-  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
-  let html = "";
-  for (let i = 0; i < Math.floor(rating); i++) {
-    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
-  }
-  if (halfRating) {
-    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
-  }
-  return html;
-}
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
@@ -241,6 +227,10 @@ function printTotalCartOrderSum() {
     }
   });
 
+  //-----------SpecialRegler-----------------------------
+
+  //------------ Måndagsrabatten 10% ----------------------
+
   if (sum <= 0) {
     return;
   }
@@ -250,32 +240,19 @@ function printTotalCartOrderSum() {
     message += "<p>Måndagsrabatt: 10% på hela beställningen</p>";
     canvas.price * canvas.amount;
   }
+ 
+  // ---------------------- 15+ antal = Gratis Frakt ------- & 25 kr + 10% av totalen kostar frakt från start
 
-  // X På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
-  // X På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
-  // X Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
-  // X Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
-  console.log(printTotalCartOrderSum);
-
-  
-
-  if (orderedCanvasAmount > 15) {  // Om kunden beställer totalt mer än 15
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;  //så blir frakten gratis
+  if (orderedCanvasAmount > 15) { 
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;
 
   } else {
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${Math.round(25 + (0.1 * sum))} kr</span>`; //I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${Math.round(25 + (0.1 * sum))} kr</span>`; 
 
   }
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
-  totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 
-  // live uppdaterar priset av totalsumman uppe i headern
-
-  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
-
-  // Om totalsumman överstiger 800 kr kommer alternativet för faktura att försvinna 
-
+  // -------totalsumma = 800+ försvinner faktura alternativet--------------------
 
   if (sum > 800){
     invoiceRadio.classList.add('hidden');
@@ -285,25 +262,21 @@ function printTotalCartOrderSum() {
     invoiceRadio.classList.remove('hidden');
   }
 
+  // ------------ Skriver ut totalsumman i varukorgen ---------------------
+
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+
+  // ------- live uppdatering av totalsumman i header -----------------------
+
+  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
+
 
 }
-
-
 
 
 printTotalCartOrderSum();
 
-//----------------------Återställer formuläret efter 15 min ----------------------
-
-function cleanFormAndTimeOutMessage(){
-  const orderForm = document.querySelector('#orderForm')
-  if (slownessTimeout){
-    orderForm.reset();
-    alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
-  }
-  
-  
-}
 
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
@@ -338,9 +311,7 @@ function additionalPrintTotalCartOrderSum() {
 
 additionalPrintTotalCartOrderSum();
 
-///////////////////////////////////Main/////////////////////////////////////////////////////
-
-//Lägger till funktionen som gör att man kan höja/sänka antalet via minus och plus knapparna
+//------Höja/sänka antalet med plus och minus knapparna-------- 
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
@@ -371,7 +342,7 @@ function getPriceMultiplier() {
   return 1;
 }
 
-//Skriver ut arrayen till HTML som är lagrad i const Canvas
+//-------Skriver ut arrayen till HTML som är lagrad i const Canvas---------------
 
 let filteredCanvas = [...canvas]; // skapar kopia av originalarray
 
@@ -402,7 +373,7 @@ function printCanvas() {
   const minusBtns = document.querySelectorAll("button.minus");
   const plusBtns = document.querySelectorAll("button.plus");
 
-  //Lägger till clickevent för plus och minus knappar
+  //--------Click event för plus och minus knappar ----------------
 
   minusBtns.forEach((btn) => {
     btn.addEventListener("click", decreaseAmount);
@@ -417,6 +388,18 @@ function printCanvas() {
 }
 
 printCanvas();
+
+function canvasRating(rating) {
+  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
+  let html = "";
+  for (let i = 0; i < Math.floor(rating); i++) {
+    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
+  }
+  if (halfRating) {
+    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
+  }
+  return html;
+}
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Sorterar produkter i array -------------
@@ -462,7 +445,7 @@ function handleSortbyNameClick(e) {
   printCanvas();
 }
 
-//---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
+//---------- Sorterar produkter via kategori -------------------------  TO DO: göra om koden så den fungerar i chrome
 
 sortByCategorySelectAll.addEventListener(
   "click",
@@ -533,7 +516,7 @@ function handleSortbyRatingClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
     return canvas2.rating - canvas1.rating;
 
-    // return canvas1.rating === canvas2.rating ? 0 : canvas1.rating < canvas2.rating ? -1 : 1;
+    
   });
 
   printCanvas();
@@ -556,7 +539,7 @@ function changePriceRange() {
 }
 
 //------------------------------------------------------------------------------------------------
-//-------------------------Validera formulärfält -------------
+//-------------------------Validera formulärfält ------------- TO DO
 //------------------------------------------------------------------------------------------------
 
 let inputAdressError = document.querySelector('#inputAdressError');
@@ -618,7 +601,7 @@ const creditCardNumberRegEx = new RegExp(
   /^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/
 ); // Mastercard
 
-// ------------------Event lyssnare-----------------------
+// ------------------Eventlyssnare-----------------------
 
 inputs.forEach((input) => {
   input.addEventListener("focusout", activateFormOrderBtn);
@@ -682,10 +665,29 @@ function activateFormOrderBtn() {
   formSubmitBtn.removeAttribute("disabled");
 }
 
+
+// 
+
+//----------------------Återställer formuläret efter 15 min ----------------------
+
 const resetFormBtn = document.querySelector('#formResetBtn');
+
+function cleanFormAndTimeOutMessage(){
+  const orderForm = document.querySelector('#orderForm')
+  if (slownessTimeout){
+    orderForm.reset();
+    alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+  }
+  
+  
+}
+
+// ---------------- Lägger till klick event på rensa knapp--------
 
 resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
 console.log(resetFormBtn);
+
+// ---------- Återställer formulär och antalet produkter ------- TODO
 
 function resetFormAndCanvasAmount() {
   orderForm.reset();
@@ -695,12 +697,6 @@ function resetFormAndCanvasAmount() {
   } 
 }
 
-// function cleanFormAndTimeOutMessage(){
-//   const orderForm = document.querySelector('#orderForm')
-//   if (slownessTimeout){
-//     orderForm.reset();
-//     alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
-//   }
   
   
 
