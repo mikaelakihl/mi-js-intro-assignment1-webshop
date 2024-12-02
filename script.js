@@ -175,6 +175,8 @@ const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
+let slownessTimeout = setTimeout(cleanFormTimeOutMessage, 1000 * 60 * 15);
+
 //////////////////////////////////////////////Header//////////////////////////////////////////
 
 //Lägger till clickevent på varukorgens knapp
@@ -249,17 +251,17 @@ function printTotalCartOrderSum() {
   // X På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
   // X På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
   // X Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
-  // Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
+  // X Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
   console.log(printTotalCartOrderSum);
 
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 
   if (orderedCanvasAmount > 15) {  // Om kunden beställer totalt mer än 15
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${0} kr</span>`;
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${0} kr</span>`;  //så blir frakten gratis
 
   } else {
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${Math.round(25 + 0.1 * sum)} kr</span>`;
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${Math.round(25 + (0.1 * sum))} kr</span>`; //I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
 
   }
 
@@ -268,6 +270,10 @@ function printTotalCartOrderSum() {
 }
 
 printTotalCartOrderSum();
+
+function cleanFormTimeOutMessage(){
+  alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+}
 
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
