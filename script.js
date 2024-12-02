@@ -682,5 +682,25 @@ function activateFormOrderBtn() {
   formSubmitBtn.removeAttribute("disabled");
 }
 
+const resetFormBtn = document.querySelector('#formResetBtn');
 
+resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
+console.log(resetFormBtn);
+
+function resetFormAndCanvasAmount() {
+  orderForm.reset();
+
+  if (canvas.amount > 0){
+    totalCartOrderSum.innerHTML='' ;
+  } 
+}
+
+// function cleanFormAndTimeOutMessage(){
+//   const orderForm = document.querySelector('#orderForm')
+//   if (slownessTimeout){
+//     orderForm.reset();
+//     alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+//   }
+  
+  
 
