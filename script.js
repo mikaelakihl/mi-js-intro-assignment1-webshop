@@ -207,10 +207,13 @@ function printTotalCartOrderSum() {
   totalCartOrderSum.innerHTML = "";
 
   let sum = 0;
+  let orderedCanvasAmount = 0;
   let message = "";
   let priceIncrease = getPriceMultiplier();
 
   canvas.forEach((canvas) => {
+    orderedCanvasAmount += canvas.amount;
+
     if (canvas.amount > 0) {
       let canvasPrice = canvas.price;
       if (canvas.amount >= 10) {
@@ -243,16 +246,25 @@ function printTotalCartOrderSum() {
     canvas.price * canvas.amount;
   }
 
-  //På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
-  //På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
-  //Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
-
+  // X På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
+  // X På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
+  // X Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
+  // Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av totalbeloppet i varukorgen.
   console.log(printTotalCartOrderSum);
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(
-    sum
-  )} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+
+  if (orderedCanvasAmount > 15) {  // Om kunden beställer totalt mer än 15
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${0} kr</span>`;
+
+  } else {
+    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt ${Math.round(25 + 0.1 * sum)} kr</span>`;
+
+  }
+
+
+
 }
 
 printTotalCartOrderSum();
@@ -311,8 +323,6 @@ function increaseAmount(e) {
   printCanvas();
 }
 
-//Skriver ut arrayen till HTML som är lagrad i const Canvas
-
 function getPriceMultiplier() {
   if (
     (itsFriday && currentHour >= 15) ||
@@ -324,6 +334,8 @@ function getPriceMultiplier() {
   }
   return 1;
 }
+
+//Skriver ut arrayen till HTML som är lagrad i const Canvas
 
 let filteredCanvas = [...canvas]; // skapar kopia av originalarray
 
@@ -407,8 +419,8 @@ function handleSortbyNameClick(e) {
     return canvas1.name === canvas2.name
       ? 0
       : canvas1.name < canvas2.name
-      ? -1
-      : 1;
+        ? -1
+        : 1;
   });
 
   printCanvas();
@@ -511,97 +523,97 @@ function changePriceRange() {
 //-------------------------Kort och faktura betalning -------------
 //------------------------------------------------------------------------------------------------
 
-const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment_option"]'));
+const cardInvoiceRadios = Array.from(
+  document.querySelectorAll('input[name="payment_option"]')
+);
 console.log(cardInvoiceRadios);
 
-const inputs =[
-  document.querySelector('#creditCardNumber'),
-  document.querySelector('#creditCardYear'),
-  document.querySelector('#creditCardMonth'),
-  document.querySelector('#creditCardCvc'),
-  document.querySelector("#personalId")
+const inputs = [
+  document.querySelector("#creditCardNumber"),
+  document.querySelector("#creditCardYear"),
+  document.querySelector("#creditCardMonth"),
+  document.querySelector("#creditCardCvc"),
+  document.querySelector("#personalId"),
 ];
 
 const invoiceRadio = document.querySelector("#invoice");
 const cardRadio = document.querySelector("#card");
-const formSubmitBtn = document.querySelector('#formSubmitBtn');
+const formSubmitBtn = document.querySelector("#formSubmitBtn");
 
-let selectedPaymentOption = 'invoice';
+let selectedPaymentOption = "invoice";
 
 //---------- Regex -------------------------
 
 const personalIdRegex = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
 );
-const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/); // Mastercard
+const creditCardNumberRegEx = new RegExp(
+  /^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/
+); // Mastercard
 
 // ------------------Event lyssnare-----------------------
 
-inputs.forEach(input=> {
-  input.addEventListener('focusout', activateFormOrderBtn);
-  input.addEventListener('change', activateFormOrderBtn);
-})
+inputs.forEach((input) => {
+  input.addEventListener("focusout", activateFormOrderBtn);
+  input.addEventListener("change", activateFormOrderBtn);
+});
 
-cardInvoiceRadios.forEach(radioBtn => {
-  radioBtn.addEventListener('change', switchPaymentMethod);
-})
+cardInvoiceRadios.forEach((radioBtn) => {
+  radioBtn.addEventListener("change", switchPaymentMethod);
+});
 
 //---------- Togglar mellan kort och faktura -------------------------
 
 function switchPaymentMethod(e) {
-  invoiceRadio.classList.toggle('hidden');
-  cardRadio.classList.toggle('hidden');
+  invoiceRadio.classList.toggle("hidden");
+  cardRadio.classList.toggle("hidden");
   selectedPaymentOption = e.target.value;
   console.log(selectedPaymentOption);
 }
 
-function checkIfPersonalIdNumberIsValid(){
+function checkIfPersonalIdNumberIsValid() {
   return personalIdRegex.exec(personalId.value);
 }
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
 
-function activateFormOrderBtn(){
-  formSubmitBtn.setAttribute('disabled', '');
+function activateFormOrderBtn() {
+  formSubmitBtn.setAttribute("disabled", "");
 
-  if(selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
+  if (
+    selectedPaymentOption === "invoice" &&
+    !checkIfPersonalIdNumberIsValid()
+  ) {
     return;
   }
 
-  if (selectedPaymentOption === 'card'){
-  // -------- Kollar kortnummer--------
-  if (creditCardNumberRegEx.exec(creditCardNumber.value) === null){
-    console.warn('kreditkortet är inte validerat');
-    return;
+  if (selectedPaymentOption === "card") {
+    // -------- Kollar kortnummer--------
+    if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
+      console.warn("kreditkortet är inte validerat");
+      return;
+    }
+    //--------- Kollar kort årtal-----
+    let year = Number(creditCardYear.value);
+    const today = new Date();
+    const shortYear = Number(String(today.getFullYear()).substring(2));
+    if (year > shortYear + 2 || year < shortYear) {
+      console.warn("Månad är inte validerad");
+      return;
+    }
+
+    // TODO: Lägga till månad, obs "padStart" med 0
+
+    //----- Kollar CVC kod--------
+
+    if (creditCardCvc.value.length !== 3) {
+      console.warn("CVC är inta validerad");
+      return;
+    }
   }
-  //--------- Kollar kort årtal-----
-  let year = Number(creditCardYear.value);
-  const today = new Date();
-  const shortYear = Number(String(today.getFullYear()).substring(2));
-  if (year > shortYear + 2 || year < shortYear){
-    console.warn('Månad är inte validerad');
-    return;
-  }
 
-  // TODO: Lägga till månad, obs "padStart" med 0
-
-  //----- Kollar CVC kod--------
- 
-  if (creditCardCvc.value.length !== 3){
-    console.warn('CVC är inta validerad');
-    return; 
-  }
-
-
+  formSubmitBtn.removeAttribute("disabled");
 }
-
-formSubmitBtn.removeAttribute('disabled');
-
-}
-
-
-
-
 
 // // cardInvoiceBtns.forEach(paymentOptionbtns => {
 // //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
@@ -610,7 +622,6 @@ formSubmitBtn.removeAttribute('disabled');
 // // function switchPaymentMethod(){
 // //   console.log('test');
 // }
-
 
 // const formPaymentOptionsInvoice = document.querySelector(
 //   "#formPaymentOptionsInvoice"
@@ -639,10 +650,6 @@ formSubmitBtn.removeAttribute('disabled');
 //   formPaymentOptionsInvoice.classList.add("invoice_hidden");
 // });
 
-
-
-
-
 // function checkPersonalIdNumber() {
 //   const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
 //   if (checkPersonalIdNumberResult === null) {
@@ -652,4 +659,3 @@ formSubmitBtn.removeAttribute('disabled');
 
 //   console.log(checkPersonalIdNumberResult);
 // }
-
