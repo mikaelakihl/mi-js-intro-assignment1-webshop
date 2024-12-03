@@ -660,11 +660,16 @@ function activateFormOrderBtn() {
     const today = new Date();
     const shortYear = Number(String(today.getFullYear()).substring(2));
     if (year > shortYear + 2 || year < shortYear) {
-      console.warn("Månad är inte validerad");
+      console.warn("År är inte validerad");
       return;
     }
 
-    // TODO: Lägga till månad, obs "padStart" med 0
+    // ------ Kollar Månad -----
+
+    if (creditCardMonth.value < 1 || creditCardMonth.value > 12) {
+      console.warn('Månad är inte validerad');
+      return;
+  }
 
     //----- Kollar CVC kod--------
 
