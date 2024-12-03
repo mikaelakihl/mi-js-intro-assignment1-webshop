@@ -196,7 +196,7 @@ function handleClick(e) {
 
 function printTotalCartOrderSum() {
   totalCartOrderSum.innerHTML = "";
-
+  let htmlString = "";
   let sum = 0;
   let orderedCanvasAmount = 0;
   let message = "";
@@ -212,7 +212,7 @@ function printTotalCartOrderSum() {
       }
       const adjustedCanvasPrice = Math.round(canvasPrice * priceIncrease);
       sum += canvas.amount * adjustedCanvasPrice;
-      totalCartOrderSum.innerHTML += `
+      htmlString += `
       <article class="cartOrderSumContainer">
       <img class="cartOrderSumImg" src="${canvas.img.url}">
       <div class="cartOrderSumWrapper">
@@ -226,6 +226,9 @@ function printTotalCartOrderSum() {
       `;
     }
   });
+
+  totalCartOrderSum.innerHTML = htmlString;
+  additionalTotalCartOrderSum.innerHTML = htmlString;
 
   //-----------SpecialRegler-----------------------------
 
@@ -242,6 +245,7 @@ function printTotalCartOrderSum() {
   }
  
   // ---------------------- 15+ antal = Gratis Frakt ------- & 25 kr + 10% av totalen kostar frakt från start
+  
 
   if (orderedCanvasAmount > 15) { 
     totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;
@@ -263,15 +267,18 @@ function printTotalCartOrderSum() {
   }
 
   // ------------ Skriver ut totalsumman i varukorgen ---------------------
+  
 
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
 
   // ------- live uppdatering av totalsumman i header -----------------------
 
   liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
 
-
+  
 }
 
 
@@ -280,36 +287,41 @@ printTotalCartOrderSum();
 
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
-function additionalPrintTotalCartOrderSum() {
-  additionalTotalCartOrderSum.innerHTML = "";
+// function additionalPrintTotalCartOrderSum() {
+//   additionalTotalCartOrderSum.innerHTML = "";
 
-  let sum = 0;
-  let message = "";
+//   let sum = 0;
+//   let message = "";
 
-  canvas.forEach((canvas) => {
-    if (canvas.amount > 0) {
-      sum += canvas.amount * canvas.price;
-      additionalTotalCartOrderSum.innerHTML += `
-     <article class="cartOrderSumContainer">
-      <img class="cartOrderSumImg" src="${canvas.img.url}">
-      <div class="cartOrderSumWrapper">
-        <span>${canvas.name}</span> 
-        <span>${canvas.amount} st </span> 
-        <span>${canvas.price} kr </span> 
-        </div>
-        <hr class="cartOrderSumLine" width="100%" size="2" noshade>
-      </article>
+//   canvas.forEach((canvas) => {
+//     if (canvas.amount > 0) {
+//       sum += canvas.amount * canvas.price;
+//       additionalTotalCartOrderSum.innerHTML += `
+//      <article class="cartOrderSumContainer">
+//       <img class="cartOrderSumImg" src="${canvas.img.url}">
+//       <div class="cartOrderSumWrapper">
+//         <span>${canvas.name}</span> 
+//         <span>${canvas.amount} st </span> 
+//         <span>${canvas.price} kr </span> 
+//         </div>
+//         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
+//       </article>
    
-      `;
-    }
-  });
+//       `;
+//     }
+//   });
 
-  console.log(additionalPrintTotalCartOrderSum);
+//   console.log(additionalPrintTotalCartOrderSum);
 
-  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
-}
+//   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
+// }
 
-additionalPrintTotalCartOrderSum();
+// additionalPrintTotalCartOrderSum();
+
+
+
+
+
 
 //------Höja/sänka antalet med plus och minus knapparna-------- 
 
@@ -384,7 +396,7 @@ function printCanvas() {
   });
 
   printTotalCartOrderSum();
-  additionalPrintTotalCartOrderSum();
+  // additionalPrintTotalCartOrderSum();
 }
 
 printCanvas();
