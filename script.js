@@ -245,7 +245,7 @@ function printTotalCartOrderSum() {
   }
  
   // ---------------------- 15+ antal = Gratis Frakt ------- & 25 kr + 10% av totalen kostar frakt från start
-  
+  // let shippingCost = "";   TODO: Behöver göra så att frakten syns i additionaltotalcartordersum också utan att upprepa kod. 
 
   if (orderedCanvasAmount > 15) { 
     totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;
@@ -256,9 +256,9 @@ function printTotalCartOrderSum() {
   }
 
 
-  // -------totalsumma = 800+ försvinner faktura alternativet--------------------
+  // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
 
-  if (sum > 800){
+  if (sum > 8000){
     invoiceRadio.classList.add('hidden');
     invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
     
