@@ -282,7 +282,20 @@ function printTotalCartOrderSum() {
 }
 
 
+
 printTotalCartOrderSum();
+
+// function updatePriceInHeader(sum){
+//   // liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
+//   liveUpdatedPrice.classList.add('update_effect');
+
+//   setTimeout(() => {
+//     liveUpdatedPrice.classList.remove('update_effect');
+//   }, 300);
+
+// }
+
+// updatePriceInHeader();
 
 
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.

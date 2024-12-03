@@ -62,6 +62,10 @@ h1 {
   border-radius: 1rem;
 }
 
+.update_effect {
+  color: red;
+}
+
 /* --------Header slutar------- */
 .cart_section {
   display: none;
