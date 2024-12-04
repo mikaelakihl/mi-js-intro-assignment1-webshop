@@ -255,19 +255,14 @@ function printTotalCartOrderSum() {
     canvas.price * canvas.amount;
   }
  
-  // ---------------------- 15+ antal = Gratis Frakt ------- & 25 kr + 10% av totalen kostar frakt från start
-  // let shippingCost = "";   TODO: Behöver göra så att frakten syns i additionaltotalcartordersum också utan att upprepa kod. 
+  // ---------------------- 15+ antal = Gratis Frakt ---------------
 
   
 
   if (orderedCanvasAmount > 15) { 
-    ShippingSum === '';
+    ShippingSum = 0;
 
   } 
-  // else {
-  //   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`; 
-
-  // }
 
   
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
