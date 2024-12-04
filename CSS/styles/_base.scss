@@ -4,6 +4,7 @@
 
 body {
   background-color: $primary-color;
+  color: black;
 }
 
 /*--------Header----------*/
@@ -65,9 +66,14 @@ h1 {
   }
 }
 
-.update_effect{
-color: red;
+// .update_effect{
+// color: red;
+// }
+
+.liveUpdatedPriceAnimation{
+  background-color: red;
 }
+
 
 /* --------Header slutar------- */
 

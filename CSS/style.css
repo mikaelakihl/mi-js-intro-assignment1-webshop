@@ -6,6 +6,7 @@
 
 body {
   background-color: #92a5f7;
+  color: black;
 }
 
 /*--------Header----------*/
@@ -62,8 +63,8 @@ h1 {
   border-radius: 1rem;
 }
 
-.update_effect {
-  color: red;
+.liveUpdatedPriceAnimation {
+  background-color: red;
 }
 
 /* --------Header slutar------- */

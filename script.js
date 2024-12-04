@@ -195,13 +195,14 @@ function handleClick(e) {
 //------------------------------------------------------------------------------------------------
 
 //---------- Varukorgen -------------------------
+let orderedCanvasAmount = 0;
 
 function printTotalCartOrderSum() {
   
   totalCartOrderSum.innerHTML = "";
   let htmlString = "";
   let sum = 0;
-  let orderedCanvasAmount = 0;
+  
   let message = "";
   let priceIncrease = getPriceMultiplier();
 
@@ -269,6 +270,7 @@ function printTotalCartOrderSum() {
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
 
 
+
   // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
 
   // if (sum > 8000){
@@ -298,9 +300,34 @@ function printTotalCartOrderSum() {
 
   liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
 
-  
 }
 
+
+let animationTimeout = setTimeout(addUpdatedCartDifference, 1000 * 20);
+
+  let previousCanvasAmount = 0;
+
+  function addUpdatedCartDifference (){
+
+    if(orderedCanvasAmount > previousCanvasAmount){
+      liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
+      
+      setTimeout(() => {
+        liveUpdatedPrice.classList.remove('liveUpdatedPriceAnimation');
+      }, 2000);
+    }
+  //  if (orderedCanvasAmount > 0){
+  //   liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
+  //  }
+
+  // }
+  previousCanvasAmount = orderedCanvasAmount
+
+  
+ 
+  
+}
+addUpdatedCartDifference();
 
 
 printTotalCartOrderSum();
@@ -775,4 +802,3 @@ function resetFormAndCanvasAmount(){
 
   
   
-
