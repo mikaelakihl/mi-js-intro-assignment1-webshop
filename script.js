@@ -258,13 +258,20 @@ function printTotalCartOrderSum() {
   // ---------------------- 15+ antal = Gratis Frakt ------- & 25 kr + 10% av totalen kostar frakt från start
   // let shippingCost = "";   TODO: Behöver göra så att frakten syns i additionaltotalcartordersum också utan att upprepa kod. 
 
+  
+
   if (orderedCanvasAmount > 15) { 
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${0} kr</span>`;
+    ShippingSum === '';
 
-  } else {
-    totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${Math.round(25 + (0.1 * sum))} kr</span>`; 
+  } 
+  // else {
+  //   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`; 
 
-  }
+  // }
+
+  
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
 
 
   // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
@@ -581,33 +588,6 @@ function changePriceRange() {
   printCanvas();
 }
 
-//------------------------------------------------------------------------------------------------
-//-------------------------Validera formulärfält ------------- TO DO
-//------------------------------------------------------------------------------------------------
-
-// let inputAdressError = document.querySelector('#inputAdressError');
-
-// let inputAdress = document.querySelector('#inputAdress').value;
-// let inputZipCode = document.querySelector('#inputZipCode').value;
-// let inputCity = document.querySelector('#inputCity').value;
-// let inputPhonenumber = document.querySelector('#inputPhonenumber').value;
-// let inputEmail = document.querySelector('#inputEmail').value;
-
-
-// function validateAdress (){
-//   if(inputAdress.length === 0) {
-//     inputAdressError.innerHTML = '*';
-//     console.warn('Adressfältet är tomt');
-//     return false;
-//   }
-//   AdressError.innerHTML = '<i>*</i>';
-//   console.warn('Adress är validerad och godkänd');
-//   return true;
-// }
-
-// function validateEmail(){
-
-// }
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Kort och faktura betalning -------------
