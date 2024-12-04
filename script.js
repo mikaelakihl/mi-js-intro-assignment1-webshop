@@ -177,7 +177,7 @@ const currentHour = today.getHours();
 
 const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
 
-let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
+
 let canvasTotalPriceSum = 0;
 let ShippingSum = 0;
 
@@ -728,12 +728,17 @@ function activateFormOrderBtn() {
 
 //----------------------Återställer formuläret efter 15 min ----------------------
 
+let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 20);
+
+const orderForm = document.querySelector('#orderForm');
+
 const resetFormBtn = document.querySelector('#formResetBtn');
 
 function cleanFormAndTimeOutMessage(){
-  const orderForm = document.querySelector('#orderForm')
+  
   if (slownessTimeout){
     orderForm.reset();
+    // canvasTotalPriceSum.length = 0;
     alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
   }
   
@@ -745,15 +750,29 @@ function cleanFormAndTimeOutMessage(){
 resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
 console.log(resetFormBtn);
 
+function resetFormAndCanvasAmount(){
+  orderForm.reset();
+  canvas.forEach((canvas) => { 
+    canvas.amount = 0;
+  });
+
+ (console.log('du har klickat på knappen'));
+
+ printTotalCartOrderSum();
+ printCanvas();
+
+}
+
+
 // ---------- Återställer formulär och antalet produkter ------- TODO
 
-function resetFormAndCanvasAmount() {
-  orderForm.reset();
+// function resetFormAndCanvasAmount() {
+//   orderForm.reset();
 
-  if (canvas.amount > 0){
-    totalCartOrderSum.innerHTML='' ;
-  } 
-}
+//   if (canvas.amount > 0){
+//     totalCartOrderSum.innerHTML='' ;
+//   } 
+// }
 
   
   
