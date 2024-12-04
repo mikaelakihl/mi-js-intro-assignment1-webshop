@@ -662,8 +662,11 @@ function checkIfPersonalIdNumberIsValid() {
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
 
+
 function activateFormOrderBtn() {
   formSubmitBtn.setAttribute("disabled", "");
+
+  
 
   if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
     console.warn('Vänligen fyll i alla obligatoriska fält');
@@ -675,9 +678,9 @@ function activateFormOrderBtn() {
   }
 
   if (emailRegEx.exec(email.value) === null) {
-    console.warn('Email är inte validerad');
+   console.warn('Email är inte validerad');
   }
-
+ 
   if (
     selectedPaymentOption === "invoice" &&
     !checkIfPersonalIdNumberIsValid()
@@ -750,6 +753,7 @@ function resetFormAndCanvasAmount(){
   canvas.forEach((canvas) => { 
     canvas.amount = 0;
   });
+  liveUpdatedPrice.innerHTML = 0;
 
  (console.log('du har klickat på knappen'));
 
