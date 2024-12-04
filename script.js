@@ -585,29 +585,29 @@ function changePriceRange() {
 //-------------------------Validera formulärfält ------------- TO DO
 //------------------------------------------------------------------------------------------------
 
-let inputAdressError = document.querySelector('#inputAdressError');
+// let inputAdressError = document.querySelector('#inputAdressError');
 
-let inputAdress = document.querySelector('#inputAdress').value;
-let inputZipCode = document.querySelector('#inputZipCode').value;
-let inputCity = document.querySelector('#inputCity').value;
-let inputPhonenumber = document.querySelector('#inputPhonenumber').value;
-let inputEmail = document.querySelector('#inputEmail').value;
+// let inputAdress = document.querySelector('#inputAdress').value;
+// let inputZipCode = document.querySelector('#inputZipCode').value;
+// let inputCity = document.querySelector('#inputCity').value;
+// let inputPhonenumber = document.querySelector('#inputPhonenumber').value;
+// let inputEmail = document.querySelector('#inputEmail').value;
 
 
-function validateAdress (){
-  if(inputAdress.length === 0) {
-    inputAdressError.innerHTML = '*';
-    console.warn('Adressfältet är tomt');
-    return false;
-  }
-  AdressError.innerHTML = '<i>*</i>';
-  console.warn('Adress är validerad och godkänd');
-  return true;
-}
+// function validateAdress (){
+//   if(inputAdress.length === 0) {
+//     inputAdressError.innerHTML = '*';
+//     console.warn('Adressfältet är tomt');
+//     return false;
+//   }
+//   AdressError.innerHTML = '<i>*</i>';
+//   console.warn('Adress är validerad och godkänd');
+//   return true;
+// }
 
-function validateEmail(){
+// function validateEmail(){
 
-}
+// }
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Kort och faktura betalning -------------
@@ -625,6 +625,14 @@ const inputs = [
   document.querySelector("#creditCardMonth"),
   document.querySelector("#creditCardCvc"),
   document.querySelector("#personalId"),
+  document.querySelector('#firstName'),
+  document.querySelector('#lastName'),
+  document.querySelector('#adress'),
+  document.querySelector('#zipCode'),
+  document.querySelector('#city'),
+  document.querySelector('#phoneNumber'),
+  document.querySelector('#email')
+  
 ];
 
 const invoiceRadio = document.querySelector("#invoice");
@@ -636,7 +644,10 @@ let selectedPaymentOption = "card";
 
 //---------- Regex -------------------------
 
+
 const emailRegEx = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+const phoneNumberRegEx = new RegExp(/^((([+]46)\s*((1|7)[0236]))|(0(1|7)[0236]))\s*(([-]|())\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*|([0-9]\s*([-]|()))\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*)$/);
 
 const personalIdRegex = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
@@ -678,6 +689,19 @@ function checkIfPersonalIdNumberIsValid() {
 
 function activateFormOrderBtn() {
   formSubmitBtn.setAttribute("disabled", "");
+
+  if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
+    console.warn('Vänligen fyll i alla obligatoriska fält');
+    return;
+  }
+
+  if (phoneNumberRegEx.exec(phoneNumber.value) === null){
+    console.warn('Mobilnumret är inte validerat');
+  }
+
+  if (emailRegEx.exec(email.value) === null) {
+    console.warn('Email är inte validerad');
+  }
 
   if (
     selectedPaymentOption === "invoice" &&
