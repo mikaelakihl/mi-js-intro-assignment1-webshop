@@ -167,9 +167,9 @@ const additionalTotalCartOrderSum = document.querySelector(
 
 const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
-const today = new Date();
+const today = new Date(); // om jag flyttar bort den här så har nedan variabler ingen referens, ska de vara dubbletter? en i funktion och en global? 
 
-const itsMonday = today.getDay() === 1;
+const itsMonday = today.getDay() === 3;
 const itsFriday = today.getDay() === 5;
 const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
@@ -178,6 +178,8 @@ const currentHour = today.getHours();
 const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
 
 let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
+let canvasTotalPriceSum = 0;
+let ShippingSum = 0;
 
 //----------Lägger till clickevent på varukorgens knapp----------------
 
@@ -195,6 +197,7 @@ function handleClick(e) {
 //---------- Varukorgen -------------------------
 
 function printTotalCartOrderSum() {
+  
   totalCartOrderSum.innerHTML = "";
   let htmlString = "";
   let sum = 0;
@@ -224,8 +227,17 @@ function printTotalCartOrderSum() {
       </article>
       
       `;
+
+      
+
     }
+
+    
+
   });
+
+  canvasTotalPriceSum = Math.round(sum);
+  ShippingSum = Math.round(25 + (0.1 * sum));
 
   totalCartOrderSum.innerHTML = htmlString;
   additionalTotalCartOrderSum.innerHTML = htmlString;
@@ -233,12 +245,11 @@ function printTotalCartOrderSum() {
   //-----------SpecialRegler-----------------------------
 
   //------------ Måndagsrabatten 10% ----------------------
-
   if (sum <= 0) {
     return;
   }
 
-  if (today.getDay() === 1) {
+  if (today.getDay() === 3) {
     sum *= 0.9;
     message += "<p>Måndagsrabatt: 10% på hela beställningen</p>";
     canvas.price * canvas.amount;
@@ -258,13 +269,20 @@ function printTotalCartOrderSum() {
 
   // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
 
-  if (sum > 8000){
-    invoiceRadio.classList.add('hidden');
-    invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
+  // if (sum > 8000){
+  //   invoiceRadio.classList.add('hidden');
+  //   invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
     
-  } else {
-    invoiceRadio.classList.remove('hidden');
-  }
+  // } else {
+  //   invoiceRadio.classList.remove('hidden');
+  // }
+
+  // const invoiceHidden = document.querySelector('#invoiceHidden');
+
+  // if (sum > 8000){
+  //   invoiceHidden.classList.add('hidden');
+  // } 
+
 
   // ------------ Skriver ut totalsumman i varukorgen ---------------------
   
@@ -610,10 +628,11 @@ const inputs = [
 ];
 
 const invoiceRadio = document.querySelector("#invoice");
+console.log(invoiceRadio);
 const cardRadio = document.querySelector("#card");
 const formSubmitBtn = document.querySelector("#formSubmitBtn");
 
-let selectedPaymentOption = "invoice";
+let selectedPaymentOption = "card";
 
 //---------- Regex -------------------------
 
@@ -640,10 +659,15 @@ cardInvoiceRadios.forEach((radioBtn) => {
 //---------- Togglar mellan kort och faktura -------------------------
 
 function switchPaymentMethod(e) {
-  invoiceRadio.classList.toggle("hidden");
-  cardRadio.classList.toggle("hidden");
-  selectedPaymentOption = e.target.value;
-  console.log(selectedPaymentOption);
+  if (canvasTotalPriceSum > 800){
+    invoiceRadio.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
+    // invoiceMoreThenEightHundredHidden.innerHTML = ;
+  } 
+
+    invoiceRadio.classList.toggle("hidden");
+    cardRadio.classList.toggle("hidden");
+    selectedPaymentOption = e.target.value;
+    console.log(selectedPaymentOption);
 }
 
 function checkIfPersonalIdNumberIsValid() {

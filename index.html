@@ -125,13 +125,13 @@
              <div class="form_payment_selector">
               <span class="form_payment">Jag betalar med: *</span>
               <span class="form_button">
-              <input type="radio" name="payment_option" class="form_button_single" value="invoice" checked>Faktura</input>
-              <input type="radio" name="payment_option" class="form_button_single" value="card">Kort</input>
+              <input type="radio" name="payment_option" class="form_button_single" value="invoice">Faktura</input>
+              <input type="radio" name="payment_option" class="form_button_single" value="card" checked>Kort</input>
               </span>
             </div> 
 
-            <div id="invoice">
-              <label>
+            <div id="invoice" class="hidden">
+              <label id="invoiceHidden">
                 <span>Personnummer</span>
                 <input class="form_input" type="text" name="personalid" id="personalId">
               </label>
@@ -139,7 +139,7 @@
             
             <div id="invoiceMoreThenEightHundredHidden"></div>
 
-            <div class="form_payment_card hidden" id="card">
+            <div class="form_payment_card" id="card">
               <label>
                 <span>Kortnummer</span>
                 <input class="form_input" type="number" id="creditCardNumber" value="4111111111111111">
