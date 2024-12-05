@@ -804,6 +804,10 @@ function resetFormAndCanvasAmount(){
 //   } 
 // }
 
+// Function GetDeliveryDate (){
+//   Const today = New Date();
+
+// }
 
 
 formSubmitBtn.addEventListener('click', sendOrderForm);
@@ -811,6 +815,12 @@ console.log(formSubmitBtn);
 
 function sendOrderForm (e){
   e.preventDefault();
+
+  const today = new Date();
+  const deliveryDate = new Date(today);
+  deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+  const formattedDeliveryDate = deliveryDate.toLocaleDateString('sv-SE');
   
   const orderConfirmation = document.querySelector('#orderConfirmation');
 
@@ -818,7 +828,7 @@ function sendOrderForm (e){
   orderConfirmation.innerHTML = `
   <h3>Tack för att du handlar hos oss!</h3>
   <p>Totalbelopp: ${totalShippingAndOrderSum}</p>
-  <p>Beräknad leveransdatum är: </p>
+  <p>Beräknad leveransdatum är: ${formattedDeliveryDate} </p>
   `;
 }
   
