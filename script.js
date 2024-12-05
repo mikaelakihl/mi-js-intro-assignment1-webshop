@@ -436,8 +436,8 @@ function printCanvas() {
       <figure class="canvas-class">
           <img src="${canvas.img.url}">
           <div class="canvas-wrapper">
-          <figcaption>${canvas.name}</figcaption>
-          <div>${adjustedCanvasPrice} kr</div>
+          <figcaption class="canvas_name">${canvas.name}</figcaption>
+          <div class="canvas_price">${adjustedCanvasPrice} kr</div>
           <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
