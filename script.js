@@ -698,6 +698,7 @@ function checkIfPersonalIdNumberIsValid() {
 
 const phoneNumberError = document.querySelector('#phoneNumberError');
 const starfieldError = document.querySelector('#starFieldError');
+const personalIdError = document.querySelector('#personalIdError');
 
 
 function activateFormOrderBtn() {
@@ -707,7 +708,7 @@ function activateFormOrderBtn() {
 
   if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
     console.warn('Vänligen fyll i alla obligatoriska fält');
-    starfieldError.innerHTML = `<p class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</p>`
+    starfieldError.innerHTML = `<span class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</span>`
     return;
   } else {
     starfieldError.innerHTML = '';
@@ -735,6 +736,14 @@ function activateFormOrderBtn() {
   ) {
     return;
   }
+
+  // if (personalIdRegex.exec(personalId.value) === personalIdRegex){
+  //     personalIdError.innerHTML = `<span class="error_messages">Ogiltigt personnummer</span>`;
+  //     return;
+  //   } else {
+  //     personalIdError.innerHTML = ``;
+    
+  // }
 
   if (selectedPaymentOption === "card") {
     // -------- Kollar kortnummer--------

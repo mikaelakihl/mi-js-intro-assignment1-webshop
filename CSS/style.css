@@ -220,6 +220,11 @@ section .plus {
   background-color: #92a5f7;
 }
 
+.style_link {
+  text-decoration: none;
+  color: white;
+}
+
 .form_section h2 {
   text-align: center;
 }
