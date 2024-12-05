@@ -180,6 +180,9 @@ const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreTh
 
 let canvasTotalPriceSum = 0;
 let ShippingSum = 0;
+let totalShippingAndOrderSum = 0;
+
+
 
 //----------Lägger till clickevent på varukorgens knapp----------------
 
@@ -239,6 +242,7 @@ function printTotalCartOrderSum() {
 
   canvasTotalPriceSum = Math.round(sum);
   ShippingSum = Math.round(25 + (0.1 * sum));
+  totalShippingAndOrderSum = canvasTotalPriceSum + ShippingSum;
 
   totalCartOrderSum.innerHTML = htmlString;
   additionalTotalCartOrderSum.innerHTML = htmlString;
@@ -753,7 +757,7 @@ function activateFormOrderBtn() {
 
 //----------------------Återställer formuläret efter 15 min ----------------------
 
-let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 20);
+let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
 
 const orderForm = document.querySelector('#orderForm');
 
@@ -800,5 +804,21 @@ function resetFormAndCanvasAmount(){
 //   } 
 // }
 
+
+
+formSubmitBtn.addEventListener('click', sendOrderForm);
+console.log(formSubmitBtn);
+
+function sendOrderForm (e){
+  e.preventDefault();
   
+  const orderConfirmation = document.querySelector('#orderConfirmation');
+
+
+  orderConfirmation.innerHTML = `
+  <h3>Tack för att du handlar hos oss!</h3>
+  <p>Totalbelopp: ${totalShippingAndOrderSum}</p>
+  <p>Beräknad leveransdatum är: </p>
+  `;
+}
   
