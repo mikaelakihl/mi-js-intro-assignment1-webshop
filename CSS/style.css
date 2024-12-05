@@ -249,6 +249,12 @@ section .plus {
 .form_section form .form_checkbox {
   display: flex;
 }
+.form_section form .error_messages {
+  color: red;
+}
+.form_section form .error_message_starfield {
+  width: 400px;
+}
 
 .form_payment_options {
   display: flex;

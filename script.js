@@ -182,6 +182,9 @@ let canvasTotalPriceSum = 0;
 let ShippingSum = 0;
 let totalShippingAndOrderSum = 0;
 
+const emailError = document.querySelector('#emailError');
+console.log(emailError);
+
 
 
 //----------Lägger till clickevent på varukorgens knapp----------------
@@ -693,6 +696,9 @@ function checkIfPersonalIdNumberIsValid() {
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
 
+const phoneNumberError = document.querySelector('#phoneNumberError');
+const starfieldError = document.querySelector('#starFieldError');
+
 
 function activateFormOrderBtn() {
   formSubmitBtn.setAttribute("disabled", "");
@@ -701,15 +707,26 @@ function activateFormOrderBtn() {
 
   if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
     console.warn('Vänligen fyll i alla obligatoriska fält');
+    starfieldError.innerHTML = `<p class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</p>`
     return;
+  } else {
+    starfieldError.innerHTML = '';
   }
 
   if (phoneNumberRegEx.exec(phoneNumber.value) === null){
     console.warn('Mobilnumret är inte validerat');
+    phoneNumberError.innerHTML = `<span class="error_messages">Ogiltigt telefonnummer</span>`;
+    return;
+  } else {
+    phoneNumberError.innerHTML = ``;
   }
 
   if (emailRegEx.exec(email.value) === null) {
-   console.warn('Email är inte validerad');
+  //  console.warn('Email är inte validerad');
+   emailError.innerHTML = `<span class="error_messages">Ogiltig emailadress</span>`;
+   return;
+  } else {
+    emailError.innerHTML = ``;
   }
  
   if (
@@ -774,7 +791,7 @@ function cleanFormAndTimeOutMessage(){
   
 }
 
-// ---------------- Lägger till klick event på rensa knapp--------
+// ---------------- Rensa formulär--------
 
 resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
 console.log(resetFormBtn);
