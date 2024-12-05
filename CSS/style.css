@@ -347,4 +347,9 @@ footer a {
   img {
     margin-bottom: auto;
   }
+}
+@media screen and (min-width: 1250px) {
+  section img {
+    width: 300px;
+  }
 }/*# sourceMappingURL=style.css.map */
