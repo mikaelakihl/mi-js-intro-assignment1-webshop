@@ -360,6 +360,8 @@ footer a {
   }
   main {
     margin-top: 150px;
+    margin-left: 3rem;
+    margin-right: 3rem;
   }
   section img {
     width: 300px;
