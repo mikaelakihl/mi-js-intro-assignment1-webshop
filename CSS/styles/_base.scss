@@ -284,13 +284,17 @@ section {
     .form_button {
       width: 181px;
 
-      // .form_button_single {
-      //   width: 70px;
-      //   background-color: $primary-color;
-      //   border: none;
-      //   color: $white-color;
-      //   border-radius: 1rem;
-      // }
+      .form_button_single {
+        width: 70px;
+        background-color: $primary-color;
+        border: none;
+        color: $white-color;
+        border-radius: 1rem;
+      }
+
+      input.form_button_single:disabled{
+        background-color: $transparency-color-button;
+      }
     }
 
     .form_checkbox {

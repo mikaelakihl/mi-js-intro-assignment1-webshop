@@ -251,6 +251,16 @@ section .plus {
 .form_section form .form_button {
   width: 181px;
 }
+.form_section form .form_button .form_button_single {
+  width: 70px;
+  background-color: #92a5f7;
+  border: none;
+  color: white;
+  border-radius: 1rem;
+}
+.form_section form .form_button input.form_button_single:disabled {
+  background-color: rgba(146, 165, 247, 0.4980392157);
+}
 .form_section form .form_checkbox {
   display: flex;
 }
