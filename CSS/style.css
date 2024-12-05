@@ -366,4 +366,14 @@ footer a {
   section img {
     width: 300px;
   }
+  .last_page_wrapper {
+    display: grid;
+    grid-template-columns: repeat(1fr, 12);
+  }
+  .last_page_left_item {
+    grid-column: 1/2;
+  }
+  .last_page_right_item {
+    grid-column: 2/2;
+  }
 }/*# sourceMappingURL=style.css.map */
