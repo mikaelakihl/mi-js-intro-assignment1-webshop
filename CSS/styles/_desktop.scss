@@ -1,5 +1,7 @@
 @media screen and (min-width: 1250px){
 
+   
+
     h1{
         font-size: 3rem;
         
@@ -18,9 +20,18 @@
 
     }
 
+    .canvas_name{
+        font-size: 1.5rem;
+    }
+
+    .canvas_price{
+        font-size: 1.2rem;
+    }
+
     .last_page_wrapper{
         display: grid;
         grid-template-columns: repeat(1fr,12);
+        gap: 1rem;
 
     }
 
@@ -33,6 +44,10 @@
         grid-column: 2/2;
         
 
+    }
+
+    .cartsum{
+        margin-bottom: 0;
     }
 
     

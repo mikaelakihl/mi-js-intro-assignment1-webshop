@@ -305,37 +305,32 @@ function printTotalCartOrderSum() {
 
   // ------- live uppdatering av totalsumman i header -----------------------
 
-  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
+  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)} kr</span>`;
 
 }
 
 
-let animationTimeout = setTimeout(addUpdatedCartDifference, 1000 * 20);
+// let animationTimeout = setTimeout(addUpdatedCartDifference, 1000 * 20);
 
-  let previousCanvasAmount = 0;
+//   let previousCanvasAmount = 0;
 
-  function addUpdatedCartDifference (){
+//   function addUpdatedCartDifference (){
 
-    if(orderedCanvasAmount > previousCanvasAmount){
-      liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
+//     if(orderedCanvasAmount > previousCanvasAmount){
+//       liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
       
-      setTimeout(() => {
-        liveUpdatedPrice.classList.remove('liveUpdatedPriceAnimation');
-      }, 2000);
-    }
-  //  if (orderedCanvasAmount > 0){
-  //   liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
-  //  }
-
-  // }
-  previousCanvasAmount = orderedCanvasAmount
+//       setTimeout(() => {
+//         liveUpdatedPrice.classList.remove('liveUpdatedPriceAnimation');
+//       }, 2000);
+//     }
+ 
+//   previousCanvasAmount = orderedCanvasAmount
 
   
  
   
-}
-addUpdatedCartDifference();
-
+// }
+// addUpdatedCartDifference();
 
 printTotalCartOrderSum();
 
@@ -853,7 +848,7 @@ function sendOrderForm (e){
 
   orderConfirmation.innerHTML = `
   <h3>Tack för att du handlar hos oss!</h3>
-  <p>Totalbelopp: ${totalShippingAndOrderSum}</p>
+  <p>Totalbelopp: ${totalShippingAndOrderSum} kr</p>
   <p>Beräknad leveransdatum är: ${formattedDeliveryDate} </p>
   `;
 }
