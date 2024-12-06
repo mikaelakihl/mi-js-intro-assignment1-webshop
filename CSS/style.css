@@ -6,6 +6,8 @@
 
 body {
   background-color: #92a5f7;
+  color: black;
+  font-family: "Playfair Display", serif;
 }
 
 /*--------Header----------*/
@@ -22,13 +24,15 @@ body {
 
 h1 {
   font-size: 1.5rem;
+  font-family: "Berkshire Swash", serif;
+  margin-left: 1rem;
 }
 
-.header_h1 :nth-child(1) {
+.header_h1:nth-child(1) {
   grid-column: 1/2;
 }
 
-.header_nav :nth-child(2) {
+.header_nav:nth-child(2) {
   grid-column: 2/2;
 }
 
@@ -60,6 +64,12 @@ h1 {
   margin-bottom: 4px;
   background-color: #41496e;
   border-radius: 1rem;
+}
+
+.update_effect {
+  font-size: 1.5rem;
+  transition: font-size 0.2s ease;
+  transform: matrix(30deg);
 }
 
 /* --------Header slutar------- */
@@ -125,6 +135,9 @@ main {
   background-color: white;
 }
 
+section .canvas_name {
+  font-family: "Berkshire Swash", serif;
+}
 section img {
   width: 180px;
   border: solid rgb(255, 255, 255) 3px;
@@ -161,7 +174,8 @@ section .plus {
 }
 .cartsum .form_button_single {
   width: 70px;
-  background-color: #92a5f7;
+  height: 25px;
+  background-color: #41496e;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -189,12 +203,14 @@ section .plus {
 .sort_section .sort_button_style {
   background-color: #41496e;
   border: none;
-  border-radius: 0.5rem;
-  height: 20px;
+  border-radius: 1rem;
+  height: 25px;
   color: white;
+  padding: 0.2rem;
 }
 .sort_section .sort_rating_special {
   margin-left: 0.5rem;
+  width: 80px;
 }
 .sort_section .sort_category_style {
   -webkit-appearance: none;
@@ -202,17 +218,25 @@ section .plus {
           appearance: none;
   background-color: #41496e;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   text-align: center;
-  height: 20px;
+  height: 25px;
   margin-left: 0.5rem;
+  padding: 0.2rem;
   color: white;
+  width: 70px;
 }
 .sort_section .sort_category_style:hover {
   background-color: #92a5f7;
 }
 .sort_section .sort_button_style:hover {
   background-color: #92a5f7;
+}
+
+.style_link {
+  text-decoration: none;
+  color: white;
+  width: 70px;
 }
 
 .form_section h2 {
@@ -231,7 +255,7 @@ section .plus {
   margin-top: 0.5rem;
 }
 .form_section form .form_input {
-  border: 1px solid #92a5f7;
+  border: 1px solid #41496e;
   border-radius: 1rem;
 }
 .form_section form span {
@@ -243,13 +267,31 @@ section .plus {
 }
 .form_section form .form_button .form_button_single {
   width: 70px;
-  background-color: #92a5f7;
+  height: 25px;
+  background-color: #41496e;
   border: none;
   color: white;
   border-radius: 1rem;
 }
+.form_section form .form_button input.form_button_single:disabled {
+  background-color: rgba(146, 165, 247, 0.608);
+}
+.form_section form .form_radio {
+  background-color: red;
+}
 .form_section form .form_checkbox {
   display: flex;
+}
+.form_section form .error_messages {
+  color: red;
+  border: solid red 1px;
+  padding-left: 1rem;
+  width: 300px;
+  margin-top: 1rem;
+}
+.form_section form .error_message_starfield {
+  width: 380px;
+  font-size: 1rem;
 }
 
 .form_payment_options {
@@ -272,11 +314,7 @@ section .plus {
   width: 70px;
 }
 
-.invoice_hidden {
-  display: none;
-}
-
-.card_hidden {
+.hidden {
   display: none;
 }
 
@@ -303,7 +341,7 @@ footer a {
 
 @media screen and (min-width: 750px) {
   h1 {
-    font-size: 2rem;
+    font-size: 2.3rem;
   }
   .cartSectionOpen {
     top: 5rem;
@@ -331,5 +369,41 @@ footer a {
   }
   img {
     margin-bottom: auto;
+  }
+}
+@media screen and (min-width: 1250px) {
+  h1 {
+    font-size: 3rem;
+  }
+  main {
+    margin-top: 150px;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+  section img {
+    width: 300px;
+  }
+  section .cartOrderSumImg {
+    width: 180px;
+  }
+  .canvas_name {
+    font-size: 1.5rem;
+  }
+  .canvas_price {
+    font-size: 1.2rem;
+  }
+  .last_page_wrapper {
+    display: grid;
+    grid-template-columns: repeat(1fr, 12);
+    gap: 1rem;
+  }
+  .last_page_left_item {
+    grid-column: 1/2;
+  }
+  .last_page_right_item {
+    grid-column: 2/2;
+  }
+  .cartsum {
+    margin-bottom: 0;
   }
 }/*# sourceMappingURL=style.css.map */

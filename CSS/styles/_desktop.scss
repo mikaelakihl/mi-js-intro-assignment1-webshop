@@ -1,5 +1,62 @@
 @media screen and (min-width: 1250px){
 
+   
+
+    h1{
+        font-size: 3rem;
+        
+    }
+
+    main{
+        margin-top: 150px;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+    section{
+        
+        img{
+        width: 300px;
+    }
+
+    .cartOrderSumImg{
+        width: 180px;
+    }
+
+    }
+
+    .canvas_name{
+        font-size: 1.5rem;
+    }
+
+    .canvas_price{
+        font-size: 1.2rem;
+    }
+
+    .last_page_wrapper{
+        display: grid;
+        grid-template-columns: repeat(1fr,12);
+        gap: 1rem;
+
+    }
+
+    .last_page_left_item{
+        grid-column: 1/2;
+        // border-radius: 2px 2px 5px 2px;
+    }
+
+    .last_page_right_item{
+        grid-column: 2/2;
+        
+
+    }
+
+    .cartsum{
+        margin-bottom: 0;
+    }
+
+    
+    
+
     // body {
     //     // background-color: greenyellow;
 

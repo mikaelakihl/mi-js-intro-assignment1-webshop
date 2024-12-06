@@ -18,7 +18,7 @@ const canvas = [
       url: "assets/caravan_dolphin.png",
       width: 750,
       height: 918,
-      alt: "kommer sen",
+      alt: "Porträtt av en delfin i solnedgången som drar en van under vattnet vars tak består av en mini ö.",
     },
   },
 
@@ -33,7 +33,7 @@ const canvas = [
       url: "assets/no_one_is_captain_but_you.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av två sträckgubbar vars huvud består av ett hjärta och en hjärna. De vandrar på en väg hand i hand som sedan går skilda riktningar. ",
     },
   },
 
@@ -48,7 +48,7 @@ const canvas = [
       url: "assets/djungle_2.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av olika djungeldjur i en djungel",
     },
   },
 
@@ -63,7 +63,7 @@ const canvas = [
       url: "assets/flysland.png",
       width: 950,
       height: 1284,
-      alt: "kommersen",
+      alt: "Porträtt av en svävande ö med en blå molnig himmel. På ön finns ett träd, en parkbänk och ett vattenfall",
     },
   },
 
@@ -78,7 +78,7 @@ const canvas = [
       url: "assets/greek_mytology.png",
       width: 891,
       height: 1260,
-      alt: "kommer sen",
+      alt: "Porträtt av en staty i form av en ung kvinnas kropp. Från halsen växer det ut 5 olika slags blommor.",
     },
   },
 
@@ -93,7 +93,7 @@ const canvas = [
       url: "assets/hundred_acre_woods.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av Nalle Puh och hans vänner på ett rave i Sjumilaskogen. ",
     },
   },
 
@@ -108,7 +108,7 @@ const canvas = [
       url: "assets/lighthead.png",
       width: 1060,
       height: 1500,
-      alt: "kommer sen",
+      alt: "Porträtt av en halvkroppskvinna med rosa t-shirt vars huvud är ersatt med en stor glödlampa. Inuti glödlampan finns en färgexplosion i form av en hjärna",
     },
   },
 
@@ -123,7 +123,7 @@ const canvas = [
       url: "assets/little_mermaid.png",
       width: 1000,
       height: 707,
-      alt: "kommer sen",
+      alt: "Landskapsbild av ett badrum vars utsikt från fönstrerna är under vattenytan och på botten finns lilla sjöjunfrun. ",
     },
   },
 
@@ -138,7 +138,7 @@ const canvas = [
       url: "assets/milo_and_titch.png",
       width: 1000,
       height: 707,
-      alt: "kommer senare",
+      alt: "Landskapsbild av Lilo och Stitch som firar Stich födelsedag på semester med deras van vid havet",
     },
   },
 
@@ -153,7 +153,7 @@ const canvas = [
       url: "assets/ted.png",
       width: 800,
       height: 1000,
-      alt: "kommer senare",
+      alt: "Porträtt av en Nallebjörn som sitter på en sten efter att han har hittat magiska svampar i skogen.",
     },
   },
 ];
@@ -167,17 +167,27 @@ const additionalTotalCartOrderSum = document.querySelector(
 
 const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
-const today = new Date();
+const today = new Date(); // Jag ska lösa detta inom kort
 
-const itsMonday = today.getDay() === 1;
+const itsMonday = today.getDay() === 3;
 const itsFriday = today.getDay() === 5;
 const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
-//////////////////////////////////////////////Header//////////////////////////////////////////
+const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
 
-//Lägger till clickevent på varukorgens knapp
+
+let canvasTotalPriceSum = 0;
+let ShippingSum = 0;
+let totalShippingAndOrderSum = 0;
+
+const emailError = document.querySelector('#emailError');
+console.log(emailError);
+
+
+
+//----------Lägger till clickevent på varukorgens knapp----------------
 
 cartBtn.addEventListener("click", handleClick);
 
@@ -185,32 +195,26 @@ function handleClick(e) {
   cartSection.classList.toggle("cartSectionOpen");
 }
 
-function canvasRating(rating) {
-  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
-  let html = "";
-  for (let i = 0; i < Math.floor(rating); i++) {
-    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
-  }
-  if (halfRating) {
-    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
-  }
-  return html;
-}
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
 //------------------------------------------------------------------------------------------------
 
 //---------- Varukorgen -------------------------
+let orderedCanvasAmount = 0;
 
 function printTotalCartOrderSum() {
+  
   totalCartOrderSum.innerHTML = "";
-
+  let htmlString = "";
   let sum = 0;
+  
   let message = "";
   let priceIncrease = getPriceMultiplier();
 
   canvas.forEach((canvas) => {
+    orderedCanvasAmount += canvas.amount;
+
     if (canvas.amount > 0) {
       let canvasPrice = canvas.price;
       if (canvas.amount >= 10) {
@@ -218,7 +222,7 @@ function printTotalCartOrderSum() {
       }
       const adjustedCanvasPrice = Math.round(canvasPrice * priceIncrease);
       sum += canvas.amount * adjustedCanvasPrice;
-      totalCartOrderSum.innerHTML += `
+      htmlString += `
       <article class="cartOrderSumContainer">
       <img class="cartOrderSumImg" src="${canvas.img.url}">
       <div class="cartOrderSumWrapper">
@@ -230,69 +234,162 @@ function printTotalCartOrderSum() {
       </article>
       
       `;
+
+      
+
     }
+
+    
+
   });
 
+  canvasTotalPriceSum = Math.round(sum);
+  ShippingSum = Math.round(25 + (0.1 * sum));
+  totalShippingAndOrderSum = canvasTotalPriceSum + ShippingSum;
+
+  totalCartOrderSum.innerHTML = htmlString;
+  additionalTotalCartOrderSum.innerHTML = htmlString;
+
+  //-----------SpecialRegler-----------------------------
+
+  //------------ Måndagsrabatten 10% ----------------------
   if (sum <= 0) {
     return;
   }
 
-  if (today.getDay() === 1) {
+  if (today.getDay() === 3) {
     sum *= 0.9;
     message += "<p>Måndagsrabatt: 10% på hela beställningen</p>";
     canvas.price * canvas.amount;
   }
+ 
+  // ---------------------- 15+ antal = Gratis Frakt ---------------
 
-  //På måndagar innan kl. 10 ges 10 % rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
-  //På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl. 03.00 tillkommer ett helgpåslag på 15 % på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priset ska bara vara högre i "utskriften" av munkarna.
-  //Om kunden har beställt minst 10 munkar av samma sort, ska munkpriset för just denna munksort rabatteras med 10 %
+  
 
-  console.log(printTotalCartOrderSum);
+  if (orderedCanvasAmount > 15) { 
+    ShippingSum = 0;
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(
-    sum
-  )} kr</span>`; //Skriver ut totalsumman av antalet
+  } 
+
+  
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
+
+
+
+  // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
+
+  // if (sum > 8000){
+  //   invoiceRadio.classList.add('hidden');
+  //   invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
+    
+  // } else {
+  //   invoiceRadio.classList.remove('hidden');
+  // }
+
+  // const invoiceHidden = document.querySelector('#invoiceHidden');
+
+  // if (sum > 8000){
+  //   invoiceHidden.classList.add('hidden');
+  // } 
+
+
+  // ------------ Skriver ut totalsumman i varukorgen ---------------------
+  
+
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
+
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
+
+  // ------- live uppdatering av totalsumman i header -----------------------
+
+  liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)} kr</span>`;
+
+  updateCartPriceinHeaderEffect();
+
 }
+
+
+// let animationTimeout = setTimeout(addUpdatedCartDifference, 1000 * 20);
+
+//   let previousCanvasAmount = 0;
+
+//   function addUpdatedCartDifference (){
+
+//     if(orderedCanvasAmount > previousCanvasAmount){
+//       liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
+      
+//       setTimeout(() => {
+//         liveUpdatedPrice.classList.remove('liveUpdatedPriceAnimation');
+//       }, 2000);
+//     }
+ 
+//   previousCanvasAmount = orderedCanvasAmount
+
+  
+ 
+  
+// }
+// addUpdatedCartDifference();
 
 printTotalCartOrderSum();
 
+function updateCartPriceinHeaderEffect(){
+  
+  liveUpdatedPrice.classList.add('update_effect');
+
+  setTimeout(removeUpdateEffect, 1000);
+
+};
+
+function removeUpdateEffect(){
+  liveUpdatedPrice.classList.remove('update_effect');
+};
+
+// updatePriceInHeader();
+
+
 // -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
 
-function additionalPrintTotalCartOrderSum() {
-  additionalTotalCartOrderSum.innerHTML = "";
+// function additionalPrintTotalCartOrderSum() {
+//   additionalTotalCartOrderSum.innerHTML = "";
 
-  let sum = 0;
-  let message = "";
+//   let sum = 0;
+//   let message = "";
 
-  canvas.forEach((canvas) => {
-    if (canvas.amount > 0) {
-      sum += canvas.amount * canvas.price;
-      additionalTotalCartOrderSum.innerHTML += `
-     <article class="cartOrderSumContainer">
-      <img class="cartOrderSumImg" src="${canvas.img.url}">
-      <div class="cartOrderSumWrapper">
-        <span>${canvas.name}</span> 
-        <span>${canvas.amount} st </span> 
-        <span>${canvas.price} kr </span> 
-        </div>
-        <hr class="cartOrderSumLine" width="100%" size="2" noshade>
-      </article>
+//   canvas.forEach((canvas) => {
+//     if (canvas.amount > 0) {
+//       sum += canvas.amount * canvas.price;
+//       additionalTotalCartOrderSum.innerHTML += `
+//      <article class="cartOrderSumContainer">
+//       <img class="cartOrderSumImg" src="${canvas.img.url}">
+//       <div class="cartOrderSumWrapper">
+//         <span>${canvas.name}</span> 
+//         <span>${canvas.amount} st </span> 
+//         <span>${canvas.price} kr </span> 
+//         </div>
+//         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
+//       </article>
    
-      `;
-    }
-  });
+//       `;
+//     }
+//   });
 
-  console.log(additionalPrintTotalCartOrderSum);
+//   console.log(additionalPrintTotalCartOrderSum);
 
-  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
-}
+//   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
+// }
 
-additionalPrintTotalCartOrderSum();
+// additionalPrintTotalCartOrderSum();
 
-///////////////////////////////////Main/////////////////////////////////////////////////////
 
-//Lägger till funktionen som gör att man kan höja/sänka antalet via minus och plus knapparna
+
+
+
+
+//------Höja/sänka antalet med plus och minus knapparna-------- 
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
@@ -311,8 +408,6 @@ function increaseAmount(e) {
   printCanvas();
 }
 
-//Skriver ut arrayen till HTML som är lagrad i const Canvas
-
 function getPriceMultiplier() {
   if (
     (itsFriday && currentHour >= 15) ||
@@ -325,6 +420,8 @@ function getPriceMultiplier() {
   return 1;
 }
 
+//-------Skriver ut arrayen till HTML som är lagrad i const Canvas---------------
+
 let filteredCanvas = [...canvas]; // skapar kopia av originalarray
 
 function printCanvas() {
@@ -336,10 +433,10 @@ function printCanvas() {
     const adjustedCanvasPrice = Math.round(canvas.price * priceIncrease);
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
-          <img src="${canvas.img.url}">
+          <img src="${canvas.img.url}" alt="${canvas.img.alt}>
           <div class="canvas-wrapper">
-          <figcaption>${canvas.name}</figcaption>
-          <div>${adjustedCanvasPrice} kr</div>
+          <figcaption class="canvas_name">${canvas.name}</figcaption>
+          <div class="canvas_price">${adjustedCanvasPrice} kr</div>
           <div>${canvasRating(canvas.rating)}</div>
           <div class="pmBtnsContainer pm_btns_container">
             <button class="minus" data-id="${index}">-</button>
@@ -354,7 +451,7 @@ function printCanvas() {
   const minusBtns = document.querySelectorAll("button.minus");
   const plusBtns = document.querySelectorAll("button.plus");
 
-  //Lägger till clickevent för plus och minus knappar
+  //--------Click event för plus och minus knappar ----------------
 
   minusBtns.forEach((btn) => {
     btn.addEventListener("click", decreaseAmount);
@@ -365,10 +462,23 @@ function printCanvas() {
   });
 
   printTotalCartOrderSum();
-  additionalPrintTotalCartOrderSum();
+  
+  // additionalPrintTotalCartOrderSum();
 }
 
 printCanvas();
+
+function canvasRating(rating) {
+  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
+  let html = "";
+  for (let i = 0; i < Math.floor(rating); i++) {
+    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
+  }
+  if (halfRating) {
+    html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
+  }
+  return html;
+}
 
 //------------------------------------------------------------------------------------------------
 //-------------------------Sorterar produkter i array -------------
@@ -407,14 +517,14 @@ function handleSortbyNameClick(e) {
     return canvas1.name === canvas2.name
       ? 0
       : canvas1.name < canvas2.name
-      ? -1
-      : 1;
+        ? -1
+        : 1;
   });
 
   printCanvas();
 }
 
-//---------- Sorterar produkter via kategori -------------------------  TOOO DOOOO: göra om koden så den fungerar i chrome
+//---------- Sorterar produkter via kategori -------------------------  TO DO: göra om koden så den fungerar i chrome
 
 sortByCategorySelectAll.addEventListener(
   "click",
@@ -485,7 +595,7 @@ function handleSortbyRatingClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
     return canvas2.rating - canvas1.rating;
 
-    // return canvas1.rating === canvas2.rating ? 0 : canvas1.rating < canvas2.rating ? -1 : 1;
+    
   });
 
   printCanvas();
@@ -507,60 +617,244 @@ function changePriceRange() {
   printCanvas();
 }
 
+
 //------------------------------------------------------------------------------------------------
 //-------------------------Kort och faktura betalning -------------
 //------------------------------------------------------------------------------------------------
 
-// // const cardInvoiceBtns = Array.from(document.querySelectorAll('button[name="payment-option"]'));
-
-// // cardInvoiceBtns.forEach(paymentOptionbtns => {
-// //   paymentOptionbtns.addEventListener('change',switchPaymentMethod);
-// // });
-
-// // function switchPaymentMethod(){
-// //   console.log('test');
-// }
-
-const invoiceBtn = document.querySelector("#invoiceBtn");
-const cardBtn = document.querySelector("#cardBtn");
-const formPaymentOptionsInvoice = document.querySelector(
-  "#formPaymentOptionsInvoice"
+const cardInvoiceRadios = Array.from(
+  document.querySelectorAll('input[name="payment_option"]')
 );
-const formPaymentOptionsCard = document.querySelector(
-  "#formPaymentOptionsCard"
-);
+console.log(cardInvoiceRadios);
 
-console.log(
-  invoiceBtn,
-  cardBtn,
-  formPaymentOptionsCard,
-  formPaymentOptionsInvoice
-);
 
-invoiceBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formPaymentOptionsInvoice.classList.remove("invoice_hidden");
-  formPaymentOptionsCard.classList.add("card_hidden");
-});
+const inputs = [
+  document.querySelector("#creditCardNumber"),
+  document.querySelector("#creditCardYear"),
+  document.querySelector("#creditCardMonth"),
+  document.querySelector("#creditCardCvc"),
+  document.querySelector("#personalId"),
+  document.querySelector('#firstName'),
+  document.querySelector('#lastName'),
+  document.querySelector('#adress'),
+  document.querySelector('#zipCode'),
+  document.querySelector('#city'),
+  document.querySelector('#phoneNumber'),
+  document.querySelector('#email')
+  
+];
 
-cardBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formPaymentOptionsCard.classList.remove("card_hidden");
-  formPaymentOptionsInvoice.classList.add("invoice_hidden");
-});
+const invoiceRadio = document.querySelector("#invoice");
+console.log(invoiceRadio);
+const cardRadio = document.querySelector("#card");
+const formSubmitBtn = document.querySelector("#formSubmitBtn");
 
-const personalId = document.querySelector("#personalId");
-personalId.addEventListener("change", checkPersonalIdNumber);
+let selectedPaymentOption = "card";
+
+//---------- Regex -------------------------
+
+
+const emailRegEx = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+
+const phoneNumberRegEx = new RegExp(/^((([+]46)\s*((1|7)[0236]))|(0(1|7)[0236]))\s*(([-]|())\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*|([0-9]\s*([-]|()))\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*)$/);
 
 const personalIdRegex = new RegExp(
   /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
 );
+const creditCardNumberRegEx = new RegExp(
+  /^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/
+); // Mastercard
 
-function checkPersonalIdNumber() {
-  const checkPersonalIdNumberResult = personalIdRegex.exec(personalId.value);
-  if (checkPersonalIdNumberResult === null) {
+// ------------------Eventlyssnare-----------------------
+
+inputs.forEach((input) => {
+  input.addEventListener("focusout", activateFormOrderBtn);
+  input.addEventListener("change", activateFormOrderBtn);
+});
+
+cardInvoiceRadios.forEach((radioBtn) => {
+  radioBtn.addEventListener("change", switchPaymentMethod);
+});
+
+//---------- Togglar mellan kort och faktura -------------------------
+
+function switchPaymentMethod(e) {
+  if (canvasTotalPriceSum > 800){
+    invoiceRadio.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
+    // invoiceMoreThenEightHundredHidden.innerHTML = ;
+  } 
+
+    invoiceRadio.classList.toggle("hidden");
+    cardRadio.classList.toggle("hidden");
+    selectedPaymentOption = e.target.value;
+    console.log(selectedPaymentOption);
+}
+
+function checkIfPersonalIdNumberIsValid() {
+  return personalIdRegex.exec(personalId.value);
+}
+
+//---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
+
+const phoneNumberError = document.querySelector('#phoneNumberError');
+const starfieldError = document.querySelector('#starFieldError');
+const personalIdError = document.querySelector('#personalIdError');
+
+
+function activateFormOrderBtn() {
+  formSubmitBtn.setAttribute("disabled", "");
+
+  
+
+  if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
+    console.warn('Vänligen fyll i alla obligatoriska fält');
+    starfieldError.innerHTML = `<span class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</span>`
+    return;
+  } else {
+    starfieldError.innerHTML = '';
+  }
+
+  if (phoneNumberRegEx.exec(phoneNumber.value) === null){
+    console.warn('Mobilnumret är inte validerat');
+    phoneNumberError.innerHTML = `<span class="error_messages">Ogiltigt telefonnummer</span>`;
+    return;
+  } else {
+    phoneNumberError.innerHTML = ``;
+  }
+
+  if (emailRegEx.exec(email.value) === null) {
+  //  console.warn('Email är inte validerad');
+   emailError.innerHTML = `<span class="error_messages">Ogiltig emailadress</span>`;
+   return;
+  } else {
+    emailError.innerHTML = ``;
+  }
+ 
+  if (
+    selectedPaymentOption === "invoice" &&
+    !checkIfPersonalIdNumberIsValid()
+  ) {
     return;
   }
 
-  console.log(checkPersonalIdNumberResult);
+  // if (personalIdRegex.exec(personalId.value) === personalIdRegex){
+  //     personalIdError.innerHTML = `<span class="error_messages">Ogiltigt personnummer</span>`;
+  //     return;
+  //   } else {
+  //     personalIdError.innerHTML = ``;
+    
+  // }
+
+  if (selectedPaymentOption === "card") {
+    // -------- Kollar kortnummer--------
+    if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
+      console.warn("kreditkortet är inte validerat");
+      return;
+    }
+    //--------- Kollar kort årtal-----
+    let year = Number(creditCardYear.value);
+    const today = new Date();
+    const shortYear = Number(String(today.getFullYear()).substring(2));
+    if (year > shortYear + 2 || year < shortYear) {
+      console.warn("År är inte validerad");
+      return;
+    }
+
+    // ------ Kollar Månad -----
+
+    if (creditCardMonth.value < 1 || creditCardMonth.value > 12) {
+      console.warn('Månad är inte validerad');
+      return;
+  }
+
+    //----- Kollar CVC kod--------
+
+    if (creditCardCvc.value.length !== 3) {
+      console.warn("CVC är inta validerad");
+      return;
+    }
+  }
+
+  formSubmitBtn.removeAttribute("disabled");
 }
+
+
+// 
+
+//----------------------Återställer formuläret efter 15 min ----------------------
+
+let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
+
+const orderForm = document.querySelector('#orderForm');
+
+const resetFormBtn = document.querySelector('#formResetBtn');
+
+function cleanFormAndTimeOutMessage(){
+  
+  if (slownessTimeout){
+    orderForm.reset();
+    // canvasTotalPriceSum.length = 0;
+    alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
+  }
+  
+  
+}
+
+// ---------------- Rensa formulär--------
+
+resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
+console.log(resetFormBtn);
+
+function resetFormAndCanvasAmount(){
+  orderForm.reset();
+  canvas.forEach((canvas) => { 
+    canvas.amount = 0;
+  });
+  liveUpdatedPrice.innerHTML = 0;
+
+ (console.log('du har klickat på knappen'));
+
+ printTotalCartOrderSum();
+ printCanvas();
+
+}
+
+
+// ---------- Återställer formulär och antalet produkter ------- TODO
+
+// function resetFormAndCanvasAmount() {
+//   orderForm.reset();
+
+//   if (canvas.amount > 0){
+//     totalCartOrderSum.innerHTML='' ;
+//   } 
+// }
+
+// Function GetDeliveryDate (){
+//   Const today = New Date();
+
+// }
+
+
+formSubmitBtn.addEventListener('click', sendOrderForm);
+console.log(formSubmitBtn);
+
+function sendOrderForm (e){
+  e.preventDefault();
+
+  const today = new Date();
+  const deliveryDate = new Date(today);
+  deliveryDate.setDate(deliveryDate.getDate() + 5);
+
+  const formattedDeliveryDate = deliveryDate.toLocaleDateString('sv-SE');
+  
+  const orderConfirmation = document.querySelector('#orderConfirmation');
+
+
+  orderConfirmation.innerHTML = `
+  <h3>Tack för att du handlar hos oss!</h3>
+  <p>Totalbelopp: <b>${totalShippingAndOrderSum} kr</b></p>
+  <p>Beräknad leveransdatum är: <b>${formattedDeliveryDate}</b> </p>
+  `;
+}
+  

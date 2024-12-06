@@ -4,6 +4,8 @@
 
 body {
   background-color: $primary-color;
+  color: black;
+  font-family: $text-font;
 }
 
 /*--------Header----------*/
@@ -17,17 +19,25 @@ body {
   grid-template-columns: repeat(2, 1fr);
   left: 0;
   z-index: 3;
+  //hej
 }
 
 h1 {
   font-size: 1.5rem;
+  font-family: $heading-font;
+  margin-left: 1rem;
+  // text-shadow: 
+  // 1px 1px 0 #ffffff, /* Justera skuggornas riktning och färg */
+  // -1px -1px 0 #ffffff,
+  // 1px -1px 0 #ffffff,
+  // -1px 1px 0 #ffffff;
 }
 
-.header_h1 :nth-child(1) {
+.header_h1:nth-child(1) {
   grid-column: 1/2;
 }
 
-.header_nav :nth-child(2) {
+.header_nav:nth-child(2) {
   grid-column: 2/2;
 }
 
@@ -63,6 +73,17 @@ h1 {
     border-radius: 1rem;
   }
 }
+
+.update_effect{
+font-size:  1.5rem;
+transition: font-size 0.2s ease;
+transform: matrix(30deg);
+}
+
+// .liveUpdatedPriceAnimation{
+//   background-color: red;
+// }
+
 
 /* --------Header slutar------- */
 
@@ -131,6 +152,15 @@ main {
 }
 
 section {
+
+  .canvas_name{
+    font-family: $heading-font;
+  }
+
+  // .canvas_price{
+  //   font-family: $text-font;
+  // }
+
   img {
     width: 180px;
     border: solid rgb(255, 255, 255) 3px;
@@ -174,11 +204,16 @@ section {
 
   .form_button_single {
     width: 70px;
-    background-color: $primary-color;
+    height: 25px;
+    background-color: $secondary-color;
     border: none;
     color: $white-color;
     border-radius: 1rem;
   }
+
+
+
+
 }
 
 .sort_section {
@@ -204,26 +239,30 @@ section {
   .sort_button_style {
     background-color: $secondary-color;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     // box-shadow: 1px 1px 1px 1px $secondary-color;
-    height: 20px;
+    height: 25px;
     color: $white-color;
+    padding: 0.2rem;
   }
 
   .sort_rating_special {
     margin-left: 0.5rem;
+    width: 80px;
   }
 
   .sort_category_style {
     appearance: none;
     background-color: $secondary-color;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     text-align: center;
     // box-shadow: 0px 1px 1px 0px $secondary-color;
-    height: 20px;
+    height: 25px;
     margin-left: 0.5rem;
+    padding: 0.2rem;
     color: $white-color;
+    width: 70px;
   }
 
   .sort_category_style:hover {
@@ -233,6 +272,13 @@ section {
   .sort_button_style:hover {
     background-color: $primary-color;
   }
+}
+
+.style_link{
+  text-decoration: none;
+  color: $white-color;
+  width: 70px;
+
 }
 
 .form_section {
@@ -255,7 +301,7 @@ section {
     }
 
     .form_input {
-      border: 1px solid $primary-color;
+      border: 1px solid $secondary-color;
       border-radius: 1rem;
     }
 
@@ -269,16 +315,44 @@ section {
 
       .form_button_single {
         width: 70px;
-        background-color: $primary-color;
+        height: 25px;
+        background-color: $secondary-color;
         border: none;
         color: $white-color;
         border-radius: 1rem;
       }
+
+      input.form_button_single:disabled{
+        background-color: $transparency-color-button;
+      }
+    }
+
+    .form_radio{
+      background-color: red;
     }
 
     .form_checkbox {
       display: flex;
     }
+    .error_messages{
+      color: red;
+      border: solid red 1px;
+      padding-left: 1rem;
+      width: 300px;
+      margin-top: 1rem;
+    
+
+    }
+
+    .error_message_starfield{
+      width: 380px;
+      // margin-top: 1rem;
+      font-size: 1rem;
+      // padding-left: 1rem;
+      
+    }
+
+
   }
 }
 
@@ -303,13 +377,22 @@ section {
   }
 }
 
-.invoice_hidden {
+.hidden{
   display: none;
 }
 
-.card_hidden {
-  display: none;
-}
+// .order_confirmation{
+
+
+// }
+
+// .invoice_hidden {
+//   display: none;
+// }
+
+// .card_hidden {
+//   display: none;
+// }
 
 footer {
   padding-top: 1px;
