@@ -362,6 +362,9 @@ footer a {
   section img {
     width: 300px;
   }
+  section .cartOrderSumImg {
+    width: 180px;
+  }
   .canvas_name {
     font-size: 1.5rem;
   }
