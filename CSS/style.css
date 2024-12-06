@@ -274,9 +274,14 @@ section .plus {
 }
 .form_section form .error_messages {
   color: red;
+  border: solid red 1px;
+  padding-left: 1rem;
+  width: 300px;
+  margin-top: 1rem;
 }
 .form_section form .error_message_starfield {
-  width: 400px;
+  width: 380px;
+  font-size: 1rem;
 }
 
 .form_payment_options {
