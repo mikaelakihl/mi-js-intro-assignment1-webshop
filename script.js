@@ -433,7 +433,7 @@ function printCanvas() {
     const adjustedCanvasPrice = Math.round(canvas.price * priceIncrease);
     canvasListSection.innerHTML += `
       <figure class="canvas-class">
-          <img src="${canvas.img.url}">
+          <img src="${canvas.img.url}" alt="${canvas.img.alt}>
           <div class="canvas-wrapper">
           <figcaption class="canvas_name">${canvas.name}</figcaption>
           <div class="canvas_price">${adjustedCanvasPrice} kr</div>
