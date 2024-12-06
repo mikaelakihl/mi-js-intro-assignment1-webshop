@@ -167,7 +167,7 @@ const additionalTotalCartOrderSum = document.querySelector(
 
 const liveUpdatedPrice = document.querySelector("#liveUpdatedPrice");
 
-const today = new Date(); // om jag flyttar bort den här så har nedan variabler ingen referens, ska de vara dubbletter? en i funktion och en global? 
+const today = new Date(); // Jag ska lösa detta inom kort
 
 const itsMonday = today.getDay() === 3;
 const itsFriday = today.getDay() === 5;
