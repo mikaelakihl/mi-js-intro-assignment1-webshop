@@ -853,8 +853,8 @@ function sendOrderForm (e){
 
   orderConfirmation.innerHTML = `
   <h3>Tack för att du handlar hos oss!</h3>
-  <p>Totalbelopp: ${totalShippingAndOrderSum} kr</p>
-  <p>Beräknad leveransdatum är: ${formattedDeliveryDate} </p>
+  <p>Totalbelopp: <b>${totalShippingAndOrderSum} kr</b></p>
+  <p>Beräknad leveransdatum är: <b>${formattedDeliveryDate}</b> </p>
   `;
 }
   

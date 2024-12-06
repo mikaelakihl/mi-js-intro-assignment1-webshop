@@ -204,6 +204,10 @@ section {
     color: $white-color;
     border-radius: 1rem;
   }
+
+
+
+
 }
 
 .sort_section {
@@ -309,6 +313,10 @@ section {
       input.form_button_single:disabled{
         background-color: $transparency-color-button;
       }
+    }
+
+    .form_radio{
+      background-color: red;
     }
 
     .form_checkbox {
