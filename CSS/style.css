@@ -174,7 +174,7 @@ section .plus {
 }
 .cartsum .form_button_single {
   width: 70px;
-  background-color: #92a5f7;
+  background-color: #41496e;
   border: none;
   color: white;
   border-radius: 1rem;
@@ -231,6 +231,7 @@ section .plus {
 .style_link {
   text-decoration: none;
   color: white;
+  width: 70px;
 }
 
 .form_section h2 {
@@ -249,7 +250,7 @@ section .plus {
   margin-top: 0.5rem;
 }
 .form_section form .form_input {
-  border: 1px solid #92a5f7;
+  border: 1px solid #41496e;
   border-radius: 1rem;
 }
 .form_section form span {
@@ -261,13 +262,13 @@ section .plus {
 }
 .form_section form .form_button .form_button_single {
   width: 70px;
-  background-color: #92a5f7;
+  background-color: #41496e;
   border: none;
   color: white;
   border-radius: 1rem;
 }
 .form_section form .form_button input.form_button_single:disabled {
-  background-color: rgba(146, 165, 247, 0.4980392157);
+  background-color: rgba(146, 165, 247, 0.608);
 }
 .form_section form .form_radio {
   background-color: red;

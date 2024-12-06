@@ -51,17 +51,17 @@
             width="20px"
             fill="#FFFFFF">
             <path d="m80-280 150-400h86l150 400h-82l-34-96H196l-32 96H80Zm140-164h104l-48-150h-6l-50 150Zm328 164v-76l202-252H556v-72h282v76L638-352h202v72H548ZM360-760l120-120 120 120H360ZM480-80 360-200h240L480-80Z"/></svg></button>
-        <span><select class="sort_category_style" name="kategori">
-            <option id="sortByCategorySelectAll" value="alla">Kategori</option>
-            <option id="sortByCategorySelectDisney" value="disney">Disney</option>
-            <option id="sortByCategorySelectNormal" value="normal">Normal</option>
-            <option id="sortByCategorySelectPoetic" value="poetiskt">Poetiskt</option>
-            <option id="sortByCategorySelectFuzzy" value="fuzzy">Fuzzy</option>
+        <span><select class="sort_category_style" name="kategori" aria-label="Cklick here to choose category">
+            <option id="sortByCategorySelectAll" value="alla" aria-label="Choose category all">Kategori</option>
+            <option id="sortByCategorySelectDisney" value="disney" aria-label="Choose category Disney">Disney</option>
+            <option id="sortByCategorySelectNormal" value="normal" aria-label="Choose category Normal">Normal</option>
+            <option id="sortByCategorySelectPoetic" value="poetiskt" aria-label="Choose category Poetic">Poetiskt</option>
+            <option id="sortByCategorySelectFuzzy" value="fuzzy" aria-label="Choose category Fuzzy">Fuzzy</option>
           </select></span>
         <button class="sort_button_style sort_rating_special" id="sortByRatingBtn" aria-label="Sort canvas by popularity">Populäritet</button>
         <span class="sort_price_range_container">
           <span>0 kr</span>
-          <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000">
+          <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000" aria-label="Choose price range ">
           <span id="currentRangeValue">2000 kr</span>
         </span>
       </div>
@@ -131,8 +131,8 @@
              <div class="form_payment_selector">
               <span class="form_payment">Jag betalar med: *</span>
               <span class="form_button">
-              <input type="radio" name="payment_option" class="form_radio" value="invoice">Faktura</input>
-              <input type="radio" name="payment_option" class=" form_radio" value="card" checked>Kort</input>
+              <input type="radio" name="payment_option" class="form_radio" value="invoice" aria-label="Select invoice payment">Faktura</input>
+              <input type="radio" name="payment_option" class=" form_radio" value="card" checked aria-label="Select card payment">Kort</input>
               </span>
             </div> 
 
@@ -170,11 +170,11 @@
           <!-- </div> -->
           <div>
             <div class="form_checkbox">
-              <input type="checkbox">
+              <input type="checkbox" aria-label="Click here if you would like to accept our processing of your personal data">
               <p>Klicka här för att godkänna behandling av personuppgifter</p>
             </div>
             <div class="form_checkbox">
-              <input type="checkbox" checked>
+              <input type="checkbox" checked aria-label="Let this be checked if you accept our newsletters">
               <p>Klicka här om du vill ta del av våra nyhetsbrev</p>
             </div>
           </div>

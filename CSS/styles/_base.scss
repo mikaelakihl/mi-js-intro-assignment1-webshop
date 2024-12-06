@@ -199,7 +199,7 @@ section {
 
   .form_button_single {
     width: 70px;
-    background-color: $primary-color;
+    background-color: $secondary-color;
     border: none;
     color: $white-color;
     border-radius: 1rem;
@@ -267,6 +267,7 @@ section {
 .style_link{
   text-decoration: none;
   color: $white-color;
+  width: 70px;
 
 }
 
@@ -290,7 +291,7 @@ section {
     }
 
     .form_input {
-      border: 1px solid $primary-color;
+      border: 1px solid $secondary-color;
       border-radius: 1rem;
     }
 
@@ -304,7 +305,7 @@ section {
 
       .form_button_single {
         width: 70px;
-        background-color: $primary-color;
+        background-color: $secondary-color;
         border: none;
         color: $white-color;
         border-radius: 1rem;
