@@ -199,6 +199,7 @@ section {
 
   .form_button_single {
     width: 70px;
+    height: 25px;
     background-color: $secondary-color;
     border: none;
     color: $white-color;
@@ -233,26 +234,30 @@ section {
   .sort_button_style {
     background-color: $secondary-color;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     // box-shadow: 1px 1px 1px 1px $secondary-color;
-    height: 20px;
+    height: 25px;
     color: $white-color;
+    padding: 0.2rem;
   }
 
   .sort_rating_special {
     margin-left: 0.5rem;
+    width: 80px;
   }
 
   .sort_category_style {
     appearance: none;
     background-color: $secondary-color;
     border: none;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     text-align: center;
     // box-shadow: 0px 1px 1px 0px $secondary-color;
-    height: 20px;
+    height: 25px;
     margin-left: 0.5rem;
+    padding: 0.2rem;
     color: $white-color;
+    width: 70px;
   }
 
   .sort_category_style:hover {
@@ -305,6 +310,7 @@ section {
 
       .form_button_single {
         width: 70px;
+        height: 25px;
         background-color: $secondary-color;
         border: none;
         color: $white-color;
