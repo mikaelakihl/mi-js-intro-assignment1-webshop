@@ -307,6 +307,8 @@ function printTotalCartOrderSum() {
 
   liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)} kr</span>`;
 
+  updateCartPriceinHeaderEffect();
+
 }
 
 
@@ -334,15 +336,17 @@ function printTotalCartOrderSum() {
 
 printTotalCartOrderSum();
 
-// function updatePriceInHeader(sum){
-//   // liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)}</span>`;
-//   liveUpdatedPrice.classList.add('update_effect');
+function updateCartPriceinHeaderEffect(){
+  
+  liveUpdatedPrice.classList.add('update_effect');
 
-//   setTimeout(() => {
-//     liveUpdatedPrice.classList.remove('update_effect');
-//   }, 300);
+  setTimeout(removeUpdateEffect, 1000);
 
-// }
+};
+
+function removeUpdateEffect(){
+  liveUpdatedPrice.classList.remove('update_effect');
+};
 
 // updatePriceInHeader();
 
@@ -458,6 +462,7 @@ function printCanvas() {
   });
 
   printTotalCartOrderSum();
+  
   // additionalPrintTotalCartOrderSum();
 }
 

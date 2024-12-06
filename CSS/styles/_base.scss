@@ -69,9 +69,11 @@ h1 {
   }
 }
 
-// .update_effect{
-// color: red;
-// }
+.update_effect{
+font-size:  1.5rem;
+transition: font-size 0.2s ease;
+transform: matrix(30deg);
+}
 
 // .liveUpdatedPriceAnimation{
 //   background-color: red;

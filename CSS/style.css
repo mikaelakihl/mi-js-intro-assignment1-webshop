@@ -66,6 +66,12 @@ h1 {
   border-radius: 1rem;
 }
 
+.update_effect {
+  font-size: 1.5rem;
+  transition: font-size 0.2s ease;
+  transform: matrix(30deg);
+}
+
 /* --------Header slutar------- */
 .cart_section {
   display: none;
