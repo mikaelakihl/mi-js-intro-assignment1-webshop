@@ -260,6 +260,9 @@ section .plus {
   display: inline-block;
   width: 150px;
 }
+.form_section form .span_as_div {
+  display: block;
+}
 .form_section form .form_button {
   width: 181px;
 }

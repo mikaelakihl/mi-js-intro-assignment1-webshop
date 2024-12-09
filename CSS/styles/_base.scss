@@ -287,6 +287,10 @@ section {
       width: 150px;
     }
 
+    .span_as_div{
+      display: block;
+    }
+
     .form_button {
       width: 181px;
 
@@ -311,6 +315,8 @@ section {
     .form_checkbox {
       display: flex;
     }
+
+    
     .error_messages {
       color: red;
       border: solid red 1px;
