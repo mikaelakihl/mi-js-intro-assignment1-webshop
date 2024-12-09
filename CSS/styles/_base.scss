@@ -339,12 +339,46 @@ section {
 
 .form_payment_card {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  // grid-template-columns: repeat(2,1fr);
+  // justify-content: center;
+  // align-items: center;
+  
 
-  .form_payment_card_date {
-    width: 70px;
-  }
+//   .form_payment_card_number:nth-child(1) {
+//     grid-row: 1;
+//     grid-column: 1/span 2;
+    
+//   }
+
+//   .form_payment_card_year:nth-child(2){
+//     grid-row: 2;
+//     grid-column: 1/2;
+
+//   }
+
+//   .form_payment_card_month:nth-child(3){
+//     grid-row: 2;
+//     grid-column: 2/2;
+
+//   }
+
+//   .form_payment_card_cvc:nth-child(4){
+//     grid-row: 3;
+//     grid-column: 1/span 2;
+
+// }
+
+// .form_payment_card_month{
+//   width: 70px;
+// }
+
+// .span_block{
+//   display: flex;
+
+// }
+
 }
 
 .hidden {

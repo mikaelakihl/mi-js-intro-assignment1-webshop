@@ -173,20 +173,22 @@
             <div id="invoiceMoreThenEightHundredHidden"></div>
 
             <div class="form_payment_card" id="card">
-              <label>
+              <label class="form_payment_card_number">
                 <span>Kortnummer</span>
                 <input class="form_input" type="number" id="creditCardNumber" value="4111111111111111">
               </label>
-              <label>
-                <span>Datum</span>
-                <span>
-                  <input class="form_input form_payment_card_date" type="number" placeholder="YY"
-                    id="creditCardYear">/<input class="form_input form_payment_card_date" type="number" placeholder="MM"
-                    id="creditCardMonth">
-                </span>
+              <label class="form_payment_card_year">
+                <span>År</span>
+                <input class="form_input" type="number" placeholder="YY"
+                    id="creditCardYear">
               </label>
-              <label>
-                <span>CVC</span>
+                <label class="form_payment_card_month">
+                  <span>Månad</span>
+                  <input class="form_input" type="number" placeholder="MM"
+                    id="creditCardMonth">
+                </label>
+              <label class="form_payment_card_cvc">
+                  <span>CVC</span>
                 <input class="form_input" type="number" placeholder="000" id="creditCardCvc">
               </label>
             </div>

@@ -305,11 +305,8 @@ section .plus {
 
 .form_payment_card {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-}
-.form_payment_card .form_payment_card_date {
-  width: 70px;
+  justify-content: center;
 }
 
 .hidden {
