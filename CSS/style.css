@@ -14,7 +14,7 @@ body {
 ._header {
   top: 0;
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.379);
+  background-color: rgba(255, 255, 255, 0.3803921569);
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -83,7 +83,7 @@ h1 {
 
 .cartSectionOpen {
   display: block;
-  background-color: white;
+  background-color: #ffffff;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -123,7 +123,7 @@ h1 {
 
 main {
   margin-top: 110px;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
 }
 
 .page_design {
@@ -155,7 +155,7 @@ section .pmBtnsContainer button {
   text-decoration: none;
   background-color: #41496e;
   border: none;
-  color: white;
+  color: #ffffff;
 }
 section .pmBtnsContainer div {
   background-color: white;
@@ -177,7 +177,7 @@ section .plus {
   height: 25px;
   background-color: #41496e;
   border: none;
-  color: white;
+  color: #ffffff;
   border-radius: 1rem;
 }
 
@@ -205,7 +205,7 @@ section .plus {
   border: none;
   border-radius: 1rem;
   height: 25px;
-  color: white;
+  color: #ffffff;
   padding: 0.2rem;
 }
 .sort_section .sort_rating_special {
@@ -223,7 +223,7 @@ section .plus {
   height: 25px;
   margin-left: 0.5rem;
   padding: 0.2rem;
-  color: white;
+  color: #ffffff;
   width: 70px;
 }
 .sort_section .sort_category_style:hover {
@@ -235,7 +235,7 @@ section .plus {
 
 .style_link {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   width: 70px;
 }
 
@@ -270,7 +270,7 @@ section .plus {
   height: 25px;
   background-color: #41496e;
   border: none;
-  color: white;
+  color: #ffffff;
   border-radius: 1rem;
 }
 .form_section form .form_button input.form_button_single:disabled {
@@ -322,21 +322,22 @@ footer {
   padding-top: 1px;
   padding-left: 1rem;
   background-color: #41496e;
-  color: white;
+  color: #ffffff;
   border-radius: 10px 10px 0px 0px;
   position: fixed;
   bottom: 0;
   width: 100%;
   left: 0;
 }
-footer div {
+footer .footer_container {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+  gap: 0.5rem;
 }
 footer a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
 }
 
 @media screen and (min-width: 750px) {

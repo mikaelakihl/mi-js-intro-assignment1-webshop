@@ -19,18 +19,13 @@ body {
   grid-template-columns: repeat(2, 1fr);
   left: 0;
   z-index: 3;
-  //hej
 }
 
 h1 {
   font-size: 1.5rem;
   font-family: $heading-font;
   margin-left: 1rem;
-  // text-shadow: 
-  // 1px 1px 0 #ffffff, /* Justera skuggornas riktning och färg */
-  // -1px -1px 0 #ffffff,
-  // 1px -1px 0 #ffffff,
-  // -1px 1px 0 #ffffff;
+
 }
 
 .header_h1:nth-child(1) {
@@ -79,11 +74,6 @@ font-size:  1.5rem;
 transition: font-size 0.2s ease;
 transform: matrix(30deg);
 }
-
-// .liveUpdatedPriceAnimation{
-//   background-color: red;
-// }
-
 
 /* --------Header slutar------- */
 
@@ -137,7 +127,7 @@ transform: matrix(30deg);
 
 main {
   margin-top: 110px;
-  margin-bottom: 200px;
+  margin-bottom: 250px;
 }
 
 .page_design {
@@ -157,9 +147,6 @@ section {
     font-family: $heading-font;
   }
 
-  // .canvas_price{
-  //   font-family: $text-font;
-  // }
 
   img {
     width: 180px;
@@ -211,9 +198,6 @@ section {
     border-radius: 1rem;
   }
 
-
-
-
 }
 
 .sort_section {
@@ -257,7 +241,6 @@ section {
     border: none;
     border-radius: 1rem;
     text-align: center;
-    // box-shadow: 0px 1px 1px 0px $secondary-color;
     height: 25px;
     margin-left: 0.5rem;
     padding: 0.2rem;
@@ -346,9 +329,8 @@ section {
 
     .error_message_starfield{
       width: 380px;
-      // margin-top: 1rem;
       font-size: 1rem;
-      // padding-left: 1rem;
+      
       
     }
 
@@ -381,19 +363,6 @@ section {
   display: none;
 }
 
-// .order_confirmation{
-
-
-// }
-
-// .invoice_hidden {
-//   display: none;
-// }
-
-// .card_hidden {
-//   display: none;
-// }
-
 footer {
   padding-top: 1px;
   padding-left: 1rem;
@@ -405,14 +374,17 @@ footer {
   width: 100%;
   left: 0;
 
-  div {
+  .footer_container {
     display: flex;
     flex-direction: column;
     padding: 1rem;
+    gap: 0.5rem;
   }
 
   a {
     text-decoration: none;
     color: $white-color;
   }
+
+
 }
