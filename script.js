@@ -177,7 +177,7 @@ const currentHour = today.getHours();
 
 const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
 
-
+let orderedCanvasAmount = 0;
 let canvasTotalPriceSum = 0;
 let ShippingSum = 0;
 let totalShippingAndOrderSum = 0;
@@ -185,9 +185,11 @@ let totalShippingAndOrderSum = 0;
 const emailError = document.querySelector('#emailError');
 console.log(emailError);
 
+//------------------------------------------------------------------------------------------------
+//------------------------- Cart in header -------------------------------------------------------
+//------------------------------------------------------------------------------------------------
 
-
-//----------Lägger till clickevent på varukorgens knapp----------------
+//----------Click event at cartBtn----------------
 
 cartBtn.addEventListener("click", handleClick);
 
@@ -195,28 +197,43 @@ function handleClick(e) {
   cartSection.classList.toggle("cartSectionOpen");
 }
 
+//-------------------Animation for updating price in Cart--------------------------
+
+function updateCartPriceinHeaderEffect(){
+  
+  liveUpdatedPrice.classList.add('update_effect');
+
+  setTimeout(removeUpdateEffect, 1000);
+
+};
+
+function removeUpdateEffect(){
+  liveUpdatedPrice.classList.remove('update_effect');
+};
+
 
 //------------------------------------------------------------------------------------------------
-//-------------------------Skriver ut produkterna i varukorg & varusammanställningen -------------
+//------------------------Products & Print products to cart and cartSum --------------------------
 //------------------------------------------------------------------------------------------------
 
-//---------- Varukorgen -------------------------
-let orderedCanvasAmount = 0;
+//---------- Print products to cart -------------------------
+
 
 function printTotalCartOrderSum() {
   
-  totalCartOrderSum.innerHTML = "";
+
   let htmlString = "";
   let sum = 0;
-  
   let message = "";
   let priceIncrease = getPriceMultiplier();
 
+  totalCartOrderSum.innerHTML = "";
   canvas.forEach((canvas) => {
     orderedCanvasAmount += canvas.amount;
 
     if (canvas.amount > 0) {
       let canvasPrice = canvas.price;
+
       if (canvas.amount >= 10) {
         canvasPrice *= 0.9;
       }
@@ -234,12 +251,7 @@ function printTotalCartOrderSum() {
       </article>
       
       `;
-
-      
-
     }
-
-    
 
   });
 
@@ -250,9 +262,7 @@ function printTotalCartOrderSum() {
   totalCartOrderSum.innerHTML = htmlString;
   additionalTotalCartOrderSum.innerHTML = htmlString;
 
-  //-----------SpecialRegler-----------------------------
-
-  //------------ Måndagsrabatten 10% ----------------------
+  //------------ Monday 10% discount ----------------------
   if (sum <= 0) {
     return;
   }
@@ -263,47 +273,26 @@ function printTotalCartOrderSum() {
     canvas.price * canvas.amount;
   }
  
-  // ---------------------- 15+ antal = Gratis Frakt ---------------
-
-  
+  // ---------------------- Free delivery when ordered 15+ products ---------------
 
   if (orderedCanvasAmount > 15) { 
     ShippingSum = 0;
 
   } 
 
+  // ------------ Shipping ---------------------
   
   totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
 
+  // ------------------- Total sum of order ------------------
 
-
-  // -------totalsumma = 800+ (byter 800 till 8000 då jag har högra priser) försvinner faktura alternativet---------------
-
-  // if (sum > 8000){
-  //   invoiceRadio.classList.add('hidden');
-  //   invoiceMoreThenEightHundredHidden.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
-    
-  // } else {
-  //   invoiceRadio.classList.remove('hidden');
-  // }
-
-  // const invoiceHidden = document.querySelector('#invoiceHidden');
-
-  // if (sum > 8000){
-  //   invoiceHidden.classList.add('hidden');
-  // } 
-
-
-  // ------------ Skriver ut totalsumman i varukorgen ---------------------
-  
-
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`; //Skriver ut totalsumman av antalet
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 
   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
 
-  // ------- live uppdatering av totalsumman i header -----------------------
+  // ------- live update sum in cart in header -----------------------
 
   liveUpdatedPrice.innerHTML = `<span>${Math.round(sum)} kr</span>`;
 
@@ -311,89 +300,28 @@ function printTotalCartOrderSum() {
 
 }
 
-
-// let animationTimeout = setTimeout(addUpdatedCartDifference, 1000 * 20);
-
-//   let previousCanvasAmount = 0;
-
-//   function addUpdatedCartDifference (){
-
-//     if(orderedCanvasAmount > previousCanvasAmount){
-//       liveUpdatedPrice.classList.add('liveUpdatedPriceAnimation');
-      
-//       setTimeout(() => {
-//         liveUpdatedPrice.classList.remove('liveUpdatedPriceAnimation');
-//       }, 2000);
-//     }
- 
-//   previousCanvasAmount = orderedCanvasAmount
-
-  
- 
-  
-// }
-// addUpdatedCartDifference();
-
 printTotalCartOrderSum();
 
-function updateCartPriceinHeaderEffect(){
-  
-  liveUpdatedPrice.classList.add('update_effect');
+//------------------------Special rule------------------------
 
-  setTimeout(removeUpdateEffect, 1000);
-
-};
-
-function removeUpdateEffect(){
-  liveUpdatedPrice.classList.remove('update_effect');
-};
-
-// updatePriceInHeader();
-
-
-// -----------------Varukorgsammanställningen----------------------------  🦄 JENNI: Feedback på detta, se diskussion i Teams.  Är medveten om att detta är upprepad kod som man säkert kan göra på ett smidigare sätt, men jag vet inte hur jag gör med det än så länge.
-
-// function additionalPrintTotalCartOrderSum() {
-//   additionalTotalCartOrderSum.innerHTML = "";
-
-//   let sum = 0;
-//   let message = "";
-
-//   canvas.forEach((canvas) => {
-//     if (canvas.amount > 0) {
-//       sum += canvas.amount * canvas.price;
-//       additionalTotalCartOrderSum.innerHTML += `
-//      <article class="cartOrderSumContainer">
-//       <img class="cartOrderSumImg" src="${canvas.img.url}">
-//       <div class="cartOrderSumWrapper">
-//         <span>${canvas.name}</span> 
-//         <span>${canvas.amount} st </span> 
-//         <span>${canvas.price} kr </span> 
-//         </div>
-//         <hr class="cartOrderSumLine" width="100%" size="2" noshade>
-//       </article>
-   
-//       `;
-//     }
-//   });
-
-//   console.log(additionalPrintTotalCartOrderSum);
-
-//   additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">${sum} kr</span>`;
-// }
-
-// additionalPrintTotalCartOrderSum();
+function getPriceMultiplier() {
+  if (
+    (itsFriday && currentHour >= 15) ||
+    itsSaturday ||
+    itsSunday ||
+    (itsMonday && currentHour <= 3)
+  ) {
+    return 1.15;
+  }
+  return 1;
+}
 
 
-
-
-
-
-//------Höja/sänka antalet med plus och minus knapparna-------- 
+//-------------Increase and Decrease -----------------------
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  //Lägger till så att det inte går att minska antalet lägre än 0
+  
   if (filteredCanvas[index].amount <= 0) {
     filteredCanvas[index].amount = 0;
   } else {
@@ -408,27 +336,14 @@ function increaseAmount(e) {
   printCanvas();
 }
 
-function getPriceMultiplier() {
-  if (
-    (itsFriday && currentHour >= 15) ||
-    itsSaturday ||
-    itsSunday ||
-    (itsMonday && currentHour <= 3)
-  ) {
-    return 1.15;
-  }
-  return 1;
-}
+//------- Print Array to HTML stored in const canvas---------------
 
-//-------Skriver ut arrayen till HTML som är lagrad i const Canvas---------------
-
-let filteredCanvas = [...canvas]; // skapar kopia av originalarray
+let filteredCanvas = [...canvas]; // Copy of original array
 
 function printCanvas() {
-  canvasListSection.innerHTML = "";
-
   let priceIncrease = getPriceMultiplier();
 
+  canvasListSection.innerHTML = "";
   filteredCanvas.forEach((canvas, index) => {
     const adjustedCanvasPrice = Math.round(canvas.price * priceIncrease);
     canvasListSection.innerHTML += `
@@ -448,10 +363,10 @@ function printCanvas() {
       `;
   });
 
+  //--------Click event for minus and plus btns ----------------
+
   const minusBtns = document.querySelectorAll("button.minus");
   const plusBtns = document.querySelectorAll("button.plus");
-
-  //--------Click event för plus och minus knappar ----------------
 
   minusBtns.forEach((btn) => {
     btn.addEventListener("click", decreaseAmount);
@@ -463,14 +378,17 @@ function printCanvas() {
 
   printTotalCartOrderSum();
   
-  // additionalPrintTotalCartOrderSum();
 }
 
 printCanvas();
 
+//-------------------- Added rating stars --------------------------
+
 function canvasRating(rating) {
-  const halfRating = !Number.isInteger(rating); //Kollar om den är ett heltal för annars blir betyget fel vid 4.5
+  const halfRating = !Number.isInteger(rating);
+
   let html = "";
+
   for (let i = 0; i < Math.floor(rating); i++) {
     html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m233-120 93-304L80-600h304l96-320 96 320h304L634-424l93 304-247-188-247 188Z"/></svg></span>`;
   }
@@ -481,7 +399,7 @@ function canvasRating(rating) {
 }
 
 //------------------------------------------------------------------------------------------------
-//-------------------------Sorterar produkter i array -------------
+//-------------------------Sorting products in Array ---------------------------------------------
 //------------------------------------------------------------------------------------------------
 
 const sortByNameBtn = document.querySelector("#sortByNameBtn");
@@ -506,13 +424,17 @@ const sortByCategorySelectFuzzy = document.querySelector(
   "#sortByCategorySelectFuzzy"
 );
 
-//---------- Sorterar produkter via namn -------------------------
+const priceRangeSlider = document.querySelector("#priceRange");
+const currentRangeValue = document.querySelector("#currentRangeValue");
+const sortByRatingBtn = document.querySelector("#sortByRatingBtn");
+
+//---------- Sort products by name -------------------------
 
 sortByNameBtn.addEventListener("click", handleSortbyNameClick);
 
 function handleSortbyNameClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
-    // return canvas1.name > canvas2.name;
+    
 
     return canvas1.name === canvas2.name
       ? 0
@@ -524,7 +446,7 @@ function handleSortbyNameClick(e) {
   printCanvas();
 }
 
-//---------- Sorterar produkter via kategori -------------------------  TO DO: göra om koden så den fungerar i chrome
+//---------- Sort products by category ------------------------- 
 
 sortByCategorySelectAll.addEventListener(
   "click",
@@ -532,9 +454,7 @@ sortByCategorySelectAll.addEventListener(
 );
 
 function handleSortByCategorySelectAll(e) {
-  // filteredCanvas.sort((canvas1, canvas2) => {
-  //   return canvas1.category > canvas2.category;
-  // });
+  
 
   filteredCanvas = [...canvas];
 
@@ -585,9 +505,7 @@ function handleSortByCategorySelectFuzzy(e) {
   printCanvas();
 }
 
-//---------- Sorterar produkter via betyg -------------------------
-
-const sortByRatingBtn = document.querySelector("#sortByRatingBtn");
+//---------- Sort products by rating -------------------------
 
 sortByRatingBtn.addEventListener("click", handleSortbyRatingClick);
 
@@ -601,10 +519,7 @@ function handleSortbyRatingClick(e) {
   printCanvas();
 }
 
-//---------- Sorterar produkter via pris -------------------------
-
-const priceRangeSlider = document.querySelector("#priceRange");
-const currentRangeValue = document.querySelector("#currentRangeValue");
+//---------- Sort products by price -------------------------
 
 priceRangeSlider.addEventListener("input", changePriceRange);
 
@@ -617,16 +532,13 @@ function changePriceRange() {
   printCanvas();
 }
 
-
 //------------------------------------------------------------------------------------------------
-//-------------------------Kort och faktura betalning -------------
+//-------------------------Form and Payments -------------
 //------------------------------------------------------------------------------------------------
 
 const cardInvoiceRadios = Array.from(
   document.querySelectorAll('input[name="payment_option"]')
 );
-console.log(cardInvoiceRadios);
-
 
 const inputs = [
   document.querySelector("#creditCardNumber"),
@@ -645,11 +557,20 @@ const inputs = [
 ];
 
 const invoiceRadio = document.querySelector("#invoice");
-console.log(invoiceRadio);
 const cardRadio = document.querySelector("#card");
 const formSubmitBtn = document.querySelector("#formSubmitBtn");
 
+const phoneNumberError = document.querySelector('#phoneNumberError');
+const starfieldError = document.querySelector('#starFieldError');
+const personalIdError = document.querySelector('#personalIdError');
+
+const orderForm = document.querySelector('#orderForm');
+const resetFormBtn = document.querySelector('#formResetBtn');
+
 let selectedPaymentOption = "card";
+
+let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
+
 
 //---------- Regex -------------------------
 
@@ -676,7 +597,7 @@ cardInvoiceRadios.forEach((radioBtn) => {
   radioBtn.addEventListener("change", switchPaymentMethod);
 });
 
-//---------- Togglar mellan kort och faktura -------------------------
+//---------- Toggle invoice/card -------------------------
 
 function switchPaymentMethod(e) {
   if (canvasTotalPriceSum > 800){
@@ -696,18 +617,14 @@ function checkIfPersonalIdNumberIsValid() {
 
 //---------- Aktiverar/inaktiverar disabled på Submit knapp innan/efter kriterier uppfylls -------------------------
 
-const phoneNumberError = document.querySelector('#phoneNumberError');
-const starfieldError = document.querySelector('#starFieldError');
-const personalIdError = document.querySelector('#personalIdError');
-
-
 function activateFormOrderBtn() {
   formSubmitBtn.setAttribute("disabled", "");
 
-  
+    const today = new Date();
+    const shortYear = Number(String(today.getFullYear()).substring(2));
+    let year = Number(creditCardYear.value);
 
   if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
-    console.warn('Vänligen fyll i alla obligatoriska fält');
     starfieldError.innerHTML = `<span class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</span>`
     return;
   } else {
@@ -715,7 +632,6 @@ function activateFormOrderBtn() {
   }
 
   if (phoneNumberRegEx.exec(phoneNumber.value) === null){
-    console.warn('Mobilnumret är inte validerat');
     phoneNumberError.innerHTML = `<span class="error_messages">Ogiltigt telefonnummer</span>`;
     return;
   } else {
@@ -723,7 +639,6 @@ function activateFormOrderBtn() {
   }
 
   if (emailRegEx.exec(email.value) === null) {
-  //  console.warn('Email är inte validerad');
    emailError.innerHTML = `<span class="error_messages">Ogiltig emailadress</span>`;
    return;
   } else {
@@ -737,40 +652,22 @@ function activateFormOrderBtn() {
     return;
   }
 
-  // if (personalIdRegex.exec(personalId.value) === personalIdRegex){
-  //     personalIdError.innerHTML = `<span class="error_messages">Ogiltigt personnummer</span>`;
-  //     return;
-  //   } else {
-  //     personalIdError.innerHTML = ``;
-    
-  // }
-
   if (selectedPaymentOption === "card") {
-    // -------- Kollar kortnummer--------
     if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
-      console.warn("kreditkortet är inte validerat");
       return;
     }
-    //--------- Kollar kort årtal-----
-    let year = Number(creditCardYear.value);
-    const today = new Date();
-    const shortYear = Number(String(today.getFullYear()).substring(2));
+    
     if (year > shortYear + 2 || year < shortYear) {
-      console.warn("År är inte validerad");
       return;
     }
 
-    // ------ Kollar Månad -----
 
     if (creditCardMonth.value < 1 || creditCardMonth.value > 12) {
-      console.warn('Månad är inte validerad');
       return;
   }
 
-    //----- Kollar CVC kod--------
 
     if (creditCardCvc.value.length !== 3) {
-      console.warn("CVC är inta validerad");
       return;
     }
   }
@@ -779,28 +676,18 @@ function activateFormOrderBtn() {
 }
 
 
-// 
 
-//----------------------Återställer formuläret efter 15 min ----------------------
-
-let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
-
-const orderForm = document.querySelector('#orderForm');
-
-const resetFormBtn = document.querySelector('#formResetBtn');
+//----------------------Reset form after 15 minutes alert ----------------------
 
 function cleanFormAndTimeOutMessage(){
   
   if (slownessTimeout){
     orderForm.reset();
-    // canvasTotalPriceSum.length = 0;
     alert('Det tog för lång tid för dig att beställa, därmed har vi rensat formuläret!');
   }
-  
-  
 }
 
-// ---------------- Rensa formulär--------
+// ---------------- Reset form when click at reset form Btn --------------
 
 resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
 console.log(resetFormBtn);
@@ -820,21 +707,7 @@ function resetFormAndCanvasAmount(){
 }
 
 
-// ---------- Återställer formulär och antalet produkter ------- TODO
-
-// function resetFormAndCanvasAmount() {
-//   orderForm.reset();
-
-//   if (canvas.amount > 0){
-//     totalCartOrderSum.innerHTML='' ;
-//   } 
-// }
-
-// Function GetDeliveryDate (){
-//   Const today = New Date();
-
-// }
-
+// ---------- Order-confirmation ------------------
 
 formSubmitBtn.addEventListener('click', sendOrderForm);
 console.log(formSubmitBtn);
@@ -844,12 +717,10 @@ function sendOrderForm (e){
 
   const today = new Date();
   const deliveryDate = new Date(today);
-  deliveryDate.setDate(deliveryDate.getDate() + 5);
-
   const formattedDeliveryDate = deliveryDate.toLocaleDateString('sv-SE');
-  
   const orderConfirmation = document.querySelector('#orderConfirmation');
-
+  
+  deliveryDate.setDate(deliveryDate.getDate() + 5);
 
   orderConfirmation.innerHTML = `
   <h3>Tack för att du handlar hos oss!</h3>
