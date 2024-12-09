@@ -15,6 +15,8 @@ Troughtout this project I focused on understanding the basics of Java Script and
 
 [Click here for live published version](https://medieinstitutet.github.io/fed24d-js-intro-inl-1-webshop-mikaelakihl/)
 
+**Language: Swedish**
+
 
 ## Sneak peak
 
