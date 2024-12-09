@@ -71,7 +71,7 @@ h1 {
 .update_effect {
   font-size: 1.5rem;
   transition: font-size 0.2s ease;
-  transform: matrix(30deg);
+  transform: matrix(1.2, 0, 0, 1.2, 0, 0);
 }
 
 /* --------Header slutar------- */
