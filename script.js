@@ -169,7 +169,7 @@ const liveUpdatedPrice = document.querySelector('#liveUpdatedPrice');
 
 const today = new Date(); // Jag ska lösa detta inom kort
 
-const itsMonday = today.getDay() === 3;
+const itsMonday = today.getDay() === 1;
 const itsFriday = today.getDay() === 5;
 const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
@@ -215,10 +215,12 @@ function removeUpdateEffect() {
 //---------- Print products to cart -------------------------
 
 function printTotalCartOrderSum() {
+  
   let htmlString = '';
   let sum = 0;
   let message = '';
   let priceIncrease = getPriceMultiplier();
+  orderedCanvasAmount = 0;
 
   totalCartOrderSum.innerHTML = '';
   canvas.forEach((canvas) => {
@@ -259,7 +261,7 @@ function printTotalCartOrderSum() {
     return;
   }
 
-  if (today.getDay() === 3) {
+  if (today.getDay() === 1) {
     sum *= 0.9;
     message += '<p>Måndagsrabatt: 10% på hela beställningen</p>';
     canvas.price * canvas.amount;
