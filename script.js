@@ -182,9 +182,6 @@ let canvasTotalPriceSum = 0;
 let ShippingSum = 0;
 let totalShippingAndOrderSum = 0;
 
-const emailError = document.querySelector('#emailError');
-console.log(emailError);
-
 //------------------------------------------------------------------------------------------------
 //------------------------- Cart in header -------------------------------------------------------
 //------------------------------------------------------------------------------------------------
@@ -563,6 +560,7 @@ const formSubmitBtn = document.querySelector("#formSubmitBtn");
 const phoneNumberError = document.querySelector('#phoneNumberError');
 const starfieldError = document.querySelector('#starFieldError');
 const personalIdError = document.querySelector('#personalIdError');
+const emailError = document.querySelector('#emailError');
 
 const orderForm = document.querySelector('#orderForm');
 const resetFormBtn = document.querySelector('#formResetBtn');
@@ -584,9 +582,9 @@ const personalIdRegex = new RegExp(
 );
 const creditCardNumberRegEx = new RegExp(
   /^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/
-); // Mastercard
+); 
 
-// ------------------Eventlyssnare-----------------------
+// ------------------Eventlisteners-----------------------
 
 inputs.forEach((input) => {
   input.addEventListener("focusout", activateFormOrderBtn);
