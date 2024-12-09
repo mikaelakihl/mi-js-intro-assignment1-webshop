@@ -554,6 +554,8 @@ const emailError = document.querySelector('#emailError');
 const orderForm = document.querySelector('#orderForm');
 const resetFormBtn = document.querySelector('#formResetBtn');
 
+const buyBtn = document.querySelector('#buyBtn');
+
 let selectedPaymentOption = 'card';
 
 let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
@@ -587,9 +589,9 @@ cardInvoiceRadios.forEach((radioBtn) => {
 //---------- Toggle invoice/card -------------------------
 
 function switchPaymentMethod(e) {
-  if (canvasTotalPriceSum > 800) {
-    invoiceRadio.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 800kr</b>`;
-    // invoiceMoreThenEightHundredHidden.innerHTML = ;
+  if (canvasTotalPriceSum > 8000) {
+    invoiceRadio.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 8000kr</b>`; // I chose 8000kr instead of 800 since I have high prices.
+    
   }
 
   invoiceRadio.classList.toggle('hidden');
@@ -667,8 +669,6 @@ function activateFormOrderBtn() {
 }
 
 //----------------------- Scroll from buyBtn to Form ------------------------------
-
-const buyBtn = document.querySelector('#buyBtn');
 
 buyBtn.addEventListener('click', scrollToView);
 
