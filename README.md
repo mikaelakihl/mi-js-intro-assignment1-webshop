@@ -18,7 +18,7 @@ Troughtout this project I focused on understanding the basics of Java Script and
 
 ## Sneak peak
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](screenshots/grottfrid_canvas_shop_sneakpeak.png)
 
 
 ## Tech Stack
@@ -29,10 +29,10 @@ Troughtout this project I focused on understanding the basics of Java Script and
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#92a5f7](https://via.placeholder.com/10/0a192f?text=+) #92a5f7 |
-| Secondary Color | ![#41496e](https://via.placeholder.com/10/f8f8f8?text=+) #41496e |
-| White Color | ![#ffffff](https://via.placeholder.com/10/00b48a?text=+) #ffffff |
-| Transparent Color | ![#ffffff61](https://via.placeholder.com/10/00b48a?text=+) #ffffff61 |
+| Primary Color | ![#92a5f7](https://via.placeholder.com/10/92a5f7?text=+) #92a5f7 |
+| Secondary Color | ![#41496e](https://via.placeholder.com/10/41496e?text=+) #41496e |
+| White Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
+| Transparent Color | ![#ffffff61](https://via.placeholder.com/10/ffffff61?text=+) #ffffff61 |
 
 
 ## Lessons Learned
@@ -49,8 +49,12 @@ Writing pseudocode was difficult for me since everything was a new experience, b
 
 ### HTML
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![Se bilden här](screenshots/gottfrid_canvas_shop_validation_html.png)
 
 ### CSS 
 
+![Se bilden här](screenshots/gottfrid_canvas_shop_validation_css.png)
+
 ### Lighthouse Analyze
+
+![Se bilden här](screenshots/gottfrid_canvas_sshop_lighthouse.png)
