@@ -1,5 +1,3 @@
-@charset "UTF-8";
-/* Styling för alla produktbilder och dess innehåll*/
 * {
   box-sizing: border-box;
 }
@@ -344,6 +342,9 @@ footer a {
   h1 {
     font-size: 2.3rem;
   }
+  img {
+    margin-bottom: auto;
+  }
   .cartSectionOpen {
     top: 5rem;
     width: 400px;
@@ -367,9 +368,6 @@ footer a {
   .canvas-wrapper {
     display: grid;
     gap: 1rem;
-  }
-  img {
-    margin-bottom: auto;
   }
 }
 @media screen and (min-width: 1250px) {

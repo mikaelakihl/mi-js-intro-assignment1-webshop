@@ -25,7 +25,6 @@ h1 {
   font-size: 1.5rem;
   font-family: $heading-font;
   margin-left: 1rem;
-
 }
 
 .header_h1:nth-child(1) {
@@ -69,10 +68,10 @@ h1 {
   }
 }
 
-.update_effect{
-font-size:  1.5rem;
-transition: font-size 0.2s ease;
-transform: matrix(30deg);
+.update_effect {
+  font-size: 1.5rem;
+  transition: font-size 0.2s ease;
+  transform: matrix(30deg);
 }
 
 /* --------Header slutar------- */
@@ -142,11 +141,9 @@ main {
 }
 
 section {
-
-  .canvas_name{
+  .canvas_name {
     font-family: $heading-font;
   }
-
 
   img {
     width: 180px;
@@ -197,7 +194,6 @@ section {
     color: $white-color;
     border-radius: 1rem;
   }
-
 }
 
 .sort_section {
@@ -257,11 +253,10 @@ section {
   }
 }
 
-.style_link{
+.style_link {
   text-decoration: none;
   color: $white-color;
   width: 70px;
-
 }
 
 .form_section {
@@ -305,36 +300,30 @@ section {
         border-radius: 1rem;
       }
 
-      input.form_button_single:disabled{
+      input.form_button_single:disabled {
         background-color: $transparency-color-button;
       }
     }
 
-    .form_radio{
+    .form_radio {
       background-color: red;
     }
 
     .form_checkbox {
       display: flex;
     }
-    .error_messages{
+    .error_messages {
       color: red;
       border: solid red 1px;
       padding-left: 1rem;
       width: 300px;
       margin-top: 1rem;
-    
-
     }
 
-    .error_message_starfield{
+    .error_message_starfield {
       width: 380px;
       font-size: 1rem;
-      
-      
     }
-
-
   }
 }
 
@@ -359,7 +348,7 @@ section {
   }
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -385,6 +374,4 @@ footer {
     text-decoration: none;
     color: $white-color;
   }
-
-
 }
