@@ -666,6 +666,18 @@ function activateFormOrderBtn() {
   formSubmitBtn.removeAttribute('disabled');
 }
 
+//----------------------- Scroll from buyBtn to Form ------------------------------
+
+const buyBtn = document.querySelector('#buyBtn');
+
+buyBtn.addEventListener('click', scrollToView);
+
+function scrollToView(){
+
+  orderForm.scrollIntoView({behavior: 'smooth'});
+
+}
+
 //----------------------Reset form after 15 minutes alert ----------------------
 
 function cleanFormAndTimeOutMessage() {
