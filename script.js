@@ -167,8 +167,7 @@ const additionalTotalCartOrderSum = document.querySelector(
 
 const liveUpdatedPrice = document.querySelector('#liveUpdatedPrice');
 
-const today = new Date(); // Jag ska lösa detta inom kort
-
+const today = new Date();
 const itsMonday = today.getDay() === 1;
 const itsFriday = today.getDay() === 5;
 const itsSaturday = today.getDay() === 6;
@@ -181,7 +180,7 @@ const invoiceMoreThenEightHundredHidden = document.querySelector(
 
 let orderedCanvasAmount = 0;
 let canvasTotalPriceSum = 0;
-let ShippingSum = 0;
+let shippingSum = 0;
 let totalShippingAndOrderSum = 0;
 
 //------------------------------------------------------------------------------------------------
@@ -215,6 +214,7 @@ function removeUpdateEffect() {
 //---------- Print products to cart -------------------------
 
 function printTotalCartOrderSum() {
+  const today = new Date();
   
   let htmlString = '';
   let sum = 0;
@@ -250,8 +250,8 @@ function printTotalCartOrderSum() {
   });
 
   canvasTotalPriceSum = Math.round(sum);
-  ShippingSum = Math.round(25 + 0.1 * sum);
-  totalShippingAndOrderSum = canvasTotalPriceSum + ShippingSum;
+  shippingSum = Math.round(25 + 0.1 * sum);
+  totalShippingAndOrderSum = canvasTotalPriceSum + shippingSum;
 
   totalCartOrderSum.innerHTML = htmlString;
   additionalTotalCartOrderSum.innerHTML = htmlString;
@@ -270,13 +270,13 @@ function printTotalCartOrderSum() {
   // ---------------------- Free delivery when ordered 15+ products ---------------
 
   if (orderedCanvasAmount > 15) {
-    ShippingSum = 0;
+    shippingSum = 0;
   }
 
   // ------------ Shipping ---------------------
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
-  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${ShippingSum} kr</span>`;
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${shippingSum} kr</span>`;
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Frakt: ${shippingSum} kr</span>`;
 
   // ------------------- Total sum of order ------------------
 
