@@ -549,7 +549,6 @@ const formSubmitBtn = document.querySelector('#formSubmitBtn');
 
 const phoneNumberError = document.querySelector('#phoneNumberError');
 const starfieldError = document.querySelector('#starFieldError');
-const personalIdError = document.querySelector('#personalIdError');
 const emailError = document.querySelector('#emailError');
 
 const orderForm = document.querySelector('#orderForm');
