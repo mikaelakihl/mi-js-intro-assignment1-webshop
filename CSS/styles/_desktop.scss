@@ -28,16 +28,16 @@
 
   .last_page_wrapper {
     display: grid;
-    grid-template-columns: repeat(12,1fr);
+    grid-template-columns: repeat(12, 1fr);
     gap: 1rem;
   }
 
   .last_page_left_item {
-    grid-column: 1/span 6;
+    grid-column: 1 / span 6;
   }
 
   .last_page_right_item {
-    grid-column: 7/span 6;
+    grid-column: 7 / span 6;
   }
 
   .cartsum {
