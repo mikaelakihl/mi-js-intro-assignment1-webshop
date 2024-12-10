@@ -3,14 +3,18 @@
     font-size: 2.3rem;
   }
 
-  // .canvas_section{
-  //   background-color: $transparency-color;
-  // }
+  img {
+    margin-bottom: auto;
+  }
 
   .cartSectionOpen {
     top: 5rem;
     width: 400px;
     border-radius: 1rem;
+  }
+
+  main {
+    margin-top: 110px;
   }
 
   .canvas_section {
@@ -34,18 +38,4 @@
     display: grid;
     gap: 1rem;
   }
-
-  img {
-    margin-bottom: auto;
-
-    // width: auto;
-    // height: 150px;
-  }
-
-  // .pm_btns_container{
-  //     position: absolute;
-  //     background-color: red;
-  //     bottom: 0;
-
-  // }
 }
