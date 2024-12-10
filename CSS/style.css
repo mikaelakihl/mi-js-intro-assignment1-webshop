@@ -120,7 +120,7 @@ h1 {
 }
 
 main {
-  margin-top: 110px;
+  margin-top: 80px;
   margin-bottom: 250px;
 }
 
@@ -343,6 +343,9 @@ footer a {
     top: 5rem;
     width: 400px;
     border-radius: 1rem;
+  }
+  main {
+    margin-top: 110px;
   }
   .canvas_section {
     display: grid;
