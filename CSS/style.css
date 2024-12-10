@@ -8,7 +8,7 @@ body {
   font-family: "Playfair Display", serif;
 }
 
-/*--------Header----------*/
+/*----------Header starts----------*/
 ._header {
   top: 0;
   position: fixed;
@@ -70,7 +70,8 @@ h1 {
   transform: matrix(1.2, 0, 0, 1.2, 0, 0);
 }
 
-/* --------Header slutar------- */
+/* --------Header ends-------------- */
+/* ------------ Main starts------------*/
 .cart_section {
   display: none;
 }
@@ -231,6 +232,7 @@ section .plus {
   background-color: #92a5f7;
 }
 
+/*---------- Form starts -------------*/
 .form_section h2 {
   text-align: center;
 }
@@ -310,6 +312,9 @@ section .plus {
   display: none;
 }
 
+/*-----------------Form ends--------------*/
+/*---------------Main ends -------------------*/
+/*-----------------Footer starts-------------*/
 footer {
   padding-top: 1px;
   padding-left: 1rem;
@@ -332,6 +337,7 @@ footer a {
   color: #ffffff;
 }
 
+/*------------Footer ends-----------*/
 @media screen and (min-width: 750px) {
   h1 {
     font-size: 2.3rem;
