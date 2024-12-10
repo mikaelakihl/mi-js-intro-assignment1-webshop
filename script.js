@@ -159,11 +159,8 @@ const canvas = [
 ];
 
 const totalCartOrderSum = document.querySelector('#cartContainer');
-console.log('totalCartOrderSum');
 
-const additionalTotalCartOrderSum = document.querySelector(
-  '#additionolCartContainer'
-);
+const additionalTotalCartOrderSum = document.querySelector('#additionolCartContainer');
 
 const liveUpdatedPrice = document.querySelector('#liveUpdatedPrice');
 
@@ -174,9 +171,7 @@ const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
-const invoiceMoreThenEightHundredHidden = document.querySelector(
-  '#invoiceMoreThenEightHundredHidden'
-);
+const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
 
 let orderedCanvasAmount = 0;
 let canvasTotalPriceSum = 0;
@@ -215,11 +210,12 @@ function removeUpdateEffect() {
 
 function printTotalCartOrderSum() {
   const today = new Date();
-  
+
   let htmlString = '';
   let sum = 0;
   let message = '';
   let priceIncrease = getPriceMultiplier();
+
   orderedCanvasAmount = 0;
 
   totalCartOrderSum.innerHTML = '';
@@ -280,14 +276,10 @@ function printTotalCartOrderSum() {
 
   // ------------------- Total sum of order ------------------
 
-  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(
-    sum
-  )} kr</span>`;
+  totalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
   totalCartOrderSum.innerHTML += `<div>${message}</div>`;
 
-  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(
-    sum
-  )} kr</span>`;
+  additionalTotalCartOrderSum.innerHTML += `<span class="cartOrderSumTotalPrice">Totalt: ${Math.round(sum)} kr</span>`;
 
   // ------- live update sum in cart in header -----------------------
 
@@ -301,15 +293,9 @@ printTotalCartOrderSum();
 //------------------------Special rule------------------------
 
 function getPriceMultiplier() {
-  if (
-    (itsFriday && currentHour >= 15) ||
-    itsSaturday ||
-    itsSunday ||
-    (itsMonday && currentHour <= 3)
-  ) {
+  if ((itsFriday && currentHour >= 15) || itsSaturday || itsSunday || (itsMonday && currentHour <= 3)) {
     return 1.15;
-  }
-  return 1;
+  } return 1;
 }
 
 //-------------Increase and Decrease -----------------------
@@ -327,6 +313,7 @@ function decreaseAmount(e) {
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
+
   filteredCanvas[index].amount += 1;
   printCanvas();
 }
@@ -388,8 +375,7 @@ function canvasRating(rating) {
   }
   if (halfRating) {
     html += `<span><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m606-286-33-144 111-96-146-13-58-136v312l126 77ZM233-120l65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg></span>`;
-  }
-  return html;
+  } return html;
 }
 
 //------------------------------------------------------------------------------------------------
@@ -398,28 +384,15 @@ function canvasRating(rating) {
 
 const sortByNameBtn = document.querySelector('#sortByNameBtn');
 
-const sortByCategorySelectAll = document.querySelector(
-  '#sortByCategorySelectAll'
-);
-
-const sortByCategorySelectDisney = document.querySelector(
-  '#sortByCategorySelectDisney'
-);
-
-const sortByCategorySelectNormal = document.querySelector(
-  '#sortByCategorySelectNormal'
-);
-
-const sortByCategorySelectPoetic = document.querySelector(
-  '#sortByCategorySelectPoetic'
-);
-
-const sortByCategorySelectFuzzy = document.querySelector(
-  '#sortByCategorySelectFuzzy'
-);
+const sortByCategorySelectAll = document.querySelector('#sortByCategorySelectAll');
+const sortByCategorySelectDisney = document.querySelector('#sortByCategorySelectDisney');
+const sortByCategorySelectNormal = document.querySelector('#sortByCategorySelectNormal');
+const sortByCategorySelectPoetic = document.querySelector('#sortByCategorySelectPoetic');
+const sortByCategorySelectFuzzy = document.querySelector('#sortByCategorySelectFuzzy');
 
 const priceRangeSlider = document.querySelector('#priceRange');
 const currentRangeValue = document.querySelector('#currentRangeValue');
+
 const sortByRatingBtn = document.querySelector('#sortByRatingBtn');
 
 //---------- Sort products by name -------------------------
@@ -428,11 +401,7 @@ sortByNameBtn.addEventListener('click', handleSortbyNameClick);
 
 function handleSortbyNameClick(e) {
   filteredCanvas.sort((canvas1, canvas2) => {
-    return canvas1.name === canvas2.name
-      ? 0
-      : canvas1.name < canvas2.name
-      ? -1
-      : 1;
+    return canvas1.name === canvas2.name ? 0 : canvas1.name < canvas2.name ? -1 : 1;
   });
 
   printCanvas();
@@ -440,10 +409,7 @@ function handleSortbyNameClick(e) {
 
 //---------- Sort products by category -------------------------
 
-sortByCategorySelectAll.addEventListener(
-  'click',
-  handleSortByCategorySelectAll
-);
+sortByCategorySelectAll.addEventListener('click', handleSortByCategorySelectAll);
 
 function handleSortByCategorySelectAll(e) {
   filteredCanvas = [...canvas];
@@ -451,10 +417,7 @@ function handleSortByCategorySelectAll(e) {
   printCanvas();
 }
 
-sortByCategorySelectDisney.addEventListener(
-  'click',
-  handleSortByCategorySelectDisney
-);
+sortByCategorySelectDisney.addEventListener('click', handleSortByCategorySelectDisney);
 
 function handleSortByCategorySelectDisney() {
   filteredCanvas = canvas.filter((canvas) => canvas.category === 'Disney');
@@ -462,10 +425,7 @@ function handleSortByCategorySelectDisney() {
   printCanvas();
 }
 
-sortByCategorySelectNormal.addEventListener(
-  'click',
-  handleSortByCategorySelectNormal
-);
+sortByCategorySelectNormal.addEventListener('click', handleSortByCategorySelectNormal);
 
 function handleSortByCategorySelectNormal(e) {
   filteredCanvas = canvas.filter((canvas) => canvas.category === 'Normal');
@@ -473,10 +433,7 @@ function handleSortByCategorySelectNormal(e) {
   printCanvas();
 }
 
-sortByCategorySelectPoetic.addEventListener(
-  'click',
-  handleSortByCategorySelectPoetic
-);
+sortByCategorySelectPoetic.addEventListener('click', handleSortByCategorySelectPoetic);
 
 function handleSortByCategorySelectPoetic(e) {
   filteredCanvas = canvas.filter((canvas) => canvas.category === 'Poetiskt');
@@ -484,10 +441,7 @@ function handleSortByCategorySelectPoetic(e) {
   printCanvas();
 }
 
-sortByCategorySelectFuzzy.addEventListener(
-  'click',
-  handleSortByCategorySelectFuzzy
-);
+sortByCategorySelectFuzzy.addEventListener('click', handleSortByCategorySelectFuzzy);
 
 function handleSortByCategorySelectFuzzy(e) {
   filteredCanvas = canvas.filter((canvas) => canvas.category === 'Fuzzy');
@@ -513,8 +467,8 @@ priceRangeSlider.addEventListener('input', changePriceRange);
 
 function changePriceRange() {
   const currentPrice = priceRangeSlider.value;
-  currentRangeValue.innerHTML = currentPrice;
 
+  currentRangeValue.innerHTML = currentPrice;
   filteredCanvas = canvas.filter((canvas) => canvas.price <= currentPrice);
 
   printCanvas();
@@ -524,9 +478,7 @@ function changePriceRange() {
 //-------------------------Form and Payments -------------
 //------------------------------------------------------------------------------------------------
 
-const cardInvoiceRadios = Array.from(
-  document.querySelectorAll('input[name="payment_option"]')
-);
+const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment_option"]'));
 
 const inputs = [
   document.querySelector('#creditCardNumber'),
@@ -564,16 +516,11 @@ let slownessTimeout = setTimeout(cleanFormAndTimeOutMessage, 1000 * 60 * 15);
 
 const emailRegEx = new RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 
-const phoneNumberRegEx = new RegExp(
-  /^((([+]46)\s*((1|7)[0236]))|(0(1|7)[0236]))\s*(([-]|())\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*|([0-9]\s*([-]|()))\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*)$/
-);
+const phoneNumberRegEx = new RegExp(/^((([+]46)\s*((1|7)[0236]))|(0(1|7)[0236]))\s*(([-]|())\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*|([0-9]\s*([-]|()))\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*[0-9]\s*)$/);
 
-const personalIdRegex = new RegExp(
-  /^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/
-);
-const creditCardNumberRegEx = new RegExp(
-  /^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/
-);
+const personalIdRegex = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+
+const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{2}(?=[\s|-])|\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{4}(?=[\s|-])?\d{1,4}(?!\d))$/);
 
 // ------------------Eventlisteners-----------------------
 
@@ -591,7 +538,6 @@ cardInvoiceRadios.forEach((radioBtn) => {
 function switchPaymentMethod(e) {
   if (canvasTotalPriceSum > 8000) {
     invoiceRadio.innerHTML = `<b>Det går inte att betala med faktura då totalsumman överstiger 8000kr</b>`; // I chose 8000kr instead of 800 since I have high prices.
-    
   }
 
   invoiceRadio.classList.toggle('hidden');
@@ -613,13 +559,7 @@ function activateFormOrderBtn() {
   const shortYear = Number(String(today.getFullYear()).substring(2));
   let year = Number(creditCardYear.value);
 
-  if (
-    !zipCode.value ||
-    !city.value ||
-    !firstName.value ||
-    !lastName.value ||
-    !adress.value
-  ) {
+  if (!zipCode.value || !city.value || !firstName.value || !lastName.value || !adress.value) {
     starfieldError.innerHTML = `<span class="error_messages error_message_starfield">Du har inte fyllt i alla obligatoriska fält korrekt. Vänligen fyll i alla fält som innehåller en *</span>`;
     return;
   } else {
@@ -641,9 +581,7 @@ function activateFormOrderBtn() {
   }
 
   if (
-    selectedPaymentOption === 'invoice' &&
-    !checkIfPersonalIdNumberIsValid()
-  ) {
+    selectedPaymentOption === 'invoice' && !checkIfPersonalIdNumberIsValid()) {
     return;
   }
 
@@ -672,10 +610,8 @@ function activateFormOrderBtn() {
 
 buyBtn.addEventListener('click', scrollToView);
 
-function scrollToView(){
-
-  orderForm.scrollIntoView({behavior: 'smooth'});
-
+function scrollToView() {
+  orderForm.scrollIntoView({ behavior: 'smooth' });
 }
 
 //----------------------Reset form after 15 minutes alert ----------------------
@@ -692,7 +628,6 @@ function cleanFormAndTimeOutMessage() {
 // ---------------- Reset form when click at reset form Btn --------------
 
 resetFormBtn.addEventListener('click', resetFormAndCanvasAmount);
-console.log(resetFormBtn);
 
 function resetFormAndCanvasAmount() {
   orderForm.reset();
@@ -701,8 +636,6 @@ function resetFormAndCanvasAmount() {
   });
   liveUpdatedPrice.innerHTML = 0;
 
-  console.log('du har klickat på knappen');
-
   printTotalCartOrderSum();
   printCanvas();
 }
@@ -710,7 +643,6 @@ function resetFormAndCanvasAmount() {
 // ---------- Order-confirmation ------------------
 
 formSubmitBtn.addEventListener('click', sendOrderForm);
-console.log(formSubmitBtn);
 
 function sendOrderForm(e) {
   e.preventDefault();
