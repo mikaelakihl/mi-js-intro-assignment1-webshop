@@ -1,236 +1,224 @@
 <!DOCTYPE html>
 <html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Canvas Shop">
+    <meta name="keywords" content="Gottfrid, Canvas, Art, Disney, Fuzzy, Poetic, Webshop, Online order, Justin Time AB, gottfrids@tavlor.se, +46 123 456 789, Gottfridsväg 13 12345 Gotland">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Canvas Shop">
-  <meta name="keywords"
-    content="Gottfrid, Canvas, Art, Disney, Fuzzy, Poetic, Webshop, Online order, Justin Time AB, gottfrids@tavlor.se, +46 123 456 789, Gottfridsväg 13 12345 Gotland">
+    <link rel="stylesheet" href="CSS/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="CSS/style.css" type="text/css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-    rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Gottfrid</title>
 
-  <title>Gottfrid</title>
-
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Webshop",
-      "name": "Gottfrids Tavlor",
-      "image": [
-        "assets/caravan_dolphin",
-        "assets/djungle_2",
-        "assets/flysland",
-        "assets/greek_mytology",
-        "assets/hundred_acre_woods"
-        "assets/lighthead"
-        "assets/little_mermaid"
-        "assets/milo_and_titch"
-        "assets/no_one_is_captain_but_you"
-        "assets/ted"
-      ]
-    }
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Webshop",
+        "name": "Gottfrids Tavlor",
+        "image": [
+          "assets/caravan_dolphin",
+          "assets/djungle_2",
+          "assets/flysland",
+          "assets/greek_mytology",
+          "assets/hundred_acre_woods"
+          "assets/lighthead"
+          "assets/little_mermaid"
+          "assets/milo_and_titch"
+          "assets/no_one_is_captain_but_you"
+          "assets/ted"
+        ]
+      }
     </script>
-</head>
+  </head>
 
-<body>
-  <header class="_header">
-    <h1 class="header_h1">Gottfrids Tavelbutik</h1>
-    <nav class="header_nav">
-      <button id="cartBtn" class="header_cart_button" aria-label="Open shopping cart">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
-          <path
-            d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z" />
-        </svg>
-      </button>
-      <div class="liveUpdatedPriceAnimation" id="liveUpdatedPrice"></div>
-      <button class="header_menuBtn" aria-label="Open menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-  </header>
+  <body>
+    <header class="_header">
+      <h1 class="header_h1">Gottfrids Tavelbutik</h1>
+      <nav class="header_nav">
+        <button id="cartBtn" class="header_cart_button" aria-label="Open shopping cart">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000">
+            <path d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z"/>
+          </svg>
+        </button>
+        <div class="liveUpdatedPriceAnimation" id="liveUpdatedPrice"></div>
+        <button class="header_menuBtn" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
 
-  <main>
-    <section class="cart_section" id="cartSection">
-      <h2 class="my_cart_h2">Min varukorg</h2>
-      <div id="cartContainer"></div>
-    </section>
-    <div class="sort_section page_design">
-      <button class="sort_button_style" id="sortByNameBtn" aria-label="Sort canvas from a-z"><svg
-          xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF">
-          <path
-            d="m80-280 150-400h86l150 400h-82l-34-96H196l-32 96H80Zm140-164h104l-48-150h-6l-50 150Zm328 164v-76l202-252H556v-72h282v76L638-352h202v72H548ZM360-760l120-120 120 120H360ZM480-80 360-200h240L480-80Z" />
-        </svg></button>
-      <span><select class="sort_category_style" name="kategori">
-          <option id="sortByCategorySelectAll" value="alla">Kategori</option>
-          <option id="sortByCategorySelectDisney" value="disney">Disney</option>
-          <option id="sortByCategorySelectNormal" value="normal">Normal</option>
-          <option id="sortByCategorySelectPoetic" value="poetiskt">Poetiskt</option>
-          <option id="sortByCategorySelectFuzzy" value="fuzzy">Fuzzy</option>
-        </select></span>
-      <button class="sort_button_style sort_rating_special" id="sortByRatingBtn"
-        aria-label="Sort canvas by popularity">Populäritet</button>
-      <span class="sort_price_range_container">
-        <span>0 kr</span>
-        <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000"
-          aria-label="Choose price range ">
-        <span id="currentRangeValue">2000 kr</span>
-      </span>
-    </div>
-
-
-    <section class="canvas_section" id="canvasList">
-      <h2>Sortiment</h2>
+    <main>
+      <section class="cart_section" id="cartSection">
+        <h2 class="my_cart_h2">Min varukorg</h2>
+        <div id="cartContainer"></div>
       </section>
-     <div class="last_page_wrapper">
-      <section class="cartsum last_page_left_item page_design">
-        <h2>Varukorgsammanställning</h2>
-        <p>Tack för att du handlar hos oss!</p>
-        <h3>Dina artiklar</h3>
-        <div id="additionolCartContainer"></div>
-        <button class="form_button_single" aria-label="Buy" id="buyBtn">Köp</button>
+      <div class="sort_section page_design">
+        <button class="sort_button_style" id="sortByNameBtn" aria-label="Sort canvas from a-z">
+          <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#FFFFFF">
+            <path d="m80-280 150-400h86l150 400h-82l-34-96H196l-32 96H80Zm140-164h104l-48-150h-6l-50 150Zm328 164v-76l202-252H556v-72h282v76L638-352h202v72H548ZM360-760l120-120 120 120H360ZM480-80 360-200h240L480-80Z"/>
+          </svg>
+        </button>
+        <span>
+          <select class="sort_category_style" name="kategori">
+            <option id="sortByCategorySelectAll" value="alla">Kategori</option>
+            <option id="sortByCategorySelectDisney" value="disney">Disney</option>
+            <option id="sortByCategorySelectNormal" value="normal">Normal</option>
+            <option id="sortByCategorySelectPoetic" value="poetiskt">Poetiskt</option>
+            <option id="sortByCategorySelectFuzzy" value="fuzzy">Fuzzy</option>
+          </select>
+        </span>
+        <button class="sort_button_style sort_rating_special" id="sortByRatingBtn" aria-label="Sort canvas by popularity">Populäritet</button>
+        <span class="sort_price_range_container">
+          <span>0 kr</span>
+          <input class="sort_price_range" id="priceRange" type="range" min="0" max="2000" value="2000" aria-label="Choose price range">
+          <span id="currentRangeValue">2000 kr</span>
+        </span>
+      </div>
+
+      <section class="canvas_section" id="canvasList">
+        <h2>Sortiment</h2>
       </section>
+      <div class="last_page_wrapper">
+        <section class="cartsum last_page_left_item page_design">
+          <h2>Varukorgsammanställning</h2>
+          <p>Tack för att du handlar hos oss!</p>
+          <h3>Dina artiklar</h3>
+          <div id="additionolCartContainer"></div>
+          <button class="form_button_single" aria-label="Buy" id="buyBtn">
+            Köp
+          </button>
+        </section>
 
-      <div class="form_section last_page_right_item page_design">
-        <h2>
-          Sista steget,
-          <span class="form-text">vänligen fyll i dina uppgifter</span>
-        </h2>
-        <form id="orderForm">
-          <label>
-            <span>Förnamn: *</span>
-            <input class="form_input" type="text" placeholder="Förnamn" id="firstName">
-          </label>
-          <label>
-            <span>Efternamn: *</span>
-            <input class="form_input" type="text" placeholder="Efternamn" id="lastName">
-          </label>
-          <label>
-            <span>Adress: *</span>
-            <input class="form_input" type="text" placeholder="Adress" id="adress">
-            <span class="span_as_div" id="inputAdressError"></span>
-          </label>
-          <label>
-            <span>Postnummer: *</span>
-            <input class="form_input" type="number" placeholder="Postnummer" id="zipCode">
-          </label>
-          <label>
-            <span>Ort: *</span>
-            <input class="form_input" type="text" placeholder="Ort" id="city">
-          </label>
-          <label>
-            <span>Ev. portkod:</span>
-            <input class="form_input" type="text">
-          </label>
-          <label>
-            <span>Telefonnummer: *</span>
-            <input class="form_input" type="tel" placeholder="Telefonnummer" id="phoneNumber">
-            <span class="span_as_div" id="phoneNumberError"></span>
-          </label>
-          <label>
-            <span>E-postadress: *</span>
-            <input id="email" class="form_input" type="email" placeholder="Email" value="">
-            <span class="span_as_div" id="emailError"></span>
-          </label>
-          <label>
-            <span>Rabattkod</span>
-            <input class="form_input" type="text" placeholder="Rabattkod">
-          </label>
-          <div id="starFieldError"></div>
+        <div class="form_section last_page_right_item page_design">
+          <h2>
+            Sista steget,
+            <span class="form-text">vänligen fyll i dina uppgifter</span>
+          </h2>
+          <form id="orderForm">
+            <label>
+              <span>Förnamn: *</span>
+              <input class="form_input" type="text" placeholder="Förnamn" id="firstName">
+            </label>
+            <label>
+              <span>Efternamn: *</span>
+              <input class="form_input" type="text" placeholder="Efternamn" id="lastName">
+            </label>
+            <label>
+              <span>Adress: *</span>
+              <input class="form_input" type="text" placeholder="Adress" id="adress">
+              <span class="span_as_div" id="inputAdressError"></span>
+            </label>
+            <label>
+              <span>Postnummer: *</span>
+              <input class="form_input" type="number" placeholder="Postnummer" id="zipCode">
+            </label>
+            <label>
+              <span>Ort: *</span>
+              <input class="form_input" type="text" placeholder="Ort" id="city">
+            </label>
+            <label>
+              <span>Ev. portkod:</span>
+              <input class="form_input" type="text">
+            </label>
+            <label>
+              <span>Telefonnummer: *</span>
+              <input class="form_input" type="tel" placeholder="Telefonnummer" id="phoneNumber">
+              <span class="span_as_div" id="phoneNumberError"></span>
+            </label>
+            <label>
+              <span>E-postadress: *</span>
+              <input id="email" class="form_input" type="email" placeholder="Email" value="">
+              <span class="span_as_div" id="emailError"></span>
+            </label>
+            <label>
+              <span>Rabattkod</span>
+              <input class="form_input" type="text" placeholder="Rabattkod">
+            </label>
+            <div id="starFieldError"></div>
 
-          <div class="form_payment_options">
+            <div class="form_payment_options">
+              <div class="form_payment_selector">
+                <span class="form_payment">Jag betalar med: *</span>
+                <span class="form_button">
+                  <label>
+                    Faktura
+                    <input type="radio" name="payment_option" class="form_radio" value="invoice" aria-label="Select invoice payment">
+                  </label>
+                  <label>
+                    Kort
+                    <input type="radio" name="payment_option" class="form_radio" value="card" checked aria-label="Select card payment">
+                  </label>
+                </span>
+              </div>
 
-            <div class="form_payment_selector">
-              <span class="form_payment">Jag betalar med: *</span>
-              <span class="form_button">
-                <label>
-                  Faktura
-                  <input type="radio" name="payment_option" class="form_radio" value="invoice"
-                    aria-label="Select invoice payment">
+              <div id="invoice" class="hidden">
+                <label id="invoiceHidden">
+                  <span>Personnummer</span>
+                  <input class="form_input" type="text" name="personalid" id="personalId">
                 </label>
-                <label>
-                  Kort
-                  <input type="radio" name="payment_option" class=" form_radio" value="card" checked
-                    aria-label="Select card payment">
+              </div>
+
+              <div id="invoiceMoreThenEightHundredHidden"></div>
+
+              <div class="form_payment_card" id="card">
+                <label class="form_payment_card_number">
+                  <span>Kortnummer</span>
+                  <input class="form_input" type="number" id="creditCardNumber" value="4111111111111111">
                 </label>
-              </span>
+                <label class="form_payment_card_year">
+                  <span>År</span>
+                  <input class="form_input" type="number" placeholder="YY" id="creditCardYear">
+                </label>
+                <label class="form_payment_card_month">
+                  <span>Månad</span>
+                  <input class="form_input" type="number" placeholder="MM" id="creditCardMonth">
+                </label>
+                <label class="form_payment_card_cvc">
+                  <span>CVC</span>
+                  <input class="form_input" type="number" placeholder="000" id="creditCardCvc">
+                </label>
+              </div>
             </div>
 
-            <div id="invoice" class="hidden">
-              <label id="invoiceHidden">
-                <span>Personnummer</span>
-                <input class="form_input" type="text" name="personalid" id="personalId">
-              </label>
+            <div>
+              <div class="form_checkbox">
+                <input type="checkbox" aria-label="Click here if you would like to accept our processing of your personal data">
+                <p>Klicka här för att godkänna behandling av personuppgifter</p>
+              </div>
+              <div class="form_checkbox">
+                <input type="checkbox" checked aria-label="Let this be checked if you accept our newsletters">
+                <p>Klicka här om du vill ta del av våra nyhetsbrev</p>
+              </div>
             </div>
 
-            <div id="invoiceMoreThenEightHundredHidden"></div>
-
-            <div class="form_payment_card" id="card">
-              <label class="form_payment_card_number">
-                <span>Kortnummer</span>
-                <input class="form_input" type="number" id="creditCardNumber" value="4111111111111111">
-              </label>
-              <label class="form_payment_card_year">
-                <span>År</span>
-                <input class="form_input" type="number" placeholder="YY" id="creditCardYear">
-              </label>
-              <label class="form_payment_card_month">
-                <span>Månad</span>
-                <input class="form_input" type="number" placeholder="MM" id="creditCardMonth">
-              </label>
-              <label class="form_payment_card_cvc">
-                <span>CVC</span>
-                <input class="form_input" type="number" placeholder="000" id="creditCardCvc">
-              </label>
+            <div class="form_button">
+              <input id="formResetBtn" class="form_button_single" type="reset" value="Rensa">
+              <input id="formSubmitBtn" class="form_button_single" type="submit" value="Skicka" disabled>
             </div>
-          </div>
-
-          
-          <div>
-            <div class="form_checkbox">
-              <input type="checkbox"
-                aria-label="Click here if you would like to accept our processing of your personal data">
-              <p>Klicka här för att godkänna behandling av personuppgifter</p>
-            </div>
-            <div class="form_checkbox">
-              <input type="checkbox" checked aria-label="Let this be checked if you accept our newsletters">
-              <p>Klicka här om du vill ta del av våra nyhetsbrev</p>
-            </div>
-          </div>
-
-          <div class="form_button">
-            <input id="formResetBtn" class="form_button_single" type="reset" value="Rensa">
-            <input id="formSubmitBtn" class="form_button_single" type="submit" value="Skicka" disabled>
-          </div>
-        </form>
-        <div id="orderConfirmation"></div>
+          </form>
+          <div id="orderConfirmation"></div>
         </div>
       </div>
-    
-    
-  </main>
+    </main>
 
-  <footer>
-    <section>
-      <h2>Kontaktuppgifter</h2>
-      <div class="footer_container">
-        <span>Gottfrids Tavelbutik</span>
-        <a href="mailto:gottfrids@tavlor.se">gottfrids@tavlor.se</a>
-        <a href="tel:+46-123-457-789">+46 123 456 789</a>
-        <address>Gottfridsväg, 13<br><span> 123 45 Gotland</span></address>
-      </div>
-    </section>
-  </footer>
+    <footer>
+      <section>
+        <h2>Kontaktuppgifter</h2>
+        <div class="footer_container">
+          <span>Gottfrids Tavelbutik</span>
+          <a href="mailto:gottfrids@tavlor.se">gottfrids@tavlor.se</a>
+          <a href="tel:+46-123-457-789">+46 123 456 789</a>
+          <address>Gottfridsväg, 13<br><span> 123 45 Gotland</span></address>
+        </div>
+      </section>
+    </footer>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
