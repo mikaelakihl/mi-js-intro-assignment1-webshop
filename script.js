@@ -171,8 +171,6 @@ const itsSaturday = today.getDay() === 6;
 const itsSunday = today.getDay() === 0;
 const currentHour = today.getHours();
 
-const invoiceMoreThenEightHundredHidden = document.querySelector('#invoiceMoreThenEightHundredHidden');
-
 let orderedCanvasAmount = 0;
 let canvasTotalPriceSum = 0;
 let shippingSum = 0;
