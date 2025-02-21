@@ -23,7 +23,7 @@ Troughtout this project I focused on understanding the basics of Java Script and
 
 ## Live published site
 
-[Click here for live published version](https://medieinstitutet.github.io/fed24d-js-intro-inl-1-webshop-mikaelakihl/)
+[Click here for live published version](https://mikaelakihl.github.io/mi-js-intro-assignment1-webshop/)
 
 **Language: Swedish**
 
